@@ -1,0 +1,161 @@
+\documentclass[12pt,twoside,english]{article}
+\usepackage[utf8]{inputenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% template for degree project proposal
+%% 
+%% 2021-11-20
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+
+\input{lib/includes}
+\input{lib/acronyms}
+
+\title{Delta Lake as Offline feature store for Hopsworks}
+\author{
+        \textsc{Giovanni Manfredi}\\
+        \normalsize
+            \texttt{gioman@kth.se}
+}
+
+\lhead{Degree project proposal for 2024}
+\chead{Project proposal}
+\rhead{\isodate{\today}}
+
+\makeatletter
+\let\ps@plain\ps@fancy 
+\let\mytitle\@title
+\let\myauthor\@author
+\let\mydate\@date
+\makeatother
+
+\setlength{\headheight}{15pt}
+\begin{document}
+%TC:ignore
+\maketitle
+%TC:endignore
+
+% \begin{abstract}
+% \label{sec:abstract}
+
+% Your abstract here.
+
+% \end{abstract}
+%%\clearpage
+
+\selectlanguage{english}
+%TC:ignore
+%\todo[inline]{Save the document in a file with a name of the form:
+
+%authorname-Project\textunderscore{}Plan-YYYYMMDD
+
+%Note: Most sections will contain more than one sentence!
+%}
+%TC:endignore
+
+\section{Thesis title}
+%\todo[inline]{Provide a preliminary title, which gives an indication of what the degree project will be about.\\Note it is automatically filled in from the result of \textbackslash title{} above.
+\mytitle
+
+\section{Background}
+\label{sect:background}
+%\todo[inline]{Name and briefly describe the research area within which the project is being carried out. Describe how the project is connected to current research or development. Describe why the project is of interest and to whom, and in particular, explain the interest of the organization or company within which the project is carried out.}
+
+Hopsworks is an open-source feature store for machine learning that manages both large volumes of historical feature data (for model training) and the latest feature values (for model inference) \cite{hopsworks, hopsworks2015}. Hopsworks offline store is built on Apache Hudi \cite{ApacheHudi2019}, one of three open-source table formats (the others are Delta Lake and Apache Iceberg), known colloquially as lakehouse formats \cite{lakehouse2021}. 
+
+The lakehouse formats are the lowest cost way to manage historical feature data in the cloud on object storage, and they each have their own strong points. One of the problems (and strengths) of Apache Hudi is that each row requires a primary key. This helps Hudi prevent duplicate data being written to a table, but it also makes writing to a feature group much slower, as a check has to be made if the row already exists before it is added to the cluster. 
+
+Delta Lake \cite{deltalake2020}, in contrast, does not support primary key constraints, but it enables much faster writes than Hudi, in general. For many use cases, being able to write a 1 GB dataset to a feature group in 10 seconds is more important than the write taking 10 minutes, but ensuring duplicates were removed. Delta Lake is now an open-source format, controlled by the Open Cloud Native Foundation, and in contrast to Hudi, it has a native Python client, built on a Rust client, called Delta-RS. The ability for Python clients to write directly to the Lakehouse (Feature Store), will improve performance such that the Feature Store could become like a “Dropbox for DataFrames” - an easy to use network drive for storing incrementally updated feature groups in Python-based feature pipelines.
+
+\section{Research question}
+%\todo[inline]{A degree project must investigate a specific research/technical question. Provisionally state the question that the project will target.}
+
+This is a systems research project, where I will develop an extension to Hopsworks adding support for Delta Lake as an offline store. I will need to add support for both writing and reading to Delta Lake from Python clients, and I will experimentally evaluate the performance of the offline feature store in Delta Lake compared to the current solution that uses Apache Hudi.
+
+\section{Hypothesis}
+%\todo[inline]{What is the expected outcome of the investigation?}
+
+This project works on the hypothesis that an offline feature store in Delta Lake makes a higher performance platform for Python clients than an Apache Hudi-based platform.
+
+\section{Research method}
+%\todo[inline]{What method will be used for answering the research question, e.g., how will observations be collected and conclusions drawn? See for example~\cite{peter_bock_getting_2001}}
+\begin{enumerate}
+    \item Literature research of what is needed for the implementation and the new feature store. Understand metrics for benchmarking
+    \item Implementation phase.
+    \item Evaluation of performance of system built.
+\end{enumerate}
+
+\section{Background of the student}
+%\todo[inline]{Describe the knowledge (courses and/or experiences) you have that makes this an appropriate project for you.}
+
+My academic journey has provided me with a robust foundation in Distributed Systems, Machine Learning, and Machine Learning Operations (MLOps), all of which are integral to my thesis project on "Delta Lake as Offline Feature Store." Notably, my coursework across Politecnico di Milano, including "Databases 2," "Distributed Systems," "Computing Infrastructures," and "Machine Learning," and KTH with "Data Intensive Computing" and "Scalable Machine Learning and Deep Learning", has provided me with a comprehensive understanding of the principles and practical applications crucial for this research.
+
+The "Databases 2" course equipped me with knowledge of database architectures and transactions, preparing me to handle the intricacies of implementing Delta Lake as a feature store. "Distributed Systems" and "Computing Infrastructures" courses imparted an understanding of the design and development of modern distributed systems and data center architectures, which are fundamental in exploring Delta Lake in a distributed environment.
+
+The "Data Intensive Computing" course at KTH expanded my skills in handling massive data sets using distributed file systems and execution engines like Spark, directly applicable to the performance analysis of Delta Lake. Additionally, the "Data Mining" and "Scalable Machine Learning and Deep Learning" courses provided me with hands-on experience in deploying scalable machine learning algorithms, which is pivotal in assessing Delta Lake's efficacy as a feature store.
+
+Finally, "Software Engineering 2" reinforced my ability to apply engineering methods and processes essential for managing the complexity of integrating Delta Lake into an MLOps pipeline. My collective experiences from these courses make this thesis not only appropriate but an exciting opportunity to consolidate and apply my academic learning to a real-world challenge.
+
+
+\section{Supervisor at the company/external organization}
+%[Note: For degree projects at companies/external organizations]
+%\todo[inline]{List the person/s who will supervise you at the company and their role and involvement in the degree project.}
+
+Jim Dowling is the CEO and founder of HopsWorks, and also Course Coordinator of “Scalable Machine Learning and Deep Learning” course at KTH and he is the one that first introduced me to this master thesis opportunity in HopsWorks.
+I already had a series of emails with him (jim@hopswork.ai) after accepting the offer, where we discussed the topics of the project in detail, and where we explored together which professors at KTH would be best suited for this master thesis project.
+The supervisor within the company will be \textbf{Davit Bzhalava} (davit@hopswork.ai), Head of Data Science in HopsWorks. He will be the reference within the company for this project, but also Jim Dowling will be involved in the project.
+
+\section{Suggested examiner at KTH}
+%\todo[inline]{You may suggest an examiner at KTH. State if you have been in contact with the examiner and received a preliminary expression of interest to serve as an examiner.}
+
+\textbf{Vladimir Vlassov} (vladv@kth.se), professor at KTH, after being presented the project and having a brief discussion with Jim Dowling, he accepted to be the examiner for this project.
+
+\section{Suggested supervisor at KTH}
+%\todo[inline]{You may suggest a supervisor at KTH. State if you have been in contact with the supervisor and received a preliminary expression of interest to serve as supervisor.}
+
+The suggested examiner of this project also indicated \textbf{Sina Sheikholeslami} (sinash@kth.se) and \textbf{Fabian Schmidt} (fschm@kth.se) as supervisors for this project.
+
+\section{Resources}
+%\todo[inline]{What is already available at the company (or other host institution) in the form of previous projects, software, expertise, etc. that the project can build on?}
+
+During the Master thesis period, I will work on a daily basis in HopsWorks headquarters. This will allow me both access to the current implementation of the Offline feature store in Apache Hudi, and gain new knowledge and expertise from HopsWorks employees. 
+
+\section{Eligibility}
+%\todo[inline]{Verify that you are eligible to start your degree project, that is, that you fulfill the basic requirements of starting the project and have completed all the relevant courses for the project.}
+
+I am currently on track to have completed all my courses before the beginning of Period 3 2023-2024. This means that all requirements (related to the courses cited before and Research Methodologies and Scientific Writing) will be met before the start of the project.
+
+\section{Study Planning}
+%\todo[inline]{List all the courses you will need to complete during or after the degree project, and describe how and when you plan to complete those courses. This aims to ensure that the thesis is one of the last elements of your education.}
+
+This is the list of courses I am currently attending and that I will complete by the end of this period, and so before the beginning of Period 3, where my thesis project will start.
+\begin{itemize}
+    \item Data Mining
+    \item Scalable Machine Learning and Deep Learning 
+    \item Research Methodologies and Scientific Writing
+\end{itemize}
+
+\bibliography{thesis}
+%%\bibliographystyle{IEEEtran}
+\bibliographystyle{myIEEEtran}
+
+\appendix
+%TC:ignore
+%\section{Optional appendix}
+
+%\todo[inline]{In this section, you can additional information that may be relevant to your reader but is not an answer to any of the above points. Note that an Appendix or Appendices are Optional.}
+
+%The approximate word count is \quickwordcount{thesis}.
+%TC:endignore
+
+%\section*{Acronyms}
+%TC:ignore
+%\renewcommand{\glossarysection}[2][]{} %% skip the title
+%\printglossary[type=\acronymtype,nonumberlist]
+%TC:endignore
+\clearpage
+%%TC:ignore
+%\detailtexcount{thesis}
+%%TC:endignore
+\end{document}
