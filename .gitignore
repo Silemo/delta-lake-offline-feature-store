@@ -296,3 +296,6 @@ TSWLatexianTemp*
 ## Manual additions
 
 *.ist
+*.atfi
+# ForDiva JSON file
+*.json
