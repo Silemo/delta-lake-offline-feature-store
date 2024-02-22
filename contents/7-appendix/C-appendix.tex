@@ -1,0 +1,29 @@
+This appendix gives some examples of equations that are used throughout this thesis.
+\section{A simple example}
+The following example is adapted from Figure 1 of the documentation for the package nomencl (\url{https://ctan.org/pkg/nomencl}).
+\begin{equation}\label{eq:mainEq}
+a=\frac{N}{A}
+\end{equation}
+\nomenclature{$a$}{The number of angels per unit area\nomrefeq}%       %% include the equation number in the list
+\nomenclature{$N$}{The number of angels per needle point\nomrefpage}%  %% include the page number in the list
+\nomenclature{$A$}{The area of the needle point}%
+The equation $\sigma = m a$%
+\nomenclature{$\sigma$}{The total mass of angels per unit area\nomrefeqpage}%
+\nomenclature{$m$}{The mass of one angel}
+follows easily from \Cref{eq:mainEq}.
+
+\section{An even simpler example}
+The formula for the diameter of a circle is shown in \Cref{eq:secondEq} area of a circle in \cref{eq:thirdEq}.
+\begin{equation}\label{eq:secondEq}
+D_{circle}=2\pi r
+\end{equation}
+\nomenclature{$D_{circle}$}{The diameter of a circle\nomrefeqpage}%
+\nomenclature{$r$}{The radius of a circle\nomrefeqpage}%
+
+\begin{equation}\label{eq:thirdEq}
+A_{circle}=\pi r^2
+\end{equation}
+\nomenclature{$A_{circle}$}{The area of a circle\nomrefeqpage}%
+
+Some more text that refers to \eqref{eq:thirdEq}.
+\fi  %% end of nomenclature example
