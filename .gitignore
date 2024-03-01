@@ -140,7 +140,7 @@ acs-*.bib
 *.glsdefs
 
 # uncomment this for glossaries-extra (will ignore makeindex's style files!)
-# *.ist
+*.ist
 
 # gnuplottex
 *-gnuplottex-*
@@ -295,7 +295,6 @@ TSWLatexianTemp*
 
 ## Manual additions
 
-*.ist
 *.atfi
 # ForDiva JSON file
-*.json
+fordiva.json
