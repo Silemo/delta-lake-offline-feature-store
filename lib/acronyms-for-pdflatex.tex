@@ -2,27 +2,30 @@
 %%% mode: latex
 %%% TeX-master: t
 %%% End:
-% The following command is used with glossaries-extra
+%% The following command is used with glossaries-extra
 \setabbreviationstyle[acronym]{long-short}
-% The form of the entries in this file is \newacronym{label}{acronym}{phrase}
-%                                      or \newacronym[options]{label}{acronym}{phrase}
-% see "User Manual for glossaries.sty" for the  details about the options, one example is shown below
-% note the specification of the long form plural in the line below
-\newacronym[longplural={Debugging Information Entities}]{DIE}{DIE}{Debugging Information Entity}
-%
-% The following example also uses options
-\newacronym[shortplural={OSes}, firstplural={operating systems (OSes)}]{OS}{OS}{operating system}
-
-% note the use of a non-breaking dash in long text for the following acronym
-\newacronym{IQL}{IQL}{Independent Q^^e2^^80^^91Learning}
+%% The form of the entries in this file is \newacronym{label}{acronym}{phrase}
+%%                                      or \newacronym[options]{label}{acronym}{phrase}
+%% see "User Manual for glossaries.sty" for the  details about the options, one example is shown below
+%% note the specification of the long form plural in the line below
+%%\newacronym[longplural={Debugging Information Entities}]{DIE}{DIE}{Debugging Information Entity}
+%%
+%% The following example also uses options
+%%\newacronym[shortplural={OSes}, firstplural={operating systems (OSes)}]{OS}{OS}{operating system}
+%%
+%% note the use of a non-breaking dash in long text for the following acronym
+%%\newacronym{IQL}{IQL}{Independent Q^^e2^^80^^91Learning}
+%%
+%% Notes
+%% 1. you can't use the \gls() command in a heading - but you can get the short (\glsentryshort) 
+%% or long version (\glsentryshort) or \glsentrylong or even the text entry (\glsentrytext) and then there is no problem
 
 \newacronym{KTH}{KTH}{KTH Royal Institute of Technology}
-
-\newacronym{LAN}{LAN}{Local Area Network}
-\newacronym{VM}{VM}{virtual machine}
-% note the use of a non-breaking dash in the following acronym
-\newacronym{WiFi}{Wi^^e2^^80^^91Fi}{Wireless Fidelity}
-
-\newacronym{WLAN}{WLAN}{Wireless Local Area Network}
-\newacronym{UN}{UN}{United Nations}
-\newacronym{SDG}{SDG}{Sustainable Development Goal}
+\newacronym{ACID}{ACID}{Atomicity, Consistency, Isolation and Durability}
+\newacronym{AI}{AI}{Artificial Intelligence}
+\newacronym{ML}{ML}{Machine Learning}
+\newacronym{BI}{BI}{Business Intelligence}
+\newacronym[shortplural={RDDs}, firstplural={Resilient Distributed Datasets (RDDs)}]{RDD}{RDD}{Resilient Distributed Dataset}
+\newacronym{OLAP}{OLAP}{On-Line Analytical Processing}
+\newacronym{ELT}{ELT}{Extract Load Transform}
+\newacronym{ETL}{ETL}{Extract Transform Load}

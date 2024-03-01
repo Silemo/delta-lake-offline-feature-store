@@ -224,7 +224,7 @@ morekeywords={begin, todo, textbf, textit, texttt}
 \usepackage[acronym, style=super, section=section, nonumberlist, nomain,
 nopostdot]{glossaries}
 \setlength{\glsdescwidth}{0.75\textwidth}
-\usepackage[]{glossaries-extra}
+\usepackage[automake]{glossaries-extra}
 \ifinswedish
     %\usepackage{glossaries-swedish}
 \fi
@@ -261,9 +261,9 @@ nopostdot]{glossaries}
 %% AUTHORS INFO
 %%
 \authorsLastname{Manfredi}
-\authorsFirstname{Fake A.}
-\email{a@kth.se}
-\kthid{u100001}
+\authorsFirstname{Giovanni}
+\email{gioman@kth.se}
+\kthid{u142pmki}
 %% As per email from KTH Biblioteket on 2021-06-28 students cannot have an OrCiD reported for their degree project
 \authorsSchool{\schoolAcronym{EECS}}
 %% If the student is not in Stockholm, Sweden, add that information here
@@ -272,58 +272,47 @@ nopostdot]{glossaries}
 %\authorCountry{A Country}
 %% pass into \authorCityCountryDate{} the month and year for the acknowledgment
 %% Specify the month and year for the first author:
-\authorCityCountryDate{\MONTH\enspace\the\year}
+\authorCityCountryDate{June 2024}
 
 %%
 %% SUPERVISOR INFO
 %%
-\supervisorAsLastname{Supervisor}
-\supervisorAsFirstname{A. Busy}
-\supervisorAsEmail{sa@kth.se}
+\supervisorAsLastname{Sheikholeslami}
+\supervisorAsFirstname{Sina}
+\supervisorAsEmail{sinash@kth.se}
 %% If the supervisor is from within KTH add their KTHID, School and Department info
-\supervisorAsKTHID{u100003}
+\supervisorAsKTHID{u1znylhw}
 \supervisorAsSchool{\schoolAcronym{EECS}}
 \supervisorAsDepartment{Computer Science}
 %% other for a supervisor outside of KTH add their organization info
 %\supervisorAsOrganization{Timbuktu University, Department of Pseudoscience}
 
 %%If there is a second supervisor add them here:
-\supervisorBsLastname{Supervisor}
-\supervisorBsFirstname{Another Busy}
-\supervisorBsEmail{sb@kth.se}
+\supervisorBsLastname{Schmidt}
+\supervisorBsFirstname{Fabian}
+\supervisorBsEmail{fschm@kth.se}
 %% If the supervisor is from within KTH add their KTHID, School and Department info
-\supervisorBsKTHID{u100003}
-\supervisorBsSchool{\schoolAcronym{ABE}}
-\supervisorBsDepartment{Architecture}
+\supervisorBsKTHID{u1mrsz0u}
+\supervisorBsSchool{\schoolAcronym{EECS}}
+\supervisorBsDepartment{Computer Science}
 %% other for a supervisor outside of KTH add their organization info
 %\supervisorBsOrganization{Timbuktu University, Department of Pseudoscience}
-
-%%If there is a third supervisor add them here:
-\supervisorCsLastname{Supervisor}
-\supervisorCsFirstname{Third Busy}
-\supervisorCsEmail{sc@tu.va}
-%% If the supervisor is from within KTH add their KTHID, School and Department info
-%\supervisorCsKTHID{u100004}
-%\supervisorCsSchool{\schoolAcronym{ABE}}
-%\supervisorCsDepartment{Public Buildings}
-% other for a supervisor outside of KTH add their organization info
-\supervisorCsOrganization{Timbuktu University, Department of Pseudoscience}
 
 %%
 %% EXAMINER INFO
 %%
-\examinersLastname{Maguire Jr.}
-\examinersFirstname{Gerald Q.}
-\examinersEmail{maguire@kth.se}
+\examinersLastname{Vlassov}
+\examinersFirstname{Vladimir}
+\examinersEmail{vladv@kth.se}
 %% If the examiner is from within KTH add their KTHID, School and Department info
-\examinersKTHID{u1d13i2c}
+\examinersKTHID{u19yb2c8}
 \examinersSchool{\schoolAcronym{EECS}}
 \examinersDepartment{Computer Science}
 %% other for a examiner outside of KTH add their organization info
 %\examinersOrganization{Timbuktu University, Department of Pseudoscience}
 
 
-\hostcompany{Företaget AB} % Remove this line if the project was not done at a host company
+\hostcompany{Hopsworks AB} % Remove this line if the project was not done at a host company
 %\hostorganization{CERN}   % if there was a host organization
 
 \date{\today}
@@ -331,15 +320,16 @@ nopostdot]{glossaries}
 %%
 %% COURSE INFO
 %%
-\courseCycle{1}
-\courseCode{IA150X}
-\courseCredits{15.0}
+\courseCycle{2}
+\courseCode{DA258X}
+\courseCredits{30.0}
 
-\programcode{TCOMK}
-\degreeName{Bachelors degree}
-%% Note that the subject area for a Bachelor's thesis (Kandidatexamen) should be either Technology or Architecture
-%% If the thesis is in Swedish, these would be: teknik | arkitektur -- Note the use of lower case
-\subjectArea{Technology}
+\programcode{TIVNM}
+\degreeName{Master's Programme, Distributed Systems and Data Mining for Big Data, 120 credits}
+%% ALTERNATIVE
+%\degreeName{Master's Programm, ICT Innovation, 120 credits}
+\subjectArea{?}
+%\subjectArea{Data Science}
 %% if there is a second degree
 %\secondProgramcode{CINTE}
 %\secondDegreeName{test second degree}
@@ -445,7 +435,7 @@ nopostdot]{glossaries}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                        TITLE OF TITLE PAGE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{This is the title in the language of the thesis}
+\title{Delta Lake as Offline Feature Store for Hopsworks}
 \subtitle{A subtitle in the language of the thesis}
 
 %% give the alternative title - i.e., if the thesis is in English, then give a Swedish title
@@ -471,7 +461,7 @@ nopostdot]{glossaries}
 
 %% When there are multiple opponents, separate their names with '\&'
 %% Opponent's information
-\opponentsNames{A. B. Normal \& A. X. E. Normalè}
+\opponentsNames{A. B. Normal \& A. X. E. Capion}
 
 %% Once a thesis is approved by the examiner, add the TRITA number
 %% The TRITA number for a thesis consists of two parts a series (unique to each school)
@@ -638,13 +628,6 @@ nopostdot]{glossaries}
 
 \cleardoublepage
 
-\generalExpl{If you are an exchange student, use the relevant language or languages for abstracts for your home university, as this will often avoid the need for writing another thesis for your home university.\\
-If you are fluent in other languages, feel free to add the abstracts in one or more of them.}
-\engExpl{Note that you may need to augment the set of languages used in \texttt{polyglossia} or
-\texttt{babel} (see the file \texttt{kththesis.cls}). The following languages include those languages that were used in theses at KTH in 2018-2019, except for one in Chinese.\\
-Remove those versions of abstracts that you do not need.\\
-If you add a new language, when specifying the language for the abstract, use the three-letter ISO 639-2 Code – specifically the "B" (bibliographic) variant of these codes (note that this is the same language code used in DiVA).}
-
 \babelpolyLangStart{italian}
 \begin{abstract}
     \input{contents/0-abstract/3-abstract_italian}
@@ -671,17 +654,17 @@ If you add a new language, when specifying the language for the abstract, use th
 \tableofcontents
   \markboth{\contentsname}{}
 
-\cleardoublepage
+%\cleardoublepage
 %% LIST OF FIGURES
-\listoffigures
+%\listoffigures
 
-\cleardoublepage
+%\cleardoublepage
 %% LIST OF TABLES
-\listoftables
+%\listoftables
 
-\cleardoublepage
+%\cleardoublepage
 %% LIST OF LISTINGS
-\lstlistoflistings
+%\lstlistoflistings
 
 \cleardoublepage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -700,8 +683,7 @@ If you add a new language, when specifying the language for the abstract, use th
 %\printglossary[type=\acronymtype, title={List of acronyms and abbreviations}]
 
 %\printnoidxglossary[style=mylong, title={List of acronyms and abbreviations}]
-\engExpl{The list of acronyms and abbreviations should be in alphabetical order based on the spelling of the acronym or abbreviation.
-}
+%\engExpl{The list of acronyms and abbreviations should be in alphabetical order based on the spelling of the acronym or abbreviation.}
 
 % if the nomenclature option was specified, then include the nomenclature page(s)
 \ifnomenclature
@@ -725,7 +707,7 @@ If you add a new language, when specifying the language for the abstract, use th
 \chapter{Introduction}
     \label{ch:introduction}
     \input{contents/1-introduction/_all}
-
+\begin{comment}
 \cleardoublepage
 
 \chapter{Background}
@@ -755,12 +737,12 @@ If you add a new language, when specifying the language for the abstract, use th
 \chapter{Conclusions and Future work}
     \label{ch:conclusions_and_future_work}
     \input{contents/6-conclusions_and_future_work/draft}
-
+\end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                 REFERENCES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \noindent\rule{\textwidth}{0.4mm}
-\engExpl{In the references, let Zotero or other tool fill this in for you. I suggest an extended version of the IEEE style, to include URLs, DOIs, ISBNs, etc., to make it easier for your reader to find them. This will make life easier for your opponents and examiner. \\IEEE Editorial Style Manual: \url{https://www.ieee.org/content/dam/ieee-org/ieee/web/org/conferences/style_references_manual.pdf}}
+%%\engExpl{In the references, let Zotero or other tool fill this in for you. I suggest an extended version of the IEEE style, to include URLs, DOIs, ISBNs, etc., to make it easier for your reader to find them. This will make life easier for your opponents and examiner. \\IEEE Editorial Style Manual: \url{https://www.ieee.org/content/dam/ieee-org/ieee/web/org/conferences/style_references_manual.pdf}}
 
 \cleardoublepage
 
@@ -780,12 +762,12 @@ If you add a new language, when specifying the language for the abstract, use th
 %%                                 APPENDIX
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% If you do not have an appendix, do not include the \textbackslash cleardoublepage command below; otherwise, the last page number in the metadata will be one too large.}
-\cleardoublepage
+%\cleardoublepage
 
-\appendix
-\renewcommand{\chaptermark}[1]{\markboth{Appendix \thechapter\relax:\thinspace\relax#1}{}}
+%\appendix
+%\renewcommand{\chaptermark}[1]{\markboth{Appendix \thechapter\relax:\thinspace\relax#1}{}}
 
-\input{contents/7-appendix/_all}
+%\input{contents/7-appendix/_all}
 
 \cleardoublepage
 
@@ -793,7 +775,7 @@ If you add a new language, when specifying the language for the abstract, use th
 \label{pg:lastPageofMainmatter}
 
 \cleardoublepage
-
+\begin{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                 FOR DIVA MATERIAL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -827,5 +809,5 @@ commentstyle=\color{black}, backgroundcolor=\color{white}]{lib/acronyms-for-pdfl
 }
 {}
 \fi
-
+\end{comment}
 \end{document}
