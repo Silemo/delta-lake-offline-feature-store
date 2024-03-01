@@ -1,0 +1,62 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                  SKELETON
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+1 - Starting from the deltaLake paper, we explain the importance of table formats
+and how deltaLake became popular
+
+2 - Scale and comparison between Spark and other technologies. 
+
+3 - A good idea could be substituting the title with something along the lines of
+"Enabling Python access to Delta Lake". This makes the work more relevant for who searches "Python"
+and  more general than feature stores.
+
+%% LANGUAGE POPULARITY
+TIOBE.com -> programming language popularity index
+https://www.tiobe.com/tiobe-index/
+Python:
+- Oct 2020 surpassed JAVA
+- Aug 2021 surpassed C, becoming the first programming language
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                    DRAFT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Introduction:
+
+1. In the field of data intensive computing, table formats have emerged as de-facto standards abstractions
+on top of object-data storages systems such as S3, HDFS, GSC. These meta-data formats manage parquet files, 
+i.e. column-oriented data formats, providing additional functionalities e.g. time travel and partitioning.
+
+// Alternative
+1. 
+
+While all three projects are backed by large communities, it is Delta Lake that is more acknowledged as Lakehouse solution [cite]. This is mainly thanks to Databricks, that first pushed this new 
+architecture over older data lakes for their clients [cite]. 
+
+Accessing Delta Lake then becomes of primary importance for these systems. The main way that Delta Lake is accessed is Apache Spark [cite]. This distributed computing framework enables an efficient 
+data processing in the cloud, when large quantities of data (1 TB or more) are moved. But what happens at a smaller scale? What if we need to move data only on the scale of 10GB, 100GB?
+
+In recent years, in other data storage cases, DuckDB [cite] and Polars[cite], showed as under a certain number of GB, and in particular if the architecture is local, starting a Spark cluster, might 
+reduce performance, increasing costs and the computation time. Alternatives at smaller scale (10GB - 100GB) can perform much better [cite].
+
+3. In this scenario, we still want to keep as main language Python, as it is the go-to choice for data scientists [reference]. Creating 
+a Python client for Delta Lake would mean that we don't have to resort to Spark and the PySpark library. This, in particular in small scales can 
+make a significant difference.
+
+Background:
+Here we can talk about Lake house and how it became a standard.
+A cleared understanding of the background of this project comes from appreciating three different key aspects: Lakehouse development, Spark relevance and flows, Python as emergent language.
+
+-> Lakehouse is a term coined by Databricks in 2020, to define a new design standard that was emerging in the industry, that combined the capability of data lakes of storing and managing unstructured data, with the \gls{ACID} properties typical of Data warehouses.
+
+Data warehouses became a dominant standard in the 90ies early 2000ands, enabling companies to generate \gls{BI} insights, managing different structured data sources. The problems related to this architecture rose in the 2010 years when it became clear the need to manage unstructured data in large quantities \cite{}. 
+So Data lakes became the pool where all data could be stored, on top of which a more complex architecture could be built, consisting of data warehouses for \gls{BI} and \gls{ML} pipelines.
+This architecture, while more suitable for unstructured data, introduces many complexities and costs, related to the need of having replicated data (data lake and data warehouse), and a lot of ELT computations.
+Lakehouses solved the problems of Data lakes by implementing data management and performance features on top of open data formats such as Parquet \cite{}. This paradigm was successful thanks to three key components: a metadata layer for data lakes, a new query engine design, a declarative access for \gls{ML} and \gls{AI}. This architecture design was first open-sourced with Apache Hudi in 2017 \cite{} and then Delta Lake in 2020 \cite{}.
+
+-> When talking about Spark origins and reasons behind its creation we need to look into Google needs for advancing in the internet search and indexing. In particular these needs led to the creation of MapReduce \cite{mapreduce} a distributed programming model that enables the management of large datasets. This paradigm became then part of the Hadoop ecosystem \cite{}. 
+From the roots of MapReduce, Spark was created \cite{}, improving both on the performance (10 times better in its first iteration), and on the fault tolerance, using \gls{RDD}. \gls{RDD}s are a distributed memory abstraction that enables a lazy in-memory computation that is tracked though the use of lineage graphs, ultimately increasing fault tolerance \cite{}. 
+Spark, now Apache Spark under the Apache foundation, has seen widespread success and adoption in various applications, becoming a de-facto standard of the distributed computing world. As Spark becomes older, other approaches appear and compete with Spark in specific areas, achieving better results. This is the case of Apache Flink, designed for true stream processing prevails over Spark in this area. The same can be said for lower scale applications where the high scaling capabilities of Spark are not at use, and the overhead of starting a Spark application is not compensated by other factors. This is the case of DuckDB and Polars, that focusing on low scale (10GB-100GB) they provided a fast OLAP embedded database and DataFrame management system respectively offering an overall faster computation compared to starting a Spark cluster for to perform the same operations. This shows the possibility for improvements and new applications that substitute the current Spark-based systems in specific applications.
+
+-> The data science world speaks Python \cite{}. Python was first adopted by many thanks to its focus on ease of use, high abstraction level and readability. This helped created a fast-growing community behind the project, that lead to the development of a great number of libraries and APIs. So now, after more than 30 years after its creation, it became the de-facto standard for data science thanks to its many libraries such as Tensorflow, NumPy, SciPy, Pandas, PyTorch, Keras and many others.
+
+Python is also the most popular programming language. This appears clear if we refer to TIOBE Index 2024 \cite{} we see that Python has a rating of 15.16%, followed by C that has a rating of 10.97%. The index also shows the trends of the last years, clearly displaying the rise of Python over historically very popular languages such as C and JAVA, that were both outranked by Python between 2021 and 2022. This shows the importance of offering Python interfaces for programmers and data scientist in particular to increase the engagement and possibilities of a framework.
