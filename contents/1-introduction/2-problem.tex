@@ -1,10 +1,21 @@
-Longer problem statement\\
-If possible, end this section with a question as a problem statement.
+Hopsworks Feature Store \cite{HopsworksBatchRealtime2024}, currently has a large time overhead when starting Spark (around 5 minutes) even for the most simple operation. 
+This overhead is less relevant for computation on larger quantities of data (1 TB or above), as it composes a smaller part of the overall computation time (\todo[inline]{INSERT COMPUTATION PERCENTAGE TIME HERE}). % TODO insert computation percentage time.
+Nonetheless Hopsworks' typical use-case sits between tests on small quantities of data (scale between 1-10 GBs) and production scenarios on larger scale, but still relatively small (scale between 10-100 GBs). % TODO Verify this statement with Jim D.
+As this overhead is caused by starting up Spark jobs, we need to look for Spark alternatives. Currently Hopsworks is saving their Feature Store data on Apache Hudi and Delta Lake table formats. Delta Lake supports Spark alternatives for accessing and querying the data, of particular interest is the library delta-rs \cite{DeltaioDeltars2024} that enables Python access to Delta Lake tables, without having the time overhead given by Spark jobs. 
+However, the delta-rs \cite{DeltaioDeltars2024} does not support \gls{HDFS}, thus not even HopsFS, Hopsworks own \gls{HDFS} distribution \cite{niaziHopsFSScalingHierarchical2017}.
 
 % Research Question
-\subsection{Original problem and definition}
+\subsection{Research Question}
 \label{sec:researchQuestion}
-Some text
+The objective of this systems research project is designing and implementing using delta-rs \cite{DeltaioDeltars2024} a Python access to Delta Lake tables for the Hopsworks Feature Store. Additionally, this research aims to evaluate and compare the current system based on Apache Spark and the newly implemented one based on the delta-rs library \cite{DeltaioDeltars2024}. Hence, the research question is the following: "What is the difference in performance between a Apache Spark based access to Delta Lake compared to an access based on the delta-rs library?
+
+%Some text
+% Small summary of problem and formulation of a single research question
 
 \subsection{Scientific and engineering issues}
-some more text
+% Outline of the various problems to address during implementation
+Delta-rs \cite{DeltaioDeltars2024} as the name suggests is a Rust \cite{RustProgrammingLanguage} library, that offers Python bindings. Rust is a compiled language, and as such it does not need an interpreter as Python or virtual environment as Java. This means that it is particularly easy to embed and use Rust code as library in another language such as Python. 
+
+Currently delta-rs does not support \gls{HDFS} (or the Hopsworks distribution, HopsFS \cite{niaziHopsFSScalingHierarchical2017}). This means that adding support to \gls{HDFS} to delta-rs becomes a requirement of this project. Additionally, it should be noted that to meet development standards to the repository, the object\_store \cite{Object_storeRust} interface of the Datafusion \cite{ApacheDataFusionApache} should be used.
+
+\todo[inline]{INSERT ADDITIONAL COMMENTS ON SCIENTIFIC ISSUE ON THE EVALUATIONS METRICS}.

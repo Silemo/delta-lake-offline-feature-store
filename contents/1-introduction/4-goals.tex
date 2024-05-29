@@ -2,12 +2,11 @@
 %%\sweExpl{Skilj på syfte och mål. Syftet är att åstakomma en förändring i något. Målen är vad som konkret skall göras för att om möjligt uppnå den önskade förändringen (syfte). }
 %%
 %%\generalExpl{State the goal/goals of this degree project.}
-
-The goal of this project is XXX. This has been divided into the following three sub-goals:
+The goal of this systems research project is the to design and implement a Delta Lake read and write Rust interface that has faster read and write operations compared to the current Spark-based one. This goal has been divided into the following three sub-goals:
 \begin{enumerate}
-\item Subgoal 1 
-\item Subgoal 2
-\item Subgoal 3
+\item Implement the object\_store interface for \gls{HDFS}, thus adding support for Hopsworks storage solution.
+\item Add support for the \gls{HDFS} object\_store in the delta-rs library, creating a working pipeline to read and write on Delta Lake tables on top of which Hopsworks Feature Store operates.
+\item Compare the new Rust pipeline to the old Spark-based one at different data loads (from 10 GB to 1 TB) using read and write operation time as primary metric.
 \end{enumerate}
 
 %%\generalExpl{In addition to presenting the goal(s), you might also state what the deliverables and results of the project are.}
