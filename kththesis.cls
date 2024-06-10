@@ -452,39 +452,27 @@
 \ifgfivepaper
   \newgeometry{top=65mm,bottom=30mm,left=62mm,right=18mm}
 \else
-  \newgeometry{top=56mm,bottom=30mm,left=74pt, right=35mm} % formerly {top=56mm,bottom=30mm,left=74pt, right=35mm}
+  \newgeometry{top=232.34pt,bottom=70.9pt,left=70.9pt, right=70.9pt} % formerly {top=56mm,bottom=30mm,left=74pt, right=35mm}
 \fi
 
 \thispagestyle{empty}
 
-% Note that the English cover has additional text on it, sop generate it
-\ifinswedish
-\null
-\else
-\begin{textblock*}{100pt}(451.559pt, 33.88pt) % {block width} (coords) - formerly 481.748pt, 28pt
-\includegraphics{figures/kth/KTH_ROYAL_INSTITUTE_OF_TECHNOLOGY_logotype.png} % formerly width=76.2pt, height=76.2pt
-%\noindent{\fontsize{9.5}{10}\coverbfont
-%    \textcolor{black}{KTH ROYAL INSTITUTE} % formerly     \textcolor{black!80!}{KTH ROYAL INSTITUTE}
-%}
-\end{textblock*}
-%\begin{textblock*}{85pt}(451.559pt, 44.22pt) % {block width} (coords) -formerly 481.748pt, 38pt
-%\noindent{\fontsize{9.5}{10}\coverbfont
-%    \textcolor{black}{OF TECHNOLOGY}
-%}
-%\end{textblock*}
-\fi
 
-\begin{textblock*}{72.85pt}(20pt, 33.88pt) % formerly 20pt, 40pt
-\includegraphics[width=72.85pt, height=72.85pt, keepaspectratio]{figures/kth/kth_logo.png} % formerly width=76.2pt, height=76.2pt
-\end{textblock*}
-\begin{flushleft}
 
+\begin{textblock*}{106.16898110pt}(226.77pt, 35.4pt) % formerly 20pt, 40pt
+\includegraphics[width=106.16898110pt, height=118.9419140pt, keepaspectratio]{figures/kth/KTH_logo_RGB_bla.png}
+\end{textblock*}
+%\vspace{160pt}
+\begin{center}
 % look for a second subject
 \ifx\@secondSubjectArea\@empty
-{\coverlfont \fontsize{12}{13}
+
   \ifinswedish
+  {\fontsize{12}{13} \coverlfont 
   Examensarbete inom \@subjectArea\\
+  }
   \addvspace{8pt}
+    {\fontsize{10}{12}  \coverlfont
   \IfEqCase{\@courseCycle}{%
     {1}{Grundnivå,}%
     {2}{Avancerad nivå,}%
@@ -515,9 +503,13 @@
     {330.0}{330}%
     }[\typeout{unknown credits}]%
 ~hp\\
+    }
   \else
+{\coverlfont \fontsize{12}{13}
   Degree Project in \@subjectArea\\
+}
   \addvspace{8pt}
+  {\fontsize{10}{12} \coverlfont 
   \IfEqCase{\@courseCycle}{%
     {1}{First cycle,}%
     {2}{Second cycle,}%
@@ -548,20 +540,22 @@
     {330.0}{330}%
     }[\typeout{unknown credits}]%
 ~credits\\
+  }
   \fi
     
-}
 \else
-{\coverlfont \fontsize{12}{13}
   \ifinswedish
+  {\fontsize{12}{13} \coverlfont 
       \ifthenelse{\equal{\@subjectArea}{\@secondSubjectArea}}
     {Examensarbete inom teknikområdet och huvudområdet \@subjectArea\\}
     {Examensarbete inom teknikområdet \@subjectArea\ och huvudområdet \@secondSubjectArea\\}%
+  }
 %  \IfEqCase{\@degreeName}{%
 %    {Both}{Examensarbete inom teknikområdet \@subjectArea\ och huvudområdet \@secondSubjectArea\\}%
 %    {Same}{Examensarbete inom teknikområdet och huvudområdet \@subjectArea\\}%
 %  }[\typeout{unknown degree name in case for both Masters degrees}]
   \addvspace{8pt}
+   {\fontsize{10}{12} \coverlfont
   \IfEqCase{\@courseCycle}{%
     {1}{Grundnivå,}%
     {2}{Avancerad nivå,}%
@@ -571,16 +565,20 @@
     {30.0}{30}%
     }[\typeout{unknown credits}]%
 ~hp\\
+    }
   \else
+  {\fontsize{12}{13} \coverlfont
   \ifthenelse{\equal{\@subjectArea}{\@secondSubjectArea}}
     {Degree Project in the Field of Technology and the Main Field of Study \@subjectArea\\}
     {Degree Project in the Field of Technology \@subjectArea\ and the Main Field of Study \@secondSubjectArea\\}%
+  }
 %    \IfEqCase{\@degreeName}{%
 %    {Both}{Degree Project in the Field of Technology \@subjectArea\ and the Main Field of Study \@secondSubjectArea\\}%
 %    {Same}{Degree Project in the Field of Technology and the Main Field of Study \@subjectArea\\}%
 %  }[\typeout{unknown degree name in case for both Masters degrees}]
   
   \addvspace{8pt}
+  {\fontsize{10}{12} \coverlfont
   \IfEqCase{\@courseCycle}{%
     {1}{First cycle,}%
     {2}{Second cycle,}%
@@ -590,11 +588,12 @@
     {30.0}{30}%
     }[\typeout{unknown credits}]%
 ~credits\\
+  }
   \fi
-    
-}
+
+
 \fi
-\addvspace{40pt}
+\addvspace{28pt}
 {\fontsize{26}{30}\coverbfont \@title \par }
 
 
@@ -611,21 +610,9 @@
     \else\addvspace{2pt}\expandafter\MakeUppercase\expandafter\@secondAuthorsFirstname\space\expandafter\MakeUppercase\expandafter\@secondAuthorsLastname \par
     \fi
     }
-\end{flushleft}
+\end{center}
 \vfill
-\begin{textblock*}{510pt}(38.83pt, {\paperheight - 46pt}) % {block width} (coords) 
-\ifinswedish
-\noindent{\fontsize{8}{10}\coverlfont Stockholm, Sverige, \the\year{}}\\
-  \else
-\noindent{\fontsize{8}{10}\coverlfont Stockholm, Sweden, \the\year{}}\\
-  \fi
-\end{textblock*}
-\begin{textblock*}{510pt}(37.7pt, {\paperheight - 34pt}) % {block width} (coords) 
-%\vspace*{-22pt}
-\begin{tikzpicture}
-\draw[kth-blue, line width=1.0 pt] (0pt,0pt) -- (510pt,0pt);
-\end{tikzpicture}
-\end{textblock*}
+
 \restoregeometry
 \clearpage
 }
@@ -641,30 +628,31 @@
 \thispagestyle{empty}
 
 % Generate the back cover with the TRITA number and the fixed graphical elements
-\begin{textblock*}{5cm}(38.83pt, {\paperheight - 72pt}) % {block width} (coords) 
+\begin{textblock*}{5cm}(38.83pt, {\paperheight - 101pt}) % {block width} (coords) 
 \noindent{\fontsize{10}{12}\coverlfont 
     \ifx\@thesisSeries\@empty %\relax
         TRITA xxxx:yyy
         \else
-        	\@thesisSeries-
-        	\ifx\@thesisSeriesNumber\@empty\relax
+        	\@thesisSeries\,\ifx\@thesisSeriesNumber\@empty\relax
             \else
             \@thesisSeriesNumber
              \fi
     \fi\\
 }
 \end{textblock*}
-\begin{textblock*}{5cm}(38.83pt, {\paperheight - 44pt}) % {block width} (coords)  - was 44pt
+\begin{textblock*}{510pt}(38.83pt, {\paperheight - 90pt}) % {block width} (coords) 
+\ifinswedish
+\noindent{\fontsize{8}{10}\coverlfont Stockholm, Sverige \the\year{}}\\
+  \else
+\noindent{\fontsize{8}{10}\coverlfont Stockholm, Sweden \the\year{}}\\
+  \fi
+\end{textblock*}
+\begin{textblock*}{5cm}(38.83pt, {\paperheight - 63pt}) % {block width} (coords)  - was 44pt
 \noindent{\fontsize{8}{9}\coverlfont
     \textcolor{kth-blue}{www.kth.se}
 }
 \end{textblock*}
-\begin{textblock*}{510pt}(19pt, {\paperheight - 34pt}) % {block width} (coords) - was 24.634pt
-%\vspace*{-22pt}
-\begin{tikzpicture}
-\draw[kth-blue, line width=1.0 pt] (0pt,0pt) -- (510pt,0pt);
-\end{tikzpicture}
-\end{textblock*}
+
 \restoregeometry
 \null\newpage
 }
