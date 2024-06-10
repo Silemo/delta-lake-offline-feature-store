@@ -2,12 +2,16 @@ Hopsworks Feature Store \cite{HopsworksBatchRealtime2024}, currently has a large
 This overhead is less relevant for computation on larger quantities of data (1 TB or above), as it composes a smaller part of the overall computation time (\todo[inline]{INSERT COMPUTATION PERCENTAGE TIME HERE}). % TODO insert computation percentage time.
 Nonetheless Hopsworks' typical use-case sits between tests on small quantities of data (scale between 1-10 GBs) and production scenarios on larger scale, but still relatively small (scale between 10-100 GBs). % TODO Verify this statement with Jim D.
 As this overhead is caused by starting up Spark jobs, we need to look for Spark alternatives. Currently Hopsworks is saving their Feature Store data on Apache Hudi and Delta Lake table formats. Delta Lake supports Spark alternatives for accessing and querying the data, of particular interest is the library delta-rs \cite{DeltaioDeltars2024} that enables Python access to Delta Lake tables, without having the time overhead given by Spark jobs. 
-However, the delta-rs \cite{DeltaioDeltars2024} does not support \gls{HDFS}, thus not even HopsFS, Hopsworks own \gls{HDFS} distribution \cite{niaziHopsFSScalingHierarchical2017}.
+However, the delta-rs \cite{DeltaioDeltars2024} does not support \gls{HDFS}, thus not even HopsFS, Hopsworks' \gls{HDFS} distribution \cite{niaziHopsFSScalingHierarchical2017}.
 
 % Research Question
 \subsection{Research Question}
 \label{sec:researchQuestion}
-The objective of this systems research project is designing and implementing using delta-rs \cite{DeltaioDeltars2024} a Python access to Delta Lake tables for the Hopsworks Feature Store. Additionally, this research aims to evaluate and compare the current system based on Apache Spark and the newly implemented one based on the delta-rs library \cite{DeltaioDeltars2024}. Hence, the research question is the following: "What is the difference in performance between a Apache Spark based access to Delta Lake compared to an access based on the delta-rs library?
+This research project has the ultimate objective to evaluate and compare Apache Spark access to Delta Lake to a delta-rs library \cite{DeltaioDeltars2024} based access, for Hopsworks' \gls{HDFS} distribution HopsFS \cite{niaziHopsFSScalingHierarchical2017}. To achieve this, support for \gls{HDFS} must be added to the delta-rs library \cite{DeltaioDeltars2024}, so that it can be compatible with Hopsworks system. Thus the project can be divided among the following two \glspl{RQ}:
+\begin{enumerate}
+    \item[RQ1:] How can we add support for \gls{HDFS} to the delta-rs library?
+    \item[RQ2:] What is the difference in performance between an Apache Spark based access to Delta Lake compared a the delta-rs library based access, in HopsFS, Hopsworks' \gls{HDFS} distribution?  
+\end{enumerate}
 
 %Some text
 % Small summary of problem and formulation of a single research question
