@@ -69,6 +69,24 @@
   file = {/Users/gio-hopsworks/Zotero/storage/KI73RD8V/Carbone et al. - Apache Flink™ Stream and Batch Processing in a Si.pdf}
 }
 
+@article{chaudhuriOverviewDataWarehousing1997,
+  title = {An Overview of Data Warehousing and {{OLAP}} Technology},
+  author = {Chaudhuri, Surajit and Dayal, Umeshwar},
+  year = {1997},
+  month = mar,
+  journal = {ACM SIGMOD Record},
+  volume = {26},
+  number = {1},
+  pages = {65--74},
+  issn = {0163-5808},
+  doi = {10.1145/248603.248616},
+  urldate = {2024-06-14},
+  abstract = {Data warehousing and on-line analytical processing (OLAP) are essential elements of decision support, which has increasingly become a focus of the database industry. Many commercial products and services are now available, and all of the principal database management system vendors now have offerings in these areas. Decision support places some rather different requirements on database technology compared to traditional on-line transaction processing applications. This paper provides an overview of data warehousing and OLAP technologies, with an emphasis on their new requirements. We describe back end tools for extracting, cleaning and loading data into a data warehouse; multidimensional data models typical of OLAP; front end client tools for querying and data analysis; server extensions for efficient query processing; and tools for metadata management and for managing the warehouse. In addition to surveying the state of the art, this paper also identifies some promising research issues, some of which are related to problems that the database research community has worked on for years, but others are only just beginning to be addressed. This overview is based on a tutorial that the authors presented at the VLDB Conference, 1996.},
+  langid = {english},
+  file = {/Users/gio-hopsworks/Zotero/storage/M9GNTRHN/Chaudhuri and Dayal - 1997 - An overview of data warehousing and OLAP technolog.pdf}
+}
+
+
 @misc{cochranMaximizingDeveloperEffectiveness2021,
   title = {Maximizing {{Developer Effectiveness}}},
   author = {Cochran, Tim},
@@ -221,6 +239,19 @@
   file = {/Users/gio-hopsworks/Zotero/storage/UMNPVBHQ/www.hopsworks.ai.html}
 }
 
+@mastersthesis{Khazanchi1801362,
+  title = {Faster Reading with {{DuckDB}} and Arrow Flight on Hopsworks : {{Benchmark}} and Performance Evaluation of Offline Feature Stores},
+  author = {Khazanchi, Ayushman},
+  year = {2023},
+  series = {{{TRITA-EECS-EX}}},
+  number = {2023:661},
+  pages = {69},
+  abstract = {Over the last few years, Machine Learning has become a huge field with ``Big Tech'' companies sharing their experiences building machine learning infrastructure. Feature Stores, used as centralized data repositories for machine learning features, are seen as a central component to operational and scalable machine learning. With the growth in machine learning, there is, naturally, a tremendous growth in data used for training. Most of this data tends to sit in Parquet files in cloud object stores or data lakes and is used either directly from files or in-memory where it is used in exploratory data analysis and small batches of training. A majority of the data science involved in machine learning is done in Python, but the infrastructure surrounding it is not always directly compatible with Python. Often, query processing engines and feature stores end up having their own Domain Specific Language or require data scientists to write SQL code, thus leading to some level of `transpilation' overhead across the system. This overhead can not only introduce errors but can also add up to significant time and productivity cost down the line. In this thesis, we conduct a systems research on the performance of offline feature stores and identify ways that allow us to pull out data from feature stores in a fast and efficient way. We conduct a model evaluation based on benchmark tests that address common exploratory data analysis and training use cases. We find that in the Hopsworks feature store, with the use of state-of-the-art, storage-optimized, format-aware, and vector execution-based query processing engine as well as using Arrow protocol from start to finish, we are able to see significant improvements in both creating batch training data (feature value reads) and creating Point-In-Time Correct training data. For batch training data created in-memory, Hopsworks shows an average speedup of 27x over Databricks (5M and 10M scale factors), 18x over Vertex, and 8x over Sagemaker across all scale factors. For batch training data as parquet files, Hopsworks shows a speedup of 5x over Databricks (5M, 10M, and 20M scale factors), 13x over Vertex, and 6x over Sagemaker across all scale factors. For creating in-memory Point-In-Time Correct training data, Hopsworks shows an average speedup of 8x over Databricks, 6x over Vertex, and 3x over Sagemaker across all scale factors. Similary for PIT-Correct training data created as file, Hopsworks shows an average speedup of 9x over Databricks, 8x over Vertex, and 6x over Sagemaker across all scale factors. Through the analysis of these experimental results and the underlying infrastructure, we identify the reasons for this performance gap and examine the strengths and limitations of the design.},
+  school = {KTH Royal Institute of Technology / KTH, School of Electrical Engineering and Computer Science (EECS) / KTH, School of Electrical Engineering and Computer Science (EECS)},
+  keywords = {Distributed Systems,Feature Store,Machine Learning,MLOps},
+  file = {/Users/gio-hopsworks/Zotero/storage/KFAWM2A6/Khazanchi - 2023 - Faster reading with DuckDB and arrow flight on hop.pdf}
+}
+
 @inproceedings{lakehouse2021,
   title = {Lakehouse: A New Generation of Open Platforms That Unify Data Warehousing and Advanced Analytics},
   booktitle = {Proceedings of {{CIDR}}},
@@ -241,6 +272,20 @@
   school = {KTH, School of Information and Communication Technology (ICT) / KTH, School of Information and Communication Technology (ICT) and KTH, School of Information and Communication Technology (ICT)},
   keywords = {Big Data,DataSets,Distributed Computing,Hadoop,Hops,HopsWorks},
   file = {/Users/gio-hopsworks/Zotero/storage/89KVT5ZU/Moré and Gebremeskel - 2015 - HopsWorks  A project-based access control model f.pdf}
+}
+
+@inproceedings{nagpalPythonDataAnalytics2019,
+  title = {Python for {{Data Analytics}}, {{Scientific}} and {{Technical Applications}}},
+  booktitle = {2019 {{Amity International Conference}} on {{Artificial Intelligence}} ({{AICAI}})},
+  author = {Nagpal, Abhinav and Gabrani, Goldie},
+  year = {2019},
+  month = feb,
+  pages = {140--145},
+  doi = {10.1109/AICAI.2019.8701341},
+  urldate = {2024-06-14},
+  abstract = {Since the invention of computers or machines, their capability to perform various tasks has experienced an exponential growth. In the current times, data science and analytics, a branch of computer science, has revived due to the major increase in computer power, presence of huge amounts of data, and better understanding in techniques in the area of Data Analytics, Artificial Intelligence, Machine Learning, Deep Learning etc. Hence, they have become an essential part of the technology industry, and are being used to solve many challenging problems. In the search for a good programming language on which many data science applications can be developed, python has emerged as a complete programming solution. Due to the low learning curve, and flexibility of Python, it has become one of the fastest growing languages. Python's ever-evolving libraries make it a good choice for Data analytics. The paper talks about the features and characteristics of Python programming language and later discusses reasons behind python being credited as one of the fastest growing programming language and why it is at the forefront of data science applications, research and development.},
+  keywords = {Artificial intelligence,Artificial Intelligence,Computer Languages,Data analysis,Data Analytics,Deep Learning,Frameworks,Libraries,Machine Learning,Matlab,Natural Language Processing,Python,Scientific Computations,Tools},
+  file = {/Users/gio-hopsworks/Zotero/storage/LQLH435Z/8701341.html}
 }
 
 @inproceedings{niaziHopsFSScalingHierarchical2017,
@@ -342,6 +387,16 @@
   file = {/Users/gio-hopsworks/Zotero/storage/29U69TP6/hoodie.html}
 }
 
+@misc{StackOverflowDeveloper,
+  title = {Stack {{Overflow Developer Survey}} 2023},
+  journal = {Stack Overflow},
+  urldate = {2024-06-14},
+  abstract = {In May 2023 over 90,000 developers responded to our annual survey about how they learn and level up, which tools they're using, and which ones they want.},
+  howpublished = {https://survey.stackoverflow.co/2023/?utm\_source=social-share\&utm\_medium=social\&utm\_campaign=dev-survey-2023},
+  langid = {english},
+  file = {/Users/gio-hopsworks/Zotero/storage/26QZ39NL/2023.html}
+}
+
 @misc{RustProgrammingLanguage,
   title = {Rust {{Programming Language}}},
   urldate = {2024-05-21},
@@ -391,6 +446,18 @@
   howpublished = {https://greensoftware.foundation/articles/what-is-green-software},
   file = {/Users/gio-hopsworks/Zotero/storage/ADZUW9Y4/what-is-green-software.html}
 }
+
+@misc{WhatLakehouse2020,
+  title = {What {{Is}} a {{Lakehouse}}?},
+  year = {Thu, 01/30/2020 - 09:00},
+  journal = {Databricks},
+  urldate = {2024-06-14},
+  abstract = {Learn more about the new data management paradigm data lakehouses -- its evolution, adoption, common use cases, and its advantages over previous systems and technologies.},
+  howpublished = {https://www.databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html},
+  langid = {american},
+  file = {/Users/gio-hopsworks/Zotero/storage/DMAGTAIS/what-is-a-data-lakehouse.html}
+}
+
 
 @techreport{Zaharia:EECS-2011-82,
   title = {Resilient {{Distributed Datasets}}: {{A Fault-Tolerant Abstraction}} for {{In-Memory Cluster Computing}}},

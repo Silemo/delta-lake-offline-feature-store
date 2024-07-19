@@ -2,7 +2,7 @@
 %%\sweExpl{Skilj på syfte och mål. Syftet är att åstakomma en förändring i något. Målen är vad som konkret skall göras för att om möjligt uppnå den önskade förändringen (syfte). }
 %%
 %%\generalExpl{State the goal/goals of this degree project.}
-To accomplish the project's purpose and answer to the set \glspl{RQ}, a list of \glspl{G} is set, clarifying in a more step-by-step view what needs to be achieved in this work. 
+The accomplishment of the project's purpose (namely, increasing the data throughput for reading and writing on Delta Lake tables on the Hopsworks' \gls{HDFS} distribution HopsFS) is bound to a list of \glspl{G}, here set. These are also related to the set of \glspl{RQ}, outlining a clear structure of the various project milestones.
 
 \begin{enumerate}
     \item \glspl{G} aimed to answer RQ1: 
@@ -13,16 +13,16 @@ To accomplish the project's purpose and answer to the set \glspl{RQ}, a list of 
         \end{enumerate}
     \item \glspl{G} aimed to answer RQ2:
         \begin{enumerate}
-            \item[G4:] Design and choose an evaluation framework to evaluate the different read and write performances of the new Rust pipeline based on the delta-rs library \cite{DeltaioDeltars2024} and the old Apache Spark based pipeline.
+            \item[G4:] Design and choose an evaluation framework to evaluate the different read and write performances of the new Rust pipeline based on the delta-rs library \cite{DeltaioDeltars2024} and the old Apache Spark-based pipeline.
             \item[G5:] Perform the experiments using the designed framework to understand if and how the two pipelines work at different data loads (from 10 GB to 1 TB).
         \end{enumerate}
 \end{enumerate}
 
 %%\generalExpl{In addition to presenting the goal(s), you might also state what the deliverables and results of the project are.}
-Associated to these \glspl{G} a number of \glspl{D} will be created. 
+Associated with these \glspl{G} several \glspl{D} will be created. 
 \begin{enumerate}
-    \item[D1:] Code implementation adding support to \gls{HDFS} in the delta-rs library. This \gls{D} is related to the completion of goals G1--G3. This deliverable also represent the system implementation contribution of the project.
-    \item[D2:] Experiments results on the performance evaluation of the new Rust pipeline based on the delta-rs library \cite{DeltaioDeltars2024} compared to the old Apache Spark based pipeline.
+    \item[D1:] Code implementation adding support to \gls{HDFS} in the delta-rs library. This \gls{D} is related to the completion of goals G1--G3. This deliverable also represents the system implementation contribution of the project.
+    \item[D2:] Experiment results on the performance evaluation of the new Rust pipeline based on the delta-rs library \cite{DeltaioDeltars2024} compared to the old Apache Spark-based pipeline.
     This \gls{D} is related to the completion of goals G4--G5.
-    \item[D3:] This report, that on top of including the results, provides the whole research path that was followed, a clear background section and a results discussion.
+    \item[D3:] This thesis document, provides more detail on the implementation, design decisions, and expected performance.
 \end{enumerate}
