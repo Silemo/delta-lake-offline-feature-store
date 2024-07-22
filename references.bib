@@ -29,6 +29,13 @@
   file = {/Users/gio-hopsworks/Zotero/storage/EWJWIY6K/apache-hudi-vs-delta-lake-vs-apache-iceberg-lakehouse-feature-comparison.html}
 }
 
+@misc{ApacheSparkOpen,
+  title = {The {{Apache Spark Open Source Project}} on {{Open Hub}}},
+  urldate = {2024-07-19},
+  howpublished = {https://openhub.net/p/apache-spark},
+  file = {/Users/gio-hopsworks/Zotero/storage/HGCI67WB/apache-spark.html}
+}
+
 @misc{ApacheSparkUnified,
   title = {Apache {{Spark}}™ - {{Unified Engine}} for Large-Scale Data Analytics},
   urldate = {2024-03-01},
@@ -86,7 +93,6 @@
   file = {/Users/gio-hopsworks/Zotero/storage/M9GNTRHN/Chaudhuri and Dayal - 1997 - An overview of data warehousing and OLAP technolog.pdf}
 }
 
-
 @misc{cochranMaximizingDeveloperEffectiveness2021,
   title = {Maximizing {{Developer Effectiveness}}},
   author = {Cochran, Tim},
@@ -109,6 +115,15 @@
   abstract = {In this blogpost we explore the data lakehouse as new concept that moves data lakes closer to warehouses, to compete in the BI and analytical scenario},
   langid = {american},
   file = {/Users/gio-hopsworks/Zotero/storage/84YWQSRD/data-lakehouse.html}
+}
+
+@inproceedings{dean2004mapreduce,
+  title = {{{MapReduce}}: {{Simplified}} Data Processing on Large Clusters},
+  booktitle = {{{OSDI}}'04: {{Sixth}} Symposium on Operating System Design and Implementation},
+  author = {Dean, Jeffrey and Ghemawat, Sanjay},
+  year = {2004},
+  pages = {137--150},
+  address = {San Francisco, CA}
 }
 
 @article{deanMapReduceSimplifiedData2008,
@@ -215,7 +230,7 @@
   publisher = {arXiv},
   urldate = {2024-05-20},
   abstract = {For more than thirty years, it has been claimed that a way to improve software developers' productivity and software quality is to focus on people. The underlying assumption seems to be that "happy and satisfied software developers perform better". More specifically, affects-emotions and moods-have an impact on cognitive activities and the working performance of individuals. Development tasks are undertaken heavily through cognitive processes, yet software engineering research (SE) lacks theory on affects and their impact on software development activities. This PhD dissertation supports the advocates of studying the human and social aspects of SE and the psychology of programming. This dissertation aims to theorize on the link between affects and software development performance. A mixed method approach was employed, which comprises studies of the literature in psychology and SE, quantitative experiments, and a qualitative study, for constructing a multifaceted theory of the link between affects and programming performance. The theory explicates the linkage between affects and analytical problem-solving performance of developers, their software development task productivity, and the process behind the linkage. The results are novel in the domains of SE and psychology, and they fill an important lack that had been raised by both previous research and by practitioners. The implications of this PhD lie in setting out the basic building blocks for researching and understanding the affect of software developers, and how it is related to software development performance. Overall, the evidence hints that happy software developers perform better in analytic problem solving, are more productive while developing software, are prone to share their feelings in order to let researchers and managers understand them, and are susceptible to interventions for enhancing their affects on the job.},
-  archiveprefix = {arxiv},
+  archiveprefix = {arXiv},
   keywords = {Computer Science - Computers and Society,Computer Science - Software Engineering,D.2.9,H.1.2,J.4},
   file = {/Users/gio-hopsworks/Zotero/storage/NSNTNDPB/Graziotin - 2016 - Towards a Theory of Affect and Software Developers.pdf;/Users/gio-hopsworks/Zotero/storage/9IEJURNG/1601.html}
 }
@@ -308,6 +323,30 @@
   file = {/Users/gio-hopsworks/Zotero/storage/GKHSB9RH/object_store.html}
 }
 
+@misc{pattersonCarbonEmissionsLarge2021,
+  title = {Carbon {{Emissions}} and {{Large Neural Network Training}}},
+  author = {Patterson, David and Gonzalez, Joseph and Le, Quoc and Liang, Chen and Munguia, Lluis-Miquel and Rothchild, Daniel and So, David and Texier, Maud and Dean, Jeff},
+  year = {2021},
+  publisher = {arXiv},
+  doi = {10.48550/ARXIV.2104.10350},
+  urldate = {2024-07-19},
+  abstract = {The computation demand for machine learning (ML) has grown rapidly recently, which comes with a number of costs. Estimating the energy cost helps measure its environmental impact and finding greener strategies, yet it is challenging without detailed information. We calculate the energy use and carbon footprint of several recent large models-T5, Meena, GShard, Switch Transformer, and GPT-3-and refine earlier estimates for the neural architecture search that found Evolved Transformer. We highlight the following opportunities to improve energy efficiency and CO2 equivalent emissions (CO2e): Large but sparsely activated DNNs can consume \&lt;1/10th the energy of large, dense DNNs without sacrificing accuracy despite using as many or even more parameters. Geographic location matters for ML workload scheduling since the fraction of carbon-free energy and resulting CO2e vary {\textasciitilde}5X-10X, even within the same country and the same organization. We are now optimizing where and when large models are trained. Specific datacenter infrastructure matters, as Cloud datacenters can be {\textasciitilde}1.4-2X more energy efficient than typical datacenters, and the ML-oriented accelerators inside them can be {\textasciitilde}2-5X more effective than off-the-shelf systems. Remarkably, the choice of DNN, datacenter, and processor can reduce the carbon footprint up to {\textasciitilde}100-1000X. These large factors also make retroactive estimates of energy cost difficult. To avoid miscalculations, we believe ML papers requiring large computational resources should make energy consumption and CO2e explicit when practical. We are working to be more transparent about energy use and CO2e in our future research. To help reduce the carbon footprint of ML, we believe energy usage and CO2e should be a key metric in evaluating models, and we are collaborating with MLPerf developers to include energy usage during training and inference in this industry standard benchmark.},
+  copyright = {arXiv.org perpetual, non-exclusive license},
+  keywords = {Computers and Society (cs.CY),FOS: Computer and information sciences,Machine Learning (cs.LG)}
+}
+
+@misc{pattersonCarbonFootprintMachine2022,
+  title = {The {{Carbon Footprint}} of {{Machine Learning Training Will Plateau}}, {{Then Shrink}}},
+  author = {Patterson, David and Gonzalez, Joseph and H{\"o}lzle, Urs and Le, Quoc and Liang, Chen and Munguia, Lluis-Miquel and Rothchild, Daniel and So, David and Texier, Maud and Dean, Jeff},
+  year = {2022},
+  publisher = {arXiv},
+  doi = {10.48550/ARXIV.2204.05149},
+  urldate = {2024-07-19},
+  abstract = {Machine Learning (ML) workloads have rapidly grown in importance, but raised concerns about their carbon footprint. Four best practices can reduce ML training energy by up to 100x and CO2 emissions up to 1000x. By following best practices, overall ML energy use (across research, development, and production) held steady at \&lt;15\% of Google's total energy use for the past three years. If the whole ML field were to adopt best practices, total carbon emissions from training would reduce. Hence, we recommend that ML papers include emissions explicitly to foster competition on more than just model quality. Estimates of emissions in papers that omitted them have been off 100x-100,000x, so publishing emissions has the added benefit of ensuring accurate accounting. Given the importance of climate change, we must get the numbers right to make certain that we work on its biggest challenges.},
+  copyright = {arXiv.org perpetual, non-exclusive license},
+  keywords = {Artificial Intelligence (cs.AI),FOS: Computer and information sciences,General Literature (cs.GL),Machine Learning (cs.LG)}
+}
+
 @article{penceWhatBigData2014,
   title = {What Is {{Big Data}} and {{Why}} Is It {{Important}}?},
   author = {Pence, Harry E.},
@@ -350,7 +389,7 @@
 
 @book{python-machine-learning,
   title = {Python Machine Learning (3rd Edition)},
-  author = {Raschka, Vahid and Sebastian, Mirjalili},
+  author = {Raschka, Mirjalili and Vahid, Sebastian},
   year = {2019},
   publisher = {Packt Publishing},
   isbn = {978-1-78995-575-0}
@@ -387,6 +426,15 @@
   file = {/Users/gio-hopsworks/Zotero/storage/29U69TP6/hoodie.html}
 }
 
+@misc{RustProgrammingLanguage,
+  title = {Rust {{Programming Language}}},
+  urldate = {2024-05-21},
+  abstract = {A language empowering everyone to build reliable and efficient software.},
+  howpublished = {https://www.rust-lang.org/},
+  langid = {american},
+  file = {/Users/gio-hopsworks/Zotero/storage/FBHQJHEV/www.rust-lang.org.html}
+}
+
 @misc{StackOverflowDeveloper,
   title = {Stack {{Overflow Developer Survey}} 2023},
   journal = {Stack Overflow},
@@ -395,15 +443,6 @@
   howpublished = {https://survey.stackoverflow.co/2023/?utm\_source=social-share\&utm\_medium=social\&utm\_campaign=dev-survey-2023},
   langid = {english},
   file = {/Users/gio-hopsworks/Zotero/storage/26QZ39NL/2023.html}
-}
-
-@misc{RustProgrammingLanguage,
-  title = {Rust {{Programming Language}}},
-  urldate = {2024-05-21},
-  abstract = {A language empowering everyone to build reliable and efficient software.},
-  howpublished = {https://www.rust-lang.org/},
-  langid = {american},
-  file = {/Users/gio-hopsworks/Zotero/storage/FBHQJHEV/www.rust-lang.org.html}
 }
 
 @techreport{StateDataLakehouse2024,
@@ -416,6 +455,13 @@
   file = {/Users/gio-hopsworks/Zotero/storage/Q3U89PZ2/whitepaper-2024-state-of-the-data-lakehouse_report.pdf}
 }
 
+@misc{SustainableDevelopment,
+  title = {{\textbar} {{Sustainable Development}}},
+  urldate = {2024-07-19},
+  howpublished = {https://sdgs.un.org/},
+  file = {/Users/gio-hopsworks/Zotero/storage/IBXUBKQ5/sdgs.un.org.html}
+}
+
 @misc{TIOBEIndex,
   title = {{{TIOBE Index}}},
   journal = {TIOBE},
@@ -423,6 +469,15 @@
   howpublished = {https://www.tiobe.com/tiobe-index/},
   langid = {american},
   file = {/Users/gio-hopsworks/Zotero/storage/TKAACFMY/tiobe-index.html}
+}
+
+@misc{TIOBEIndexa,
+  title = {{{TIOBE Index}}},
+  journal = {TIOBE},
+  urldate = {2024-07-19},
+  howpublished = {https://www.tiobe.com/tiobe-index/programminglanguages\_definition/},
+  langid = {american},
+  file = {/Users/gio-hopsworks/Zotero/storage/SPFK2QPN/programminglanguages_definition.html}
 }
 
 @misc{vinkWroteOneFastest2021,
@@ -458,6 +513,19 @@
   file = {/Users/gio-hopsworks/Zotero/storage/DMAGTAIS/what-is-a-data-lakehouse.html}
 }
 
+@incollection{white2009hadoopMapReduce,
+  title = {Hadoop : The Definitive Guide},
+  booktitle = {Hadoop : The Definitive Guide},
+  author = {White, Tom (Tom E.)},
+  year = {2009},
+  edition = {First edition.},
+  publisher = {O'Reilly Media, Inc.},
+  address = {Sebastopol, California},
+  abstract = {Hadoop: The Definitive Guide helps you harness the power of your data. Ideal for processing large datasets, the Apache Hadoop framework is an open source implementation of the MapReduce algorithm on which Google built its empire. This comprehensive resource demonstrates how to use Hadoop to build reliable, scalable, distributed systems: programmers will find details for analyzing large datasets, and administrators will learn how to set up and run Hadoop clusters. Complete with case studies that illustrate how Hadoop solves specific problems, this book helps you: {\textexclamdown}p},
+  isbn = {1-306-81746-3},
+  langid = {english},
+  keywords = {Apache Hadoop}
+}
 
 @techreport{Zaharia:EECS-2011-82,
   title = {Resilient {{Distributed Datasets}}: {{A Fault-Tolerant Abstraction}} for {{In-Memory Cluster Computing}}},
@@ -469,6 +537,18 @@
   abstract = {We present Resilient Distributed Datasets (RDDs), a distributed memory abstraction that lets programmers perform in-memory computations on large clusters in a fault-tolerant manner. RDDs are motivated by two types of applications that current computing frameworks handle inefficiently: iterative algorithms and interactive data mining tools. In both cases, keeping data in memory can improve performance by an order of magnitude. To achieve fault tolerance efficiently, RDDs provide a restricted form of shared memory, based on coarsegrained transformations rather than fine-grained updates to shared state. However, we show that RDDs are expressive enough to capture a wide class of computations, including recent specialized programming models for iterative jobs, such as Pregel, and new applications that these models do not capture. We have implemented RDDs in a system called Spark, which we evaluate through a variety of user applications and benchmarks.},
   langid = {english},
   file = {/Users/gio-hopsworks/Zotero/storage/KC5XPCLU/Zaharia et al. - Resilient Distributed Datasets A Fault-Tolerant A.pdf;/Users/gio-hopsworks/Zotero/storage/ZLWNKHFL/Zaharia et al. - Resilient Distributed Datasets A Fault-Tolerant A.pdf}
+}
+
+@inproceedings{zaharia2010spark,
+  title = {Spark: Cluster Computing with Working Sets},
+  booktitle = {Proceedings of the 2nd {{USENIX}} Conference on Hot Topics in Cloud Computing},
+  author = {Zaharia, Matei and Chowdhury, Mosharaf and Franklin, Michael J. and Shenker, Scott and Stoica, Ion},
+  year = {2010},
+  series = {{{HotCloud}}'10},
+  pages = {10},
+  publisher = {USENIX Association},
+  address = {USA},
+  abstract = {MapReduce and its variants have been highly successful in implementing large-scale data-intensive applications on commodity clusters. However, most of these systems are built around an acyclic data flow model that is not suitable for other popular applications. This paper focuses on one such class of applications: those that reuse a working set of data across multiple parallel operations. This includes many iterative machine learning algorithms, as well as interactive data analysis tools. We propose a new framework called Spark that supports these applications while retaining the scalability and fault tolerance of MapReduce. To achieve these goals, Spark introduces an abstraction called resilient distributed datasets (RDDs). An RDD is a read-only collection of objects partitioned across a set of machines that can be rebuilt if a partition is lost. Spark can outperform Hadoop by 10x in iterative machine learning jobs, and can be used to interactively query a 39 GB dataset with sub-second response time.}
 }
 
 @article{zahariaApacheSparkUnified2016,
