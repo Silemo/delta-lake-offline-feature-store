@@ -173,7 +173,7 @@ morekeywords={begin, todo, textbf, textit, texttt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% define a left aligned table cell that is ragged right
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
-
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                         BACKREF BIBLATEX INCOMPATIBILITY
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -297,6 +297,13 @@ nopostdot]{glossaries}
 \supervisorBsDepartment{Computer Science}
 %% other for a supervisor outside of KTH add their organization info
 %\supervisorBsOrganization{Timbuktu University, Department of Pseudoscience}
+
+%% If there is an industrial supervisor add them here
+\supervisorCsLastname{Niazi}
+\supervisorCsFirstname{Salman}
+\supervisorCsEmail{salman@hopsworks.ai}
+%% Add the organization where the supervisor comes from
+\supervisorCsOrganization{Hopsworks AB}
 
 %%
 %% EXAMINER INFO
@@ -709,13 +716,13 @@ nopostdot]{glossaries}
     \input{contents/1-introduction/_all}
 
 \cleardoublepage
-\begin{comment}
+
 \chapter{Background}
     \label{ch:background}
-    \input{contents/2-background/draft}
+    \input{contents/2-background/_all}
 
 \cleardoublepage
-
+\begin{comment}
 \chapter{Method}
     \label{ch:method}
     \input{contents/3-method/draft}
