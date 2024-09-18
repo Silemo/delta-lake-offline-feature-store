@@ -1,16 +1,16 @@
-This section aims to describe the data storage layer of this project, namely \gls{HopsFS}. \gls{HopsFS} is Hopsworks's evolution of \gls{HDFS}, a distributed file system. \gls{HopsFS} complexity will be broken down into parts, providing not only a great understanding of the tool, but also a comparison with common alternatives, namely cloud object stores.
+This section aims to describe the data storage layer of this project, namely \gls{HopsFS}. \gls{HopsFS} is Hopsworks's evolution of \gls{HDFS}, a distributed file system. \gls{HopsFS} complexity will be broken down into parts, providing not only a great understanding of the tool but also a comparison with common alternatives, namely cloud object stores.
 
 \subsection{File storage vs. Object storage vs. Block storage}
 
-Data can be stored and organized in physical storages, such as \glspl{HDD} and/or \glspl{SSD}, in three major ways: (1) Files, (2) Objects, (3) Blocks. For each one, the technique is briefly described and then a comparative table is showed (Table \ref{tab:storagecomparison}). This subsection is a rework according to the author's understanding of three articles coming from major cloud providers (Amazon, Google and IBM) \cite{BlockVsFile, HowObjectVs, ObjectVsFile2021}.
+Data can be stored and organized in physical storages, such as \glspl{HDD} and/or \glspl{SSD}, in three major ways: (1) Files, (2) Objects, and (3) Blocks. For each one, the technique is briefly described and then a comparative table is shown (Table \ref{tab:storagecomparison}). This subsection is a rework according to the author's understanding of three articles coming from major cloud providers (Amazon, Google, and IBM) \cite{BlockVsFile, HowObjectVs, ObjectVsFile2021}.
 
 \subsubsection*{File storage}
 
-File storage is a hierarchical data storage technique that stores data into files. A file is a collection of data characterized by an file extension (e.g. ".txt", ".png", ".csv", ".parquet") that indicates how the data contained is organized. Every file is contained within a directory, that can contain other files or other directories (called "subdirectories"). In many file storages directories are called "folders". 
+File storage is a hierarchical data storage technique that stores data into files. A file is a collection of data characterized by a file extension (e.g. ".txt", ".png", ".csv", ".parquet") that indicates how the data contained is organized. Every file is contained within a directory, that can contain other files or other directories (called "subdirectories"). In many file storage systems directories are called "folders". 
 
 This type of structure, very common in modern \glspl{PC}, simplifies locating and retrieving a single file and its flexibility allows it to store any type of data. However, its hierarchical structure requires that to access a file, its exact location should be known. This restriction decreases the scaling possibilities of the system, where a large amount of data needs to be retrieved at the same time.
 
-Overall, this solution is still vastly popular in user-facing storage applications (e.g. Dropbox, Google Drive, One Drive) and \glspl{PC} thanks to its intuitive structure and ease of use. On the other hand, other options are preferred for managing large quantities of data, due to its lacks in scalability. \\[3mm]
+Overall, this solution is still vastly popular in user-facing storage applications (e.g. Dropbox, Google Drive, One Drive) and \glspl{PC} thanks to its intuitive structure and ease of use. On the other hand, other options are preferred for managing large quantities of data, due to its lack in scalability. \\[3mm]
 \noindent\textbf{Advantages}
 \begin{itemize}
     \item Ideal for small-scale operations (low latency, efficient folderization).
@@ -27,13 +27,13 @@ Overall, this solution is still vastly popular in user-facing storage applicatio
 
 \subsubsection*{Object storage}
 
-Object storage is a flat data storage technique that stores data into objects. An object is an isolated container associated with metadata, i.e. a set of attributes that describe the data e.g. a unique identifier, object name, size, creation date. Metadata is used to retrieve the data more easily, allowing for queries that retrieve large quantities of data simultaneously, e.g. all data that was created on a specific date. 
+Object storage is a flat data storage technique that stores data into objects. An object is an isolated container associated with metadata, i.e. a set of attributes that describe the data e.g. a unique identifier, object name, size, and creation date. Metadata is used to retrieve the data more easily, allowing for queries that retrieve large quantities of data simultaneously, e.g. all data that was created on a specific date. 
 
-The flat structure of Object storage, where all objects are in the same container called bucket, is ideal for managing large quantities of unstructured data (e.g. videos, images). This structure is also easier to scale as it can be replicated easily across multiple regions allowing an faster access in different areas of the world, and fault tolerance to hardware failure.
+The flat structure of Object storage, where all objects are in the same container called a bucket, is ideal for managing large quantities of unstructured data (e.g. videos, images). This structure is also easier to scale as it can be replicated easily across multiple regions allowing faster access in different areas of the world, and fault tolerance to hardware failure.
 
 On the other hand, objects cannot be altered once created, and in case of a change must recreated. Also, object stores are not ideal for transactional operations as objects cannot have a locking mechanism. Lastly, object stores have slower writing performance compared to file or block storage solutions.
 
-Overall, this solution is widely when high scalability is required (e.g. social networks, video streaming apps) thanks to its flat structure and use of metadata. On the other hand, other options are preferred when transactional operations are required, or high performance on a small number of files that change frequently are necessary. \\[3mm]
+Overall, this solution is widely when high scalability is required (e.g. social networks, and video streaming apps) thanks to its flat structure and use of metadata. On the other hand, other options are preferred when transactional operations are required, or high performance on a small number of files that change frequently is necessary. \\[3mm]
 \noindent\textbf{Advantages}
 \begin{itemize}
     \item Potential unlimited scalability.
@@ -50,11 +50,11 @@ Overall, this solution is widely when high scalability is required (e.g. social 
 
 \subsubsection*{Block storage}
 
-Block storage is a data storage technique that divides data into blocks of fixed size that can be read or written individually. Each block is associated to a unique identifier and it is then stored on a physical server (note that a block can be stored in different \glspl{OS}). When the user requests the data saved, the block storage retrieves the data from the associated blocks and then re-assembles the data of the blocks into a single unit. The block storage also manages the physical location of the block, saving a block where is more efficient.
+Block storage is a data storage technique that divides data into blocks of fixed size that can be read or written individually. Each block is associated with a unique identifier and it is then stored on a physical server (note that a block can be stored in different \glspl{OS}). When the user requests the data saved, the block storage retrieves the data from the associated blocks and then re-assembles the data of the blocks into a single unit. The block storage also manages the physical location of the block, saving a block where is more efficient.
 
 Block storage is very effective for systems needing fast access and low latency. This architecture is compatible with frequent changes, unlike object storage.
 
-On the other hand, block storage achieves its speed operating at a low level on physical systems, so the cost of the architecture is strictly bound on the storage and servers used, not allowing to scale the architecture on the demands needs. \\[3mm]
+On the other hand, block storage achieves its speed by operating at a low level on physical systems, so the cost of the architecture is strictly bound to the storage and servers used, not allowing the architecture to scale according to its demands. \\[3mm]
 \noindent\textbf{Advantages}
 \begin{itemize}
     \item High performance (low latency).
@@ -86,9 +86,9 @@ On the other hand, block storage achieves its speed operating at a low level on 
 
 \subsection{\glsfmtlong{HDFS}}
 
-\glsentryfull{HDFS} is a \gls{DFS}, i.e. a file system that uses distributed storage resources while providing a single namespace as a traditional file system. \gls{HDFS} has significant differences compared with other \glspl{DFS}.\gls{HDFS} is highly fault-tolerant, i.e. it is resistent to hardware failures of part of its infrastructure, and can be deployed on commodity hardware. \gls{HDFS} also provides high throughput access to application data and it is designed to be highly compatible with applications with large datasets (more than 100 GB) \cite{borthakurHadoopDistributedFile2005}. 
+\glsentryfull{HDFS} is a \gls{DFS}, i.e. a file system that uses distributed storage resources while providing a single namespace as a traditional file system. \gls{HDFS} has significant differences compared with other \glspl{DFS}.\gls{HDFS} is highly fault-tolerant, i.e. it is resistant to hardware failures of part of its infrastructure, and can be deployed on commodity hardware. \gls{HDFS} also provides high throughput access to application data and it is designed to be highly compatible with applications with large datasets (more than 100 GB) \cite{borthakurHadoopDistributedFile2005}. 
 
-\gls{HDFS} architecture consists of a single primary node called Namenode and multiple secondary nodes called Datanodes. The Namenode manages the filesystem namespace and regulates access to files by clients. On the other hand, Datanodes manage the storage attached to the nodes they run on and they are responsible for performing replication requests when prompted by the Namenode. \gls{HDFS} exposes to users a file system namespace where data can be stored in files. Internally, a file is divided into one or multiple blocks and these blocks are store in a set of Datanodes. The blocks are also replicated upon the first write operation, up to a certain number of times (by default three times, with at least one copy on a different physical infrastructure). The Namenode keeps track of the data location, matching it with the filesystem namespace. It is also responsible for managing Datanode reachability (through periodical state messages sent by Datanodes), and providing clients with the locations of the Datanodes containing the blocks that compose the requested file. If a new write request is received, it is still the Namenode that needs to provide the locations of available storage for the file blocks. 
+\gls{HDFS} architecture consists of a single primary node called Namenode and multiple secondary nodes called Datanodes. The Namenode manages the filesystem namespace and regulates access to files by clients. On the other hand, Datanodes manage the storage attached to the nodes they run on and they are responsible for performing replication requests when prompted by the Namenode. \gls{HDFS} exposes to users a file system namespace where data can be stored in files. Internally, a file is divided into one or multiple blocks and these blocks are stored in a set of Datanodes. The blocks are also replicated upon the first write operation, up to a certain number of times (by default three times, with at least one copy on a different physical infrastructure). The Namenode keeps track of the data location, matching it with the filesystem namespace. It is also responsible for managing Datanode reachability (through periodical state messages sent by Datanodes), and providing clients with the locations of the Datanodes containing the blocks that compose the requested file. If a new write request is received, it is still the Namenode that needs to provide the locations of available storage for the file blocks. 
 
 In Figure \ref{fig:hdfs} a simplified visual representation of the Namenode and Datanodes basic operations in \gls{HDFS} is present.
 
