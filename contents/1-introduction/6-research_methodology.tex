@@ -4,7 +4,7 @@
 %%\generalExpl{Introduce your choice of methodology/methodologies and method/methods – and the reason why you chose them. Contrast them with and explain why you did not choose other methodologies or methods. (The details of the actual methodology and method you have chosen will be given in Chapter~\ref{ch:method}. Note that in Chapter~\ref{ch:method}, the focus could be research strategies, data collection, data analysis, and quality assurance.)\\}
 This work starts from a few \glspl{IN}, provided by Hopsworks, and a few \glspl{PA} validated through a literature study. \\ Hopsworks's \glspl{IN} are:
 \begin{itemize}
-    \item[IN1 :] the Hopsworks Feature Store has a lower throughput in reading and writing operations when performed on a "small scale" (1 GB - 100 GB) compared to a "large scale" (100 GB - 1 TB). This highlights the potential for improvement in the "small scale" use case.
+    \item[IN1 :] the Hopsworks Feature Store has a lower throughput (rows/second) in reading and writing operations when performed on a "small scale" (1 GB - 100 GB) compared to a "large scale" (100 GB - 1 TB). This highlights the potential for improvement in the "small scale" use case.
     \item[IN2 :] Hopsworks, adapting to their customer needs, supports the Delta Lake table format. Improving the speed of read and write operations on this table format, would improve a typical use case for Hopsworks Feature Store users.
 \end{itemize}
 \glspl{PA} are:
@@ -12,9 +12,9 @@ This work starts from a few \glspl{IN}, provided by Hopsworks, and a few \glspl{
     \item[PA1 :] Python is the most popular programming language and the most used in data science workflows. \gls{ML} and \gls{AI} developers prefer Python tools to work. This means that Python libraries with high performance will typically be preferred over alternatives (even more efficient) that are \gls{JVM} or other environments based.
     \item[PA2 :] Rust libraries have proven to have the chance to improve performance over C/C++ counterparts (Polars over Pandas). A Rust implementation could strongly improve reading and writing operations on the Hopsworks Feature Store.
 \end{itemize}
-These assumptions will be validated in the \ref{ch:background}. 
+These assumptions will be validated in Chapter \ref{ch:background}. 
 
-The project aims at fulfilling the \glspl{IN} with a system implementation approach. First, a \gls{HDFS} storage support will be written for the delta-rs library to extend the Rust library support to HopsFS, Hopsworks \gls{HDFS} distribution \cite{niaziHopsFSScalingHierarchical2017}. Then, an evaluation structure will be designed and used to compare the performances of the old Spark-based system and the new Rust-based pipeline. The two approaches will be tested with datasets of different sizes (between 1 GB and 1 TB). This is critical to identify if the same tool should be used for all scenarios or if they perform differently. The critical metrics that will be used to evaluate the system are read and write operations data throughout (the higher, the better). These were chosen as they most affect the computation time of pipelines accessing Delta Lake tables.
+The project aims at fulfilling the \glspl{IN} with a system implementation approach. First, a \gls{HDFS} storage support will be written for the delta-rs library to extend the Rust library support to \gls{HopsFS} \cite{niaziHopsFSScalingHierarchical2017}. Then, an evaluation structure will be designed and used to compare the performances of the old Spark-based system and the new Rust-based pipeline. The two approaches will be tested with datasets of different sizes (between 1 GB and 100 GB). This is critical to identify if the same tool should be used for all scenarios or if they perform differently. The critical metrics that will be used to evaluate the system are read and write operations data throughout (the higher, the better) measured in rows per second. These were chosen as they most affect the computation time of pipelines accessing Delta Lake tables.
 
 \subsection{Delimitations}
     \label{subsec:delimitations}

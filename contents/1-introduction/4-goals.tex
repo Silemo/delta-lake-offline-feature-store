@@ -2,7 +2,7 @@
 %%\sweExpl{Skilj på syfte och mål. Syftet är att åstakomma en förändring i något. Målen är vad som konkret skall göras för att om möjligt uppnå den önskade förändringen (syfte). }
 %%
 %%\generalExpl{State the goal/goals of this degree project.}
-The accomplishment of the project's purpose (namely, increasing the data throughput for reading and writing on Delta Lake tables on the Hopsworks' \gls{HDFS} distribution HopsFS) is bound to a list of \glspl{G}, here set. These are also related to the set of \glspl{RQ}, outlining a clear structure of the various project milestones.
+The accomplishment of the project's purpose (namely, increasing the data throughput (rows/second) for reading and writing on Delta Lake tables on \gls{HopsFS}) is bound to a list of \glspl{G}, here set. These are also related to the set of \glspl{RQ}, outlining a clear structure of the various project milestones.
 
 \begin{enumerate}
     \item \glspl{G} aimed to answer RQ1: 
@@ -10,19 +10,23 @@ The accomplishment of the project's purpose (namely, increasing the data through
             \item[G1:] Understand delta-rs library \cite{DeltaioDeltars2024} architecture and dependencies.
             \item[G2:] Identify what needs to be implemented to add \gls{HDFS} support to the delta-rs library \cite{DeltaioDeltars2024}.  
             \item[G3:] Implement \gls{HDFS} support in the delta-rs library \cite{DeltaioDeltars2024}.
+            \item[G4:] Verify that \gls{HDFS} support also works for \gls{HopsFS}.
         \end{enumerate}
     \item \glspl{G} aimed to answer RQ2:
         \begin{enumerate}
-            \item[G4:] Design and choose an evaluation framework to evaluate the different read and write performances of the new Rust pipeline based on the delta-rs library \cite{DeltaioDeltars2024} and the old Apache Spark-based pipeline.
-            \item[G5:] Perform the experiments using the designed framework to understand if and how the two pipelines work at different data loads (from 10 GB to 1 TB).
+            \item[G5:] Design the experiments to be conducted to evaluate the difference in performance between Spark-based access to Apache Hudi compared a the delta-rs \cite{DeltaioDeltars2024} library-based access to Delta Lake, in \gls{HopsFS}. 
+            \item[G6:] Perform the designed experiments.
+            \item[G7:] Visualize the experiments' results, focusing on allowing an effective comparison of performances.
+            \item[G8:] Analyze and interpret the results in a dedicated thesis report section.
         \end{enumerate}
 \end{enumerate}
 
 %%\generalExpl{In addition to presenting the goal(s), you might also state what the deliverables and results of the project are.}
 Associated with these \glspl{G} several \glspl{D} will be created. 
 \begin{enumerate}
-    \item[D1:] Code implementation adding support to \gls{HDFS} in the delta-rs library. This \gls{D} is related to the completion of goals G1--G3. This deliverable also represents the system implementation contribution of the project.
-    \item[D2:] Experiment results on the performance evaluation of the new Rust pipeline based on the delta-rs library \cite{DeltaioDeltars2024} compared to the old Apache Spark-based pipeline.
-    This \gls{D} is related to the completion of goals G4--G5.
-    \item[D3:] This thesis document, provides more detail on the implementation, design decisions, and expected performance.
+    \item[D1:] Code implementation adding support to \gls{HDFS} and \gls{HopsFS} in the delta-rs library. This \gls{D} is related to the completion of goals G1--G4. This deliverable also represents the system implementation contribution of the project.
+    \item[D2:] Experiment results on the difference in performance between Spark-based access to Apache Hudi compared a the delta-rs library-based access to Delta Lake, in \gls{HopsFS}.
+    This \gls{D} is related to the completion of goals G5--G7.
+    \item[D3:] This thesis document, providing more detail on the implementation, design decisions, expected performance and analysis of the results.
+    This \gls{D} is a comprehensive report of all the thesis project, also including the analysis of results defined in G8.
 \end{enumerate}
