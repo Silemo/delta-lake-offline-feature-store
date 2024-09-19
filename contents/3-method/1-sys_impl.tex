@@ -1,10 +1,15 @@
 % Summary sys_impl here
-The core of this system research thesis resides in the system implementation section which answers RQ1. The development will be carried out following an iterative development approach.
+The core of this system research thesis resides in the system implementation section which answers RQ1.
 
-This section details the method and the principles that will be used to carry out the software development process of adding support for \gls{HDFS} and \gls{HopsFS} to the delta-rs library.
+This section explains the method and the principles that will be used to carry out the software development process of adding support for \gls{HDFS} and \gls{HopsFS} to the delta-rs library. This section is divided into three sub sections: Development process, explaining the activities that will be carried out, Requirements, defining the functional and non-functional requirements of the system and Development environment, detailing the tools and resources that will be used during the development process.
 
 \subsection{Development process}
-The development process will follow an iterative development approach described in Figure \ref{fig:DevProcessRQ1}. 
+The development process will follow an iterative and incremental development approach described in Figure \ref{fig:DevProcessRQ1}. This methodology will be applied as it allows flexibility, while creating incrementally a working system \cite{}. This project, due to the need to work on \gls{HopsFS}, will require numerous interactions with \gls{HopsFS} maintainers (i.e. the industrial supervisor), thus having a feedback look in place, will allow the system to fit all the requirements according to all stakeholders expectations.
+
+
+
+
+This methodology will be applied as the system has many dependencies, and interacts with different systems (\gls{HopsFS}, delta-rs library, \gls{TLS}). This means that various interactions with \gls{HopsFS} maintainers (i.e. the industrial supervisors) will be required. 
 
 The first activity will consist of identifying the system requirements and implementation issues collaboratively with the industrial supervisor, who is knowledgeable on Hopsworks' infrastructure (in particular \gls{HopsFS}). Then an iterative loop will start, comprised of an in-depth study of the system and its dependencies, a software design and implementation phase, followed by tests conducted on both the implemented library and its system interactions. This loop will be iterated each time an individual test or an integration test will fail, and for each part of the system until the whole pipeline (from the Python interface to writing on \gls{HopsFS}) will be working as expected. 
 

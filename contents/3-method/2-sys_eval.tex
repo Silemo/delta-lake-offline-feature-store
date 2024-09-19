@@ -3,7 +3,7 @@ The system evaluation complements the system implementation by measuring the per
 
 This section details the method and the principles that will be used to carry out the system evaluation process, measuring the performance (throughput, measured in rows/second) of reading and writing on Delta Lake or Apache Hudi while on \gls{HopsFS} of Spark-based and Rust-based pipelines. 
 
-\subsection{Research Process}
+\subsection{Evaluation Process}
 The research process will follow a sequential approach described in Figure \ref{fig:DevProcessRQ2}.
 
 The first activity will consist of defining the research objectives for this quantitative system evaluation, then based on these objectives the benchmarks will be defined. Using the code implementation (D1), the benchmarks will be carried out generating a first set of raw data. This data will be modified according to the specified metric (throughput measured in rows/second), enabling the last step of this process: the results visualization. 
@@ -57,7 +57,7 @@ The data used for experiments, as described in Section \ref{subsec:dataset}, wil
 
 In conclusion the experiments conducted will be a total of 3 (pipelines) times 4 (\gls{CPU} configurations) times 5 (tables) times 2 (read and write operations), i.e. 120 experiments, performed 50 times each to create statistically significant results.
 
-\subsubsection*{Experimental environment}
+\subsection{Experimental environment}
 % Describe Snurran
 The experimental environment consists of a physical machine in Hopsworks' offices, virtualized for enabling remote shared development. The \gls{CPU} details of the machine are present in Listing \ref{lst:cpu_snurran}, noting that only eight cores at maximum were accessed during the experiments.
 
