@@ -27,13 +27,13 @@ The research paradigm consists of a quantitative analysis based on repeated runs
 \label{subsec:dataset}
 
 The data that will be used to perform the read and write operations comes from \glsentryshort{TPC}-H benchmark suite\cite{TPCHHomepage}. \glsentryshort{TPC}-H is a decision support benchmark by \gls{TPC}. It consists of a series of business oriented ad-hoc queries designed to be industry relevant \cite{transactionprocessingperformancecounciltpcTPCH_v301pdf1993}. The data coming from this benchmark suite was used as
-it provides a recognized standard for data storage systems \cite{TPC_benchmarks_2000}, and it has already been used in similar related work \cite{raasveldtDuckDBEmbeddableAnalytical2019, }. Any part of the dataset can be generated using TPC-H data generation tool \cite{TPCCurrentSpecs}.
+it provides a recognized standard for data storage systems \cite{TPC_benchmarks_2000}, and it has already been used in similar related work \cite{raasveldtDuckDBEmbeddableAnalytical2019, behmPhotonFastQuery2022}. Any part of the data can be generated using TPC-H data generation tool \cite{TPCCurrentSpecs}.
 
-The TCP-H dataset contains eight tables, of these two, SUPPLIER and LINEITEM, were selected for the following reasons. The two tables are respectively the smallest (10000 rows) and largest (6000000 rows) table which size (number of rows) depends on the \gls{SF}. The \gls{SF} can be varied to obtain tables of different sizes (number of rows), allowing to a progressive change in the table size (number of rows). 
+The \glsentryshort{TPC}-H benchmark contains eight tables, of these two, SUPPLIER and LINEITEM, were selected for the following reasons. The two tables are respectively the smallest (10000 rows) and largest (6000000 rows) table which size (number of rows) depends on the \gls{SF}. The \gls{SF} can be varied to obtain tables of different sizes (number of rows), allowing to a progressive change in the table size (number of rows). 
 
 The SUPPLIER table has seven columns, while the LINEITEM table has sixteen. This influences the average size of memory each row occupies. This means that the metric selected (throughput, measured in rows/second) cannot be used to compare results across different tables. This is the reason why the comparative evaluation only considers different configurations on the same table. 
 
-For this project five table variations were used to benchmark the code solution as D1. \gls{SF} was varied to obtain a table at each significate figure, from 10000 rows to 60000000 rows. These are the tables:
+For this project five table variations were used to benchmark the code solution as D1. \gls{SF} was varied to obtain a table at each significant figure, from 10000 rows to 60000000 rows. These are the tables:
 \begin{enumerate}
     \item \textit{supplier\_sf1}: size = 10000 rows
     \item \textit{supplier\_sf10}: size = 100000 rows
