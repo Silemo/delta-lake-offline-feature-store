@@ -3,13 +3,16 @@ The system evaluation complements the system implementation by measuring the per
 
 This section details the method and the principles that will be used to carry out the system evaluation process, measuring the performance (throughput, measured in rows/second) of reading and writing on Delta Lake or Apache Hudi while on \gls{HopsFS} of Spark-based and Rust-based pipelines. 
 
-\subsection{Evaluation Process}
-The research process will follow a sequential approach described in Figure \ref{fig:DevProcessRQ2}.
-
-The first activity will consist of defining the research objectives for this quantitative system evaluation, then based on these objectives the benchmarks will be defined. Using the code implementation (D1), the benchmarks will be carried out generating a first set of raw data. This data will be modified according to the specified metric (throughput measured in rows/second), enabling the last step of this process: the results visualization. 
-
-Each step of this process is related to one of the goals (G5-G8) associated to the RQ2 in Section \ref{sec:goals}. This process will produce two final deliverables which are the experiments results (D2), complete of data visualization and the results analysis (D3-partial).
-
+\subsection{Evaluation Process and Research Paradigm}
+The research process will follow a sequential approach described in Figure \ref{fig:DevProcessRQ2}. Each step of this process is related to one of the goals (G5-G8) associated to the RQ2 in Section \ref{sec:goals}.
+The relationship between each activity and the associated goal(s) is here explained:
+\begin{enumerate}
+    \item \textbf{Design experiments}: this activity maps perfectly to G5, designing the experiments that will be conducted to evaluate the performance difference in performance between Spark-based access to Apache Hudi compared a the delta-rs \cite{DeltaioDeltars2024} library-based access to Delta Lake, in \gls{HopsFS}. 
+    \item \textbf{Perform experiments}: this activity maps perfectly to G6, using the code implementation (D1) to conduct the designed experiments on the analysed systems.
+    \item \textbf{Transform data according to metrics}: this activity is necessary to fulfil G7, as data visualisation requires data to be properly formatted. In this activity data is modified, performing a division between the size of the table inputted and the read or write time. This allows data to be in the wanted metric i.e. rows/second.
+    \item \textbf{Visualise results}: this activity maps perfectly to G7, visualizing the experiments result according to the selected metric, i.e. throughput measured in rows/second. This activity also generates a deliverable (D2) composed of the experiments results complete with tables and histograms, i.e. Section \ref{}.
+    \item \textbf{Analyse results}: this activity maps perfectly to G8, analysing and interpreting the results delivered in D2. This contributes to D3, generating the analysis of results, i.e. Section \ref{}.
+\end{enumerate}
 \begin{figure}[!ht]
     \begin{center}
       \includegraphics[width=\textwidth]{figures/3-method/research_process_rq2.png}
@@ -18,13 +21,16 @@ Each step of this process is related to one of the goals (G5-G8) associated to t
     \end{center}
 \end{figure}
 
-\subsection{Research Paradigm}
 The research paradigm consists of a quantitative analysis based on repeated runs on the implemented system. The results of the benchmarks are then analyzed performing a visual comparative approach.
 
 \subsection{Dataset}
 \label{subsec:dataset}
 
-The dataset that will be used to perform the read and write operations is the TCP-H \cite{TPCHHomepage}. This dataset is used at it provides a recognized standard for data storage systems \cite{TPC_benchmarks_2000}. Any part of the dataset can be generated using TPC-H data generation tool \cite{TPCCurrentSpecs}.
+The dataset that will be used to perform the read and write operations comes from \glsentryshort{TPC}-H benchmark suite\cite{TPCHHomepage}. \glsentryshort{TPC}-H is a decision support benchmark by \gls{TPC}. It consists of a series of business oriented ad-hoc queries
+
+
+
+This dataset is used at it provides a recognized standard for data storage systems \cite{TPC_benchmarks_2000}. Any part of the dataset can be generated using TPC-H data generation tool \cite{TPCCurrentSpecs}.
 
 The TCP-H dataset contains eight tables, of these two, SUPPLIER and LINEITEM, were selected for the following reasons. The two tables are respectively the smallest (10000 rows) and largest (6000000 rows) table which size (number of rows) depends on the \gls{SF}. The \gls{SF} can be varied to obtain tables of different sizes (number of rows), allowing to a progressive change in the table size (number of rows). 
 
