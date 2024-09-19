@@ -26,11 +26,8 @@ The research paradigm consists of a quantitative analysis based on repeated runs
 \subsection{Dataset}
 \label{subsec:dataset}
 
-The dataset that will be used to perform the read and write operations comes from \glsentryshort{TPC}-H benchmark suite\cite{TPCHHomepage}. \glsentryshort{TPC}-H is a decision support benchmark by \gls{TPC}. It consists of a series of business oriented ad-hoc queries
-
-
-
-This dataset is used at it provides a recognized standard for data storage systems \cite{TPC_benchmarks_2000}. Any part of the dataset can be generated using TPC-H data generation tool \cite{TPCCurrentSpecs}.
+The data that will be used to perform the read and write operations comes from \glsentryshort{TPC}-H benchmark suite\cite{TPCHHomepage}. \glsentryshort{TPC}-H is a decision support benchmark by \gls{TPC}. It consists of a series of business oriented ad-hoc queries designed to be industry relevant \cite{transactionprocessingperformancecounciltpcTPCH_v301pdf1993}. The data coming from this benchmark suite was used as
+it provides a recognized standard for data storage systems \cite{TPC_benchmarks_2000}, and it has already been used in similar related work \cite{raasveldtDuckDBEmbeddableAnalytical2019, }. Any part of the dataset can be generated using TPC-H data generation tool \cite{TPCCurrentSpecs}.
 
 The TCP-H dataset contains eight tables, of these two, SUPPLIER and LINEITEM, were selected for the following reasons. The two tables are respectively the smallest (10000 rows) and largest (6000000 rows) table which size (number of rows) depends on the \gls{SF}. The \gls{SF} can be varied to obtain tables of different sizes (number of rows), allowing to a progressive change in the table size (number of rows). 
 
