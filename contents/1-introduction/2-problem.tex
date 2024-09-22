@@ -12,7 +12,7 @@ However, the delta-rs \cite{DeltaioDeltars2024} does not support \gls{HDFS}, and
 This research project has the ultimate objective to evaluate and compare the performance of the current Spark system that operates on Apache Hudi, to a Rust system that uses delta-rs library \cite{DeltaioDeltars2024} operates on Delta Lake, using \gls{HopsFS} \cite{niaziHopsFSScalingHierarchical2017}. To achieve this, support for \gls{HDFS} (and thus also \gls{HopsFS}) must be added to the delta-rs library \cite{DeltaioDeltars2024}, so that it can be compatible with the Hopsworks system. Thus the project addresses the following two \glspl{RQ}:
 \begin{enumerate}
     \item[RQ1:] How can we add support for \gls{HDFS} and \gls{HopsFS} to the delta-rs library?
-    \item[RQ2:] What is the difference in performance between a Spark-based access to Apache Hudi compared a the delta-rs library-based access to Delta Lake, in \gls{HopsFS}?  
+    \item[RQ2:] What is the difference in throughput (measured in rows/second) between a Spark-based operation (read or write) to Apache Hudi compared a the delta-rs library-based operation (read or write) to Delta Lake, in \gls{HopsFS}?  
 \end{enumerate}
 
 %Some text
