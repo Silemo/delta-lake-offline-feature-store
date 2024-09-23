@@ -46,9 +46,9 @@ For this project, five table variations were used to benchmark the code solution
 
 \subsection{Experimental Design}
 \labe{subsec:experimental_design}
-% Description of which benchmarks will be performed and how. Here it needs to be explained the environment where the benchmarks will be run (Snurran), which tests are run and why in this particular way.
+% Description of which benchmarks will be performed and how. Here it needs to be explained the environment where the benchmarks will be run (Snurran), which tests are run, and why in this particular way.
 %
-% Talk about the selection of the questions: How do the performances vary if: (1) the new implemented pipeline is used vs. the old pipeline. (2) a simple localFilesystem implementation is used vs. writing on \gls{HopsFS} (3) varying the CPU configuration (4) we have different table sizes. 
+% Talk about the selection of the questions: How do the performances vary if: (1) the newly implemented pipeline is used vs. the old pipeline. (2) a simple local filesystem implementation is used vs. writing on \gls{HopsFS} (3) varying the CPU configuration (4) we have different table sizes. 
 
 The experiments aim to highlight the differences between the newly implemented system based on the delta-rs library, and the legacy Spark-based system. To isolate the benefit of using delta-rs over Spark and provide a baseline, three different testing pipelines were designed:
 \begin{enumerate}
@@ -70,7 +70,7 @@ The experimental environment consists of a physical machine in Hopsworks' office
 
 The machine mounts about 5.4 TBs of \gls{SSD} memory. This allows the machine to have fast read and write speed, 2.7 GB/s, and 1.9 GB/s respectively (measured with a simple \textit{dd} bash command). 
 
-The experimental environment will be set up with a Jupyter Server of different CPU cores, depending on the experiment (1 core, 2 cores, 4 cores or 8 cores). The Jupyter server is allocated by default with 2048 MB of \gls{RAM}, out of the .. available on the experimental machine. This amount will be adjusted during the experiments according to the needs of the experiments, 
+The experimental environment will be set up with a Jupyter Server of different CPU cores, depending on the experiment (1 core, 2 cores, 4 cores, or 8 cores). The Jupyter server is allocated by default with 2048 MB of \gls{RAM}, out of the .. available on the experimental machine. This amount will be adjusted during the experiments according to the needs of the experiments, up to an available maximum of 192 GB (actually less, as it is a shared environment).
 
 \begin{lstlisting}[language=bash, caption={Output of a \textit{lscpu} bash command on the test environment.}, label={lst:cpu_snurran}, frame=tb]
 Architecture:            x86_64
@@ -109,22 +109,12 @@ Caches (sum of all):
 % What I would like to say is essentially that:
 % This evaluation section objective is to: Verify The system requirements defined in ... , and compare the performance (defined as throughput in RQ2) with older systems. Explain how both of these things are done
 
-The system evaluation framework is designed to evaluate three key aspects of the system:
+The system evaluation framework is designed to evaluate three key aspects of the system, using different metrics:
 \begin{enumerate}
     \item \textbf{Functional requirements}: defined in Section \ref{subsec:requirements}, functional requirements will measured by verifying the success or failure of running an experiment. By design, this will not happen, as the system implementation phase, continues until all functional requirements are met.
     \item \textbf{Non-functional requirements}: defined in Section \ref{subsec:requirements}, non-functional requirements are: consistency, maintainability and scalability. The first two requirements are mainly addressed during implementation, while scalability is measured during the system evaluation experiments. The metric used for measuring this requirement is the throughput measured in rows/second as defined in RQ2.
-    \item \textbf{How does the system compare to other pipelines?}: this question answers directly RQ2, measuring the throughput (rows/second) of the different pipelines, defined in Section \ref{subsec:experimental_design}. Results are then compared with a visual approach a.
+    \item \textbf{How does the system compare to other pipelines?}: this question answers directly RQ2, measuring the throughput (rows/second) of the different pipelines, defined in Section \ref{subsec:experimental_design}. Results are then compared using a visual approach.
 \end{enumerate} 
-
-
-RQ2 clearly defines throughput as the evaluation metric for measuring the performance between the two analysed systems. Section \ref{subsec:eval_process_and_research_paradigm} states that the approach performed in the system evaluation will be comparative, comparing different pipelines using the same data with the same computing resources.
-
-The Requirements defined in Section \ref{subsec:requirements} 
-
-
-on the success of the experiment, i.e. completing the read or write of the inputted data (
-
-
 
 \subsection{Assessing Reliability and Validity}
 % Here explain how the readability and validity of the collected data was addressed. Mainly here the bootstrapping method need to be explained and how it achieves getting a CI without making assumption on the data distribution
