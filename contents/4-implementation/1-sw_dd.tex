@@ -1,0 +1,9 @@
+% Summary if this section
+
+The first step of the development process, defined in Section \ref{subsec:dev_process}, consists of identifying what the current system lacks to satisfy the requirements, more specifically, how to support \gls{HDFS} and \gls{HopsFS} in the delta-rs \cite{DeltaioDeltars2024} library. This first step reveals that the library supports writing on a local file system, S3 block storage, Azure block storage, Google Cloud Storage but not \gls{HDFS} (as of start of this project in January 2024). The library uses an external interface called object-store  
+
+\subsection{First approach}
+% Describe the first approach trying to implement object_store for HDFS
+
+\subsection{Final solution}
+% Describe the second approach by modifying the HDFS-NATIVE library
