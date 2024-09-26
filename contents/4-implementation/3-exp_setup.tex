@@ -1,6 +1,6 @@
-Experiments, as defined in Section \ref{subsec:experimental_design}, consists of running different system configurations, with different data, fifty times per experiment. Two main approaches were selected to measure the experiments time, here is explained how to set them up.
+Experiments, as defined in Section \ref{subsec:experimental_design}, consist of running different system configurations, with different data, fifty times per experiment. Two main approaches were selected to measure the experiment's time, here is explained how to set them up.
 
-The first approach is to use the python timeit function. As illustrated in Listing \ref{lst:exp_setup_timeit} timeit can be used by defining a SETUP\_CODE that runs before the experiment and a TEST\_CODE that when running is measured and the time (expressed in seconds) is the return value of the timeit function. This approach was selected as the timeit function provides a clear interface to run and measure a small code script. The script here is not run repeated number of times as the Delta Table must be deleted before re-running the experiment, and this requires time that shouldn't be included in the experiment time (nor in the setup, as the first time the table is not there). When this approach could not be used (due to more complex scripts, the second approach was used).
+The first approach is to use the Python timeit function. As illustrated in Listing \ref{lst:exp_setup_timeit} timeit can be used by defining a SETUP\_CODE that runs before the experiment and a TEST\_CODE that when running is measured and the time (expressed in seconds) is the return value of the timeit function. This approach was selected as the timeit function provides a clear interface to run and measure a small code script. The script here does not run a repeated number of times as the Delta Table must be deleted before re-running the experiment, and this requires time that shouldn't be included in the experiment time (nor in the setup, as the first time the table is not there). When this approach could not be used (due to more complex scripts, the second approach was used).
 
 \begin{python}[caption={Timeit usage to measure the time required to write a Delta Lake table to \gls{HopsFS}.}, label={lst:exp_setup_timeit}]
 import timeit
@@ -13,14 +13,14 @@ LOCAL_PATH = "/abs/path/table.parquet"
 pa_table = pa.parquet.read_table(LOCAL_PATH)
 write_deltalake(HDFS_DATA_PATH, pa_table)'''
 
-# benchmark the task
+# Measure the execution runtime
 write_result = timeit.timeit(setup  = SETUP_CODE,
                              stmt   = TEST_CODE,
                              number = 1          )
 \end{python}
 \medskip
 
-The second measuring approach was to simple record the time before the script run and after the script run, then calculate the difference. This made possible to calculate multiple differences without having to recreate the experiment multiple times. Listing \ref{lst:exp_setup_time_diff} shows an example of this approach.
+The second measuring approach was to simply record the time before the script run and after the script run, then calculate the difference. This made it possible to calculate multiple differences without having to recreate the experiment multiple times. Listing \ref{lst:exp_setup_time_diff} shows an example of this approach.
 
 \begin{python}[caption={A simple time difference approach to measure the time required to write a Delta Lake table to \gls{HopsFS}.}, label={lst:exp_setup_time_diff}]
 import time

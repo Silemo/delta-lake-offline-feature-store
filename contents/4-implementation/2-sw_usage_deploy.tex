@@ -1,8 +1,8 @@
-Once \gls{HDFS} and \gls{HopsFS} support has been added to the delta-rs library it is sufficient to build a python wheel, i.e. a pre-built binary package format for Python modules and libraries, for delta-rs. To do so it is sufficient to follow the instruction already present in the delta-rs library in README.md file present the python folder \cite{DeltarsPythonMain}.
+Once \gls{HDFS} and \gls{HopsFS} support has been added to the delta-rs library it is sufficient to build a python wheel, i.e. a pre-built binary package format for Python modules and libraries, for delta-rs. To do so it is sufficient to follow the instructions already present in the delta-rs library in the README.md file present in the python folder \cite{DeltarsPythonMain}.
 
-The usage of the delta-rs library is explained in detail in the delta-rs documentation \cite{DeltaioDeltars2024}, so in this section only the method used for the experiments will be showed and explained. Listing \ref{lst:write_delta-rs} shows a simple example of writing to \gls{HDFS} or \gls{HopsFS} (formally in a Python script only the address changes, as \gls{HopsFS} is based off of \gls{HDFS}). As it clear from the listing in this case the script is writing a small table of two columns and three rows.
+The usage of the delta-rs library is explained in detail in the delta-rs documentation \cite{DeltaioDeltars2024}, so in this section, only the method used for the experiments will be shown and explained. Listing \ref{lst:write_delta-rs} shows a simple example of writing to \gls{HDFS} or \gls{HopsFS} (formally in a Python script only the address changes, as \gls{HopsFS} is based on \gls{HDFS}). As is clear from the listing in this case the script is writing a small table of two columns and three rows.
 
-\begin{python}[caption={Writing a dataframe on a Delta Table with delta-rs on \gls{HDFS} or \gls{HopsFS}}, label={lst:write_delta-rs}]
+\begin{python}[caption={Writing a data frame on a Delta Table with delta-rs on \gls{HDFS} or \gls{HopsFS}}, label={lst:write_delta-rs}]
 from deltalake import write_deltalake
 import pandas as pd
 
@@ -14,7 +14,7 @@ write_deltalake("hdfs://rpc.sys:8020/tmp/test", df)
 
 In Listing \ref{lst:read_delta-rs} an example of a read operation is shown. After being read, the Delta Table is converted to a pyarrow table, then a pydictionary to be easily displayed.
 
-\begin{python}[caption={Reading a dataframe on a Delta Table with delta-rs on \gls{HDFS} or \gls{HopsFS}}, label={lst:read_delta-rs}]
+\begin{python}[caption={Reading a data frame on a Delta Table with delta-rs on \gls{HDFS} or \gls{HopsFS}}, label={lst:read_delta-rs}]
 from deltalake import DeltaTable
 
 dt = DeltaTable("hdfs://rpc.sys:8020/tmp/test")
