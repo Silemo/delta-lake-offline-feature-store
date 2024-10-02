@@ -1,0 +1,20 @@
+This section complements the results section by analyzing the results showed in Section \ref{sec:major_res} one by one.
+
+\subsection{Write operations using delta-rs are up to 40 times faster than the legacy Spark pipeline}
+The writing experiment reveals that the use of the delta-rs library achieves up to 40 times the performance of the Legacy Spark pipeline with smaller tables (10K and 100K rows). The delta-rs pipelines (both on \gls{HopsFS} and on \gls{LocalFS}) achieve higher performances even with bigger tables (1M, 6M and 60M rows), but with lower rates (15-26 times better). 
+
+This experimental result shows that a Rust pipeline writing data on Delta Lake tables is indeed faster than the legacy Spark pipeline in all writing tests. The rate of this improvement varies (40 times better vs. 15.35 times better when comparing 10K and 60M rows) and it is decreasing with the size of the table. This suggests that a writing a larger table (more than 60M rows) the Legacy Spark pipeline perform better than the delta-rs pipelines. This insight can be verified with further experiments using larger tables (more than 60M rows).
+
+\subsection{Read operations using delta-rs are increasingly faster than the legacy Spark pipeline}
+
+The reading experiment reveals that delta-rs pipelines achieve increasingly better performance as the size of the table grows. The throughput in the delta-rs on \gls{HopsFS} is up to 3 significant figures greater than the throughput of the legacy Spark pipeline.
+
+This experiment results shows that a Rust pipeline reading data on Delta Lake tables is indeed faster than the legacy Spark pipeline. Moreover, contrarily to what suggested in the introduction, i.e. that a Spark based pipeline would have faster performance as the size of the table would increase, this is not the case with the analyzed experiments, where the difference in proportion between the two pipelines grows significantly as the table sizes increase (20 times better vs. 1000+ times better when comparing 10K and 60M rows).
+
+\subsection{Increasing the CPU cores does not increase the read or write performance dramatically}
+
+The experiments run with more \gls{CPU} cores reveals that even if the computational resources increase the throughput does not increase linearly, e.g. no experiment run with 2 \gls{CPU} cores achieved more than a 33\% throughput increase. Moreover, reading experiments did not see major improvements (more than 20\%) in throughput with the exception of the experiments performed with delta-rs on the \gls{LocalFS}. On the other hand, writing experiments did show improvements in throughput, even if limited if compared to the increase in computing power, e.g. the best results was achieved with larger tables where adding a single core resulted in a 32.89\% improvement, but this is limited if the fact that computing resources were doubled is considered.
+
+\subsection{The upload time in the legacy Spark pipeline becomes the bottleneck as table size increases}
+
+In the writing experiment on the legacy Spark pipeline, as explained in Section \todo[inline]{Ref here time breakdown expl.}, writing time can be broken down into two upload and materialization time. This experiment reveals that as the table size increases, the contribution of the upload time drastically changes (4.96\% vs. 89.76\% contribution when comparing 10K and 60M rows tables). This suggests that the upload is the phase that limits the system to scale more efficiently, and thus have a higher throughput, as table size increases.
