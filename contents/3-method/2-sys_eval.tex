@@ -159,13 +159,15 @@ Caches (sum of all):
 
 The system evaluation framework is designed to evaluate three key aspects of the system, using different metrics:
 \begin{enumerate}
-    \item \textbf{Functional requirements}: defined in Section \ref{subsec:requirements}, functional requirements will measured by verifying the success or failure of running an experiment. By design, this will not happen, as the system implementation phase, continues until all functional requirements are met.
-    \item \textbf{Non-functional requirements}: defined in Section \ref{subsec:requirements}, non-functional requirements are: consistency, maintainability and scalability. The first two requirements are mainly addressed during implementation, while scalability is measured during the system evaluation experiments. The metrics used for measuring this requirement are latency measured in seconds and the throughput measured in rows/second as defined in RQ2.
-    \item \textbf{How does the system compare to other pipelines?}: this question answers directly RQ2, measuring the latency (seconds) and the throughput (rows/second) of the different pipelines, defined in Section \ref{subsec:experimental_design}. Results are then compared using a visual approach.
+    \item \textbf{Functional requirements}: defined in Section \ref{subsec:requirements}, functional requirements will be measured by verifying the success or failure of running an experiment. By design, this will not happen, as the system implementation phase, continues until all functional requirements are met.
+    \item \textbf{Non-functional requirements}: defined in Section \ref{subsec:requirements}, non-functional requirements are: consistency, maintainability and scalability. The first two requirements are mainly addressed during implementation, while scalability is measured during the system evaluation experiments. The metric used for measuring this requirement is the throughput measured in rows/second as defined in RQ2.
+    \item \textbf{How does the system compare to other pipelines?}: this question answers directly RQ2, measuring the throughput (rows/second) of the different pipelines, defined in Section \ref{subsec:experimental_design}. Results are then compared using a visual approach.
 \end{enumerate} 
 
 \subsection{Assessing Reliability and Validity}
-% Here explain how the readability and validity of the collected data were addressed. Mainly here the bootstrapping method needs to be explained and how it achieves getting a CI without making assumption on the data distribution.
+% Here explain how the readability and validity of the collected data were addressed. Mainly here the bootstrapping method needs to 
+
+explained and how it achieves getting a CI without making assumption on the data distribution.
 
 Results are significant according to their reliability and validity. In this project work, to ensure the reliability of the experiments results on the system performance, each experiment will be performed fifty times. This number was agreed as a balance between consistency and the limited resources available (in terms of time and computing resources).
 

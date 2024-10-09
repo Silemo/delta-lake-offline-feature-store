@@ -4,7 +4,7 @@ Following the experimental process described in Section \ref{sec:sys_eval}, 120 
 
 Figures \ref{fig:res_throughput_writing} shows the write throughput of all three pipelines defined in Section \ref{subsec:experimental_design} when writing the five different tables defined in Section \ref{subsec:dataset}. This experiment makes use of 1 \gls{CPU} core. 
 
-Each value reported was calculated by measuring the time taken to write the table. An example consists of delta-rs on \gls{HopsFS} which took 184.12783 seconds to write 60 M rows, so dividing the rows by time the throughput obtained is 325860.566 rows/second. This result is then resampled using the bootstrapping technique, and the average, in this case 339.288 K rows/second is obtained. A 95\% confidence interval was also calculated (in this case \textpm 5.05 K rows/second), but it was not displayed in the graph as it would be hardly readable as all results are out of each other's 95\% confidence interval.
+Each value reported was calculated by measuring the time taken to write the table. An example consists of delta-rs on \gls{HopsFS} which took 184.12783 seconds to write 60 M rows, so dividing the rows by time the throughput obtained is 325860.566 rows/second. This result is then resampled using the bootstrapping technique, and the average, in this case, 339.288 K rows/second is obtained. A 95\% confidence interval was also calculated (in this case \textpm 5.05 K rows/second). Still, it was not displayed in the graph as it would be hardly readable as all results are out of each other's 95\% confidence interval.
 
 \begin{figure}
     \centering
@@ -88,7 +88,7 @@ Each value reported was calculated by measuring the time taken to write the tabl
 
 Figures \ref{fig:res_throughput_reading} shows the read throughput of all three pipelines defined in Section \ref{subsec:experimental_design} when writing the five different tables defined in Section \ref{subsec:dataset}. This experiment makes use of 1 \gls{CPU} core. 
 
-Each value reported was calculated by measuring the time taken to read the table. An example consists of delta-rs on \gls{HopsFS} which took 0.0378069 seconds to read 60 M rows, so dividing the rows by time the throughput obtained is 1587.0114 M rows/second. This result is then resampled using the bootstrapping technique, and the average, in this case 1929.861 M rows/second is obtained. A 95\% confidence interval was also calculated (in this case \textpm 102.7 M rows/second), but it was not displayed in the graph as it would be hardly readable as all results are out of each other's 95\% confidence interval.
+Each value reported was calculated by measuring the time taken to read the table. An example consists of delta-rs on \gls{HopsFS} which took 0.0378069 seconds to read 60 M rows, so dividing the rows by time the throughput obtained is 1587.0114 M rows/second. This result is then resampled using the bootstrapping technique, and the average, in this case, 1929.861 M rows/second is obtained. A 95\% confidence interval was also calculated (in this case \textpm 102.7 M rows/second). Still, it was not displayed in the graph as it would be hardly readable as all results are out of each other's 95\% confidence interval.
 
 \begin{figure}
     \centering
@@ -170,11 +170,11 @@ Each value reported was calculated by measuring the time taken to read the table
 
 \subsection{Experiments with more \glsfmtshort{CPU} cores}
 
-Experiments reading and writing tables from the TPC-H benchmark in the three different pipelines defined in Section \ref{subsec:experimental_design} were repeated with increasingly more \gls{CPU} cores. The Tables \ref{tbl:cpu_percent_diff_write} and \ref{tbl:cpu_percent_diff_read} display the percentage increase between the first and the increased \gls{CPU} cores experiment. For example the delta-rs \gls{HopsFS} pipeline throughput when writing a 60M rows table is 339.288979358 k rows/second, when using 1 \gls{CPU} core. During the experiment when it was using 8 \gls{CPU} cores the throughput was 494.7344718446817 k rows/second. Thus the performance increase of the throughput as a percentage is 45.82 \% (calculated as the rate between the increase and the 1 \gls{CPU} experiment multiplied by 100). Note that in some cases the performance increase is negative, meaning that the throughput decreased even if computational resources were increased.
+Experiments reading and writing tables from the TPC-H benchmark in the three different pipelines defined in Section \ref{subsec:experimental_design} were repeated with increasingly more \gls{CPU} cores. The Tables \ref{tbl:cpu_percent_diff_write} and \ref{tbl:cpu_percent_diff_read} display the percentage increase between the first and the increased \gls{CPU} cores experiment. For example, the delta-rs \gls{HopsFS} pipeline throughput when writing a 60M rows table is 339.288979358 k rows/second, when using 1 \gls{CPU} core. During the experiment using 8 \gls{CPU} cores the throughput was 494.7344718446817 k rows/second. Thus, the throughput performance increase as a percentage is 45.82 \% (calculated as the rate between the increase and the 1 \gls{CPU} experiment multiplied by 100). Note that in some cases the performance increase is negative, meaning that the throughput decreased even if computational resources were increased.
 
 \subsection{Writing using legacy Spark pipeline -- Time breakdown}
 
-During the writing experiment performed using the legacy Spark pipeline the contribution of different part of the process were measured: namely the upload time and materialization time, dichotomy explained in Section \todo[inline]{Ref here time breakdown expl.}. This served to verify how different part of the legacy pipeline scaled with table sizes, and if Spark was in fact the bottleneck of the architecture.
+During the writing experiment performed using the legacy Spark pipeline the contribution of different parts of the process were measured: namely the upload time and materialization time, dichotomy explained in Section \todo[inline]{Ref here time breakdown expl.}. This served to verify how different parts of the legacy pipeline scaled with table sizes, and if Spark was the bottleneck of the architecture.
 
 \begin{figure}
     \centering
