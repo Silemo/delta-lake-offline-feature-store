@@ -1,29 +1,43 @@
 %Summary here
 The system evaluation complements the system implementation by measuring the performance of the developed solution, answering RQ2. This evaluation process will be carried out following a sequential approach.
 
-This section details the method and the principles that will be used to carry out the system evaluation process, measuring the performance (throughput, measured in rows/second) of reading and writing on Delta Lake or Apache Hudi while on \gls{HopsFS} of Spark-based and Rust-based pipelines. 
+This section details the research paradigm, the method and the principles that will be used to carry out the system evaluation process, measuring the performance (latency, measured in seconds and throughput, measured in rows/second) of reading and writing on Delta Lake or Apache Hudi while on \gls{HopsFS} of Spark-based and Rust-based pipelines. 
 
-\subsection{Evaluation Process and Research Paradigm}
+\subsection{Research Paradigm}
+The research paradigm for the system evaluation section of this thesis has a more hybrid approach between positivism and post-positivism. While still performing a confirmatory research approach, based on defined objectives, considers the limitations and biases of this approach, not seeking to generalize the results obtained to other cases. This approach is motivated by the limitations and biases given by the industrial context of this thesis, while performing a confirmatory analysis based on a newly implemented system.
+
+\subsection{Evaluation Process}
 \label{subsec:eval_process_and_research_paradigm}
-
-The research process will follow a sequential approach described in Figure \ref{fig:DevProcessRQ2}. Each step of this process is related to one of the goals (G5-G8) associated with the RQ2 in Section \ref{sec:goals}.
+The evaluation process will follow a sequential approach described in Figure \ref{fig:DevProcessRQ2}. Each step of this process is related to one of the goals (G5-G8) associated with the RQ2 in Section \ref{sec:goals}.
 The relationship between each activity and the associated goal(s) is here explained:
 \begin{enumerate}
     \item \textbf{Design experiments}: this activity maps perfectly to G5, designing the experiments that will be conducted to evaluate the performance difference in performance between Spark-based access to Apache Hudi compared a the delta-rs \cite{DeltaioDeltars2024} library-based access to Delta Lake, in \gls{HopsFS}. 
-    \item \textbf{Perform experiments}: this activity maps perfectly to G6, using the code implementation (D1) to conduct the designed experiments on the analyzed systems.
-    \item \textbf{Transform data according to metrics}: this activity is necessary to fulfill G7, as data visualization requires data to be properly formatted. In this activity data is modified, performing a division between the size of the table inputted and the read or write time. This allows data to be in the wanted metric i.e. rows/second.
-    \item \textbf{Visualize results}: this activity maps perfectly to G7, visualizing the experiments' result according to the selected metric, i.e. throughput measured in rows/second. This activity also generates a deliverable (D2) composed of the experiments results complete with tables and histograms, i.e. Chapter \ref{ch:results_and_analysis}.
+    \item \textbf{Perform experiments}: this activity maps perfectly to G6, using the code implementation (D1) to conduct the designed experiments on the analyzed systems. Here data is collected as latency expressed in seconds.
+    \item \textbf{Transform data according to metrics}: this activity is requisite to fulfill G7, as throughput is computed from latency and not measured. The relationship that relates throughput (rows/second), latency(seconds) and size of table (rows) is the following:
+    \[ throughput \; (rows/second) = \frac{number \; of \; rows \; (rows)}{latency \;(seconds)}\]
+    \item \textbf{Visualize results}: this activity maps perfectly to G7, visualizing the experiments' result according two metrics, i.e. latency measured in seconds and throughput measured in rows/second. This activity also generates a deliverable (D2) composed of the experiments results complete with tables and histograms, i.e. Chapter \ref{ch:results_and_analysis}.
     \item \textbf{Analyze results}: this activity maps perfectly to G8, analyzing and interpreting the results delivered in D2. This contributes to D3, generating the analysis of results, i.e. Chapter \ref{ch:results_and_analysis}.
 \end{enumerate}
 \begin{figure}[!ht]
     \begin{center}
       \includegraphics[width=\textwidth]{figures/3-method/research_process_rq2.png}
-    \caption{\gls{BPMN} diagram of the System evaluation process answering to RQ2. Each activity is associated with a specific Goal (\gls{G}). The process produces two deliverables (\gls{D}), the experiments results (D2) and a results analysis (D3-partial).}
+    \caption{\glstext{BPMN} diagram of the System evaluation process}
     \label{fig:DevProcessRQ2}
     \end{center}
 \end{figure}
 
-The research paradigm consists of a quantitative analysis based on repeated runs on the implemented system. The results of the benchmarks are then analyzed performing a visual comparative approach.
+\subsection{Industrial use case}
+\label{subsec:use_case}
+
+For the system evaluation to be performed a number of choices must be made to select: which data is going to be used, which environment will run the experiments and which metrics will be used to evaluate the system. While the other sections of this chapter detail which decision were taken, this section aims to outline a typical use case of the system implementation that can motivate the choices between how the system is going to be evaluated.
+
+During the research work in Hopsworks AB, the author had the chance to talk to various employees and form an idea of what a typical client use case for the Hopsworks Feature Store looks like. While these parameters are qualitative, they depict a specific use case around which this thesis work was built. Here below are this use case characteristics:
+\begin{itemize}
+  \item \textbf{Usage of rows over storage size}: contrarily to the introduction chapter where size of workload is mostly referred to by storage size (bytes), in the experimental part of thesis only number of rows will be used to refer to size. This is motivated by the need of finding a reliable unit that measures a table size. Storage (bytes) is not strictly linked to a table structure (a table could have a lot of columns and a small amount of rows and occupy the same memory of a table with a lot of rows but few columns), and it varies across platforms (different \gls{DBMS} might save information with different overheads) and storage structures (row-oriented format vs. column-oriented format, i.e. csv vs. parquet). Thus storage size (bytes) alone is unreliable and cannot be used to measure data pipelines performance. In this thesis, number of rows was kept as the main unit to measure data size, but it was also supplemented by specifying the number of columns and the data types contained in each row in Section \ref{subsec:dataset}.
+  \item \textbf{Selected table size}: within Hopsworks the author had the chance to see as most of the company's clients workload were limited (from 1M to 100M rows), while few clients had massive workloads (more than 1 BN rows). Given this outlook, this project opted to work in improving performance for the smaller workloads setting the table sizes between 100K and 60M rows. This is further detailed in Section \ref{subsec:dataset}.
+  \item \textbf{Type of data}: the Hopsworks Feature Store works only with structured data (e.g. numbers, strings), and not with unstructured data (e.g. images, videos, audio) so also the selected dataset in Section \ref{subsec:dataset} will reflect this scenario.
+  \item \textbf{Client configuration}: the performance of the implemented system also depends on the computational and storage resources available on the client configuration running the system. To reflect a typical use case scenario, four \gls{CPU} configurations were selected (1 core, 2 cores, 4 cores and 8 cores), while \gls{RAM} memory will be adapted to the need of the system (as it is unknown before running the experiments). Additionally, to avoid storage I/O bottlenecks and reflect a modern system, a system equipped with a \gls{SSD} storage will be used. This is further detailed in Section \ref{subsec:exp_env}.
+\end{itemize}
 
 \subsection{Dataset}
 \label{subsec:dataset}
@@ -33,7 +47,41 @@ it provides a recognized standard for data storage systems \cite{TPC_benchmarks_
 
 The \glsentryshort{TPC}-H benchmark contains eight tables, of these two, SUPPLIER and LINEITEM, were selected for the following reasons. The two tables are respectively the smallest (10000 rows) and largest (6000000 rows) tables whose size (number of rows) depends on the \gls{SF}. The \gls{SF} can be varied to obtain tables of different sizes (number of rows), allowing a progressive change in the table size (number of rows). 
 
-The SUPPLIER table has seven columns, while the LINEITEM table has sixteen. This influences the average size of memory each row occupies. This means the metric selected (throughput, measured in rows/second) cannot be used to compare results across different tables. This is the reason why the comparative evaluation only considers different configurations on the same table. 
+The SUPPLIER table has seven columns, while the LINEITEM table has sixteen. This influences the average size of memory each row occupies. Here below for each table its columns, with their specific type, are listed.
+\begin{itemize}
+  \item SUPPLIER
+  \begin{itemize}
+    \item S\_SUPPKEY : identifier
+    \item S\_NAME : fixed text, size 25
+    \item S\_ADDRESS : variable text, size 40
+    \item S\_NATIONKEY : identifier
+    \item S\_PHONE : fixed text, size 15
+    \item S\_ACCTBAL : decimal
+    \item S\_COMMENT : variable text, size 101
+  \end{itemize}
+  \item LINEITEM
+  \begin{itemize}
+    \item L\_ORDERKEY : identifier
+    \item L\_PARTKEY : identifier
+    \item L\_SUPPKEY : identifier
+    \item L\_LINENUMBER : integer
+    \item L\_QUANTITY : decimal
+    \item L\_EXTENDEDPRICE : decimal
+    \item L\_DISCOUNT : decimal
+    \item L\_TAX : decimal
+    \item L\_RETURNFLAG : fixed text, size 1
+    \item L\_LINESTATUS : fixed text, size 1
+    \item L\_SHIPDATE : date
+    \item L\_COMMITDATE : date
+    \item L\_RECEIPTDATE : date
+    \item L\_SHIPINSTRUCT : fixed text, size 25
+    \item L\_SHIPMODE : fixed text, size 10
+    \item L\_COMMENT : variable text size 44
+  \end{itemize} 
+\end{itemize}
+As mentioned in Section \ref{subsec:use_case}, measuring the memory size in terms of bytes that a row of a table occupies has no single approach, as it depends on how the row is stored (e.g. a \gls{DBMS}, a row or column oriented format). Thus no specific figure is given here, but all information on the data from how to retrieve it and how it is composed is provided, so that a memory size in bytes can be calculated at need.
+
+Considering the different number of columns of the two tables used, this means that the selected metrics, i.e. latency (seconds) and throughput(rows/second) cannot be used to compare results across different tables. This is the reason why the comparative evaluation only considers different configurations on the same table.
 
 For this project, five table variations were used to benchmark the code solution as D1. \gls{SF} was varied to obtain a table at each significant figure, from 10000 rows to 60000000 rows. These are the tables:
 \begin{enumerate}
@@ -64,13 +112,14 @@ The data used for experiments, as described in Section \ref{subsec:dataset}, wil
 In conclusion, the experiments conducted will be a total of 3 (pipelines) times 4 (\gls{CPU} configurations) times 5 (tables) times 2 (read and write operations), i.e. 120 experiments, performed 50 times each to create statistically significant results.
 
 \subsection{Experimental environment}
+\label{subsec:exp_env}
 % Describe Snurran
 
-The experimental environment consists of a physical machine in Hopsworks' offices, virtualized enabling remote shared development. The \gls{CPU} details of the machine are present in Listing \ref{lst:cpu_snurran}, noting that only eight cores at maximum were accessed during the experiments.
+The experimental environment consists of a physical machine in Hopsworks' offices, virtualized enabling remote shared development. The \gls{CPU} details of the machine are present in Listing \ref{lst:cpu_snurran}, noting that only eight cores at maximum were accessed during the experiments. It should be observed that this experimental environment while virtualized in isolation, runs on shared computing resources, so experiment results might vary depending on the load of the machine. Considering this all experiments will be run when the machine load is low (less than 50\% of \gls{CPU} and \gls{RAM} usage), to avoid having results depend from external workloads running.
 
 The machine mounts about 5.4 TBs of \gls{SSD} memory. This allows the machine to have fast read and write speed, 2.7 GB/s, and 1.9 GB/s respectively (measured with a simple \textit{dd} bash command). 
 
-The experimental environment will be set up with a Jupyter Server of different CPU cores, depending on the experiment (1 core, 2 cores, 4 cores, or 8 cores). The Jupyter server is allocated by default with 2048 MB of \gls{RAM}, out of the .. available on the experimental machine. This amount will be adjusted during the experiments according to the needs of the experiments, up to an available maximum of 192 GB (actually less, as it is a shared environment).
+The experimental environment will be set up with a Jupyter Server of different CPU cores, depending on the experiment (1 core, 2 cores, 4 cores, or 8 cores). The Jupyter server is allocated by default with 2048 MB of \gls{RAM}, out of the 192 GB  available on the experimental machine. This amount will be adjusted during the experiments according to the needs of the experiments (see Section \ref{subsec:resources_usage}).
 
 \begin{lstlisting}[language=bash, caption={Output of a \textit{lscpu} bash command on the test environment.}, label={lst:cpu_snurran}, frame=tb]
 Architecture:            x86_64
@@ -116,7 +165,9 @@ The system evaluation framework is designed to evaluate three key aspects of the
 \end{enumerate} 
 
 \subsection{Assessing Reliability and Validity}
-% Here explain how the readability and validity of the collected data were addressed. Mainly here the bootstrapping method needs to be explained and how it achieves getting a CI without making assumption on the data distribution.
+% Here explain how the readability and validity of the collected data were addressed. Mainly here the bootstrapping method needs to 
+
+explained and how it achieves getting a CI without making assumption on the data distribution.
 
 Results are significant according to their reliability and validity. In this project work, to ensure the reliability of the experiments results on the system performance, each experiment will be performed fifty times. This number was agreed as a balance between consistency and the limited resources available (in terms of time and computing resources).
 

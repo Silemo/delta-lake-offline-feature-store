@@ -1,7 +1,10 @@
 % Summary sys_impl here
 The core of this system research thesis resides in the system implementation section which answers RQ1.
 
-This section explains the method and the principles that will be used to carry out the software development process of adding support for \gls{HDFS} and \gls{HopsFS} to the delta-rs library. This section is divided into three sub-sections: Development process, explaining the activities that will be carried out, Requirements, defining the functional and non-functional requirements of the system and Development environment, detailing the tools and resources that will be used during the development process.
+This section explains the method and the principles that will be used to carry out the software development process of adding support for \gls{HDFS} and \gls{HopsFS} to the delta-rs library. This section is divided into four sub-sections: Research paradigm, explaining the research framework that will be used to implement the system, Development process, explaining the activities that will be carried out to implement the system, Requirements, defining the functional and non-functional requirements of the system and Development environment, detailing the tools and resources that will be used during the development process.
+
+\subsection{Research Paradigm}
+The research paradigm of the system implementation section of this thesis is positivist, believing that reality is certain and it can be measured and understood. This thought declined in the context of the development process, means that the new system requirements can be defined and implementation errors can be outlined, understood and if possible fixed. This approach lead to a strict definition of the development process depending on functional requirements that must be fulfilled.
 
 \subsection{Development process}
 \label{subsec:dev_process}
@@ -23,7 +26,7 @@ This process will produce a final deliverable (D1), which is a Python wheel of t
 \begin{figure}[!ht]
     \begin{center}
       \includegraphics[width=\textwidth]{figures/3-method/research_process_rq1.png}
-    \caption{\gls{BPMN} diagram of the System implementation process answering to RQ1. Each activity is associated with a specific Goal (\gls{G}). The process produces a deliverable (\gls{D}), in this case, a code implementation. The development loop iterates until the functional requirements (defined in Section \ref{subsec:requirements}) are fulfilled.}
+    \caption{\glstext{BPMN} diagram of the System implementation process}
     \label{fig:DevProcessRQ1}
     \end{center}
 \end{figure}

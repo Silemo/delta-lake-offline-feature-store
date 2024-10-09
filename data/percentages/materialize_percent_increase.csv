@@ -1,0 +1,6 @@
+Table,1 CPU core time,2 CPU core % decrease,4 CPU core % decrease,8 CPU core % decrease
+results_supplier_tpch_sf1,47.72620139158725,-1.27,-2.47,-2.35
+results_supplier_tpch_sf10,55.90058576105595,-0.78,-0.27,-1.69
+results_supplier_tpch_sf100,89.57549200497151,-0.39,-0.01,-1.05
+results_lineitem_tpch_sf1,267.2490546142053,-0.10,-1.15,-0.38
+results_lineitem_tpch_sf10,278.0504992922206,0.39,0.16,0.82

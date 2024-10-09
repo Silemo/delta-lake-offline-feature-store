@@ -12,11 +12,11 @@ write_deltalake("hdfs://rpc.sys:8020/tmp/test", df)
 \end{python}
 \medskip
 
-In Listing \ref{lst:read_delta-rs} an example of a read operation is shown. After being read, the Delta Table is converted to a pyarrow table, then a pydictionary to be easily displayed.
+In Listing \ref{lst:read_delta-rs} an example of a read operation is shown. After being read, the Delta Table is converted to a pyarrow table, to ensure an explicit in-memory operation (only calling the DeltaTable object is a lazy operation that does not load the data into memory).
 
 \begin{python}[caption={Reading a data frame on a Delta Table with delta-rs on \gls{HDFS} or \gls{HopsFS}}, label={lst:read_delta-rs}]
 from deltalake import DeltaTable
 
 dt = DeltaTable("hdfs://rpc.sys:8020/tmp/test")
-dt.to_pyarrow_table().to_pydict()
+dt.to_pyarrow_table()
 \end{python}

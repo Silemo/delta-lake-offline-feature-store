@@ -1,0 +1,16 @@
+Pipeline,Table,1 CPU core throughput,2 CPU core % increase,4 CPU core % increase,8 CPU core % increase
+HDFS,results_supplier_tpch_sf1,187168.53051563672,29.28,23.21,23.38
+HDFS,results_supplier_tpch_sf10,1736907.9980446957,1.17,3.90,5.48
+HDFS,results_supplier_tpch_sf100,1856831.6722373336,130.02,185.74,209.69
+HDFS,results_lineitem_tpch_sf1,3078512.996536319,114.57,266.87,291.92
+HDFS,results_lineitem_tpch_sf10,2610891.464254805,101.35,311.83,681.03
+LocalFS,results_supplier_tpch_sf1,2384586.9914665422,45.94,56.04,42.18
+LocalFS,results_supplier_tpch_sf10,3708257.875522204,106.37,192.07,184.38
+LocalFS,results_supplier_tpch_sf100,2380403.8117328864,110.28,368.24,875.15
+LocalFS,results_lineitem_tpch_sf1,3566674.545879786,125.01,354.40,858.64
+LocalFS,results_lineitem_tpch_sf10,3066626.4450533027,107.11,306.75,756.07
+HUDI,results_supplier_tpch_sf1,15832.85189203564,1.07,-0.67,0.67
+HUDI,results_supplier_tpch_sf10,37734.32051472538,-0.50,0.39,-0.45
+HUDI,results_supplier_tpch_sf100,116328.20442612904,-0.24,-1.78,2.98
+HUDI,results_lineitem_tpch_sf1,178946.12098768278,0.46,0.23,0.30
+HUDI,results_lineitem_tpch_sf10,1780535.6338438315,0.16,0.13,1.67
