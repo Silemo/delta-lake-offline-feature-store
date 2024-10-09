@@ -1,0 +1,16 @@
+Pipeline,Table,1 CPU core time,2 CPU core % decrease,4 CPU core % decrease,8 CPU core % decrease
+HDFS,results_supplier_tpch_sf1,0.0534277849617704,22.65,18.84,18.95
+HDFS,results_supplier_tpch_sf10,0.0575735733340936,1.15,3.76,5.19
+HDFS,results_supplier_tpch_sf100,0.5385517787916015,56.53,65.00,67.71
+HDFS,results_lineitem_tpch_sf1,1.9489929088331572,53.40,72.74,74.48
+HDFS,results_lineitem_tpch_sf10,22.980656538752395,50.34,75.72,87.20
+LocalFS,results_supplier_tpch_sf1,0.0041935983194515,31.48,35.91,29.66
+LocalFS,results_supplier_tpch_sf10,0.0269668408607958,51.54,65.76,64.84
+LocalFS,results_supplier_tpch_sf100,0.4200967899106245,52.45,78.64,89.75
+LocalFS,results_lineitem_tpch_sf1,1.6822392743770764,55.56,77.99,89.57
+LocalFS,results_lineitem_tpch_sf10,19.56547400704265,51.72,75.41,88.32
+HUDI,results_supplier_tpch_sf1,0.6315981522589923,1.06,-0.67,0.67
+HUDI,results_supplier_tpch_sf10,2.650107346201614,-0.50,0.39,-0.46
+HUDI,results_supplier_tpch_sf100,8.596367535570636,-0.24,-1.81,2.89
+HUDI,results_lineitem_tpch_sf1,33.529645498227886,0.46,0.23,0.30
+HUDI,results_lineitem_tpch_sf10,33.69772492026549,0.16,0.13,1.64

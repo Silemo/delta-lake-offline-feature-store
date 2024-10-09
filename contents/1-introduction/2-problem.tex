@@ -1,9 +1,9 @@
 The Hopsworks Feature Store \cite{HopsworksBatchRealtime2024} when querying the Offline Feature Store, uses Spark as a query engine, i.e. executes the query (read, write, or delete) on the Offline Feature Store.
 
-If no Spark job was started before (as is always the case in the open-source server-less Hopsworks app), the operation, even if small in size (only retrieving 1 GB of data or less), will take a few minutes (1-2 minutes) to complete. This is mainly due to the overhead of starting a Spark cluster and running a Spark job.
-This overhead is less relevant for computation on larger quantities of data (1 TB or above), as it composes a smaller part of the overall computation time.
-Nonetheless, Hopsworks' typical use-case sits between tests on small quantities of data (scale between 1-10 GBs) and production scenarios on a larger scale, but still relatively small (scale between 10-100 GBs).
-As this overhead is a Spark-specific issue, it grows the need to look for Spark alternatives. Currently, Hopsworks is saving their Feature Store data on Apache Hudi and Delta Lake table formats. Delta Lake supports Spark alternatives for accessing and querying the data, and of particular interest is the delta-rs library~\cite{DeltaioDeltars2024} that enables Python access to Delta Lake tables, without having the time overhead given by Spark jobs. 
+Currently an write operation on the legacy Spark pipeline used in the Hopsworks Feature store will take one or more minutes to complete, even if writing a small quantity of data (only 1 GB of data or less).
+This hurts Hopsworks' typical use-case which sits between tests on small quantities of data (scale between 1-10 GBs) and production scenarios on a larger scale, but still relatively small (scale between 10-100 GBs).
+
+The research hypothesis that guides this research is that this slow transaction time is a Spark-specific issue. This is why Hopsworks has already adopted Spark alternatives \cite{Khazanchi1801362} and it is experimenting more Spark alternatives. Currently, Hopsworks is saving their Feature Store data on Apache Hudi and Delta Lake table formats. Delta Lake supports Spark alternatives for accessing and querying the data, and of particular interest is the delta-rs library~\cite{DeltaioDeltars2024} that enables Python access to Delta Lake tables, without having to use Spark. 
 However, the delta-rs \cite{DeltaioDeltars2024} does not support \gls{HDFS}, and consequently \gls{HopsFS} \cite{niaziHopsFSScalingHierarchical2017}.
 
 % Research Question
@@ -12,7 +12,7 @@ However, the delta-rs \cite{DeltaioDeltars2024} does not support \gls{HDFS}, and
 This research project has the ultimate objective to evaluate and compare the performance of the current Spark system that operates on Apache Hudi, to a Rust system that uses delta-rs library \cite{DeltaioDeltars2024} operates on Delta Lake, using \gls{HopsFS} \cite{niaziHopsFSScalingHierarchical2017}. To achieve this, support for \gls{HDFS} (and thus also \gls{HopsFS}) must be added to the delta-rs library \cite{DeltaioDeltars2024}, so that it can be compatible with the Hopsworks system. Thus the project addresses the following two \glspl{RQ}:
 \begin{enumerate}
     \item[RQ1:] How can we add support for \gls{HDFS} and \gls{HopsFS} to the delta-rs library?
-    \item[RQ2:] What is the difference in throughput (measured in rows/second) between a Spark-based operation (read or write) to Apache Hudi compared a the delta-rs library-based operation (read or write) to Delta Lake, in \gls{HopsFS}?  
+    \item[RQ2:] What is the difference in latency (measured in seconds) and throughput (measured in rows/second) between a Spark-based operation (read or write) to Apache Hudi compared a the delta-rs library-based operation (read or write) to Delta Lake, in \gls{HopsFS}?  
 \end{enumerate}
 
 %Some text

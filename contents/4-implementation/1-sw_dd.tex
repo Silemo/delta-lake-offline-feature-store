@@ -5,7 +5,7 @@ The first step of the development process, defined in Section \ref{subsec:dev_pr
 \begin{figure}[!ht]
     \begin{center}
       \includegraphics[width=\textwidth]{figures/4-implementation/delta-rs_schema.png}
-    \caption{Architecture of the delta-rs library (version 0.15.x) before and after support to \gls{HDFS} was added. The implemented solution is highlighted in green.}
+    \caption{delta-rs library (v. 0.15.x) before and after adding \glstext{HDFS} support}
     \label{fig:delta-rs_schema}
     \end{center}
 \end{figure}
@@ -27,7 +27,7 @@ Starting from this past support for \gls{HDFS} in the delta-rs library, a soluti
 \begin{figure}[!ht]
   \begin{center}
     \includegraphics[width=\textwidth]{figures/4-implementation/approach1_solution_schema.png}
-  \caption{Architecture of the first approach to add support to \gls{HDFS} in the delta-rs library.}
+  \caption{Architecture of the first implementation approach}
   \label{fig:approach_1_solution_schema}
   \end{center}
 \end{figure}
@@ -46,10 +46,12 @@ Version 0.18.2 of the delta-rs introduced support for \gls{HDFS} via the hdfs-na
 \begin{figure}[!ht]
   \begin{center}
     \includegraphics[width=\textwidth]{figures/4-implementation/hdfs-native.png}
-  \caption{Architecture of the second approach to the system solution. Note that here \gls{HDFS} support is given by the hdfs-native library, but to allow \gls{HopsFS} support the library needs to be modified.}
+  \caption{Architecture of the final implementation approach}
   \label{fig:approach_2_solution_schema}
   \end{center}
 \end{figure}
+
+% OLD CAPTION Architecture of the final implementation approach to the system solution. Note that here \gls{HDFS} support is given by the hdfs-native library, but to allow \gls{HopsFS} support the library needs to be modified.
 
 This section approach, while being used by the delta-rs library, proved to have some incompatibilities with \gls{HopsFS}. Here below is a list of them:
 \begin{enumerate}

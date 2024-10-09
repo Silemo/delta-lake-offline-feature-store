@@ -4,7 +4,7 @@
 %%\generalExpl{Introduce your choice of methodology/methodologies and method/methods – and the reason why you chose them. Contrast them with and explain why you did not choose other methodologies or methods. (The details of the actual methodology and method you have chosen will be given in Chapter~\ref{ch:method}. Note that in Chapter~\ref{ch:method}, the focus could be research strategies, data collection, data analysis, and quality assurance.)\\}
 This work starts from a few \glspl{IN}, provided by Hopsworks, and a few \glspl{PA} validated through a literature study. \\ Hopsworks's \glspl{IN} are:
 \begin{itemize}
-    \item[IN1 :] the Hopsworks Feature Store has a lower throughput (rows/second) in reading and writing operations when performed on a "small scale" (1 GB - 100 GB) compared to a "large scale" (100 GB - 1 TB). This highlights the potential for improvement in the "small scale" use case.
+    \item[IN1 :] the Hopsworks Feature Store using the legacy Spark pipeline has a high latency (seconds) and low throughput (rows/second) in reading and writing operations when on a "small scale" (1 GB - 100 GB). This highlights the potential for using Spark alternatives in the "small scale" use case.
     \item[IN2 :] Hopsworks, adapting to their customer needs, supports the Delta Lake table format. Improving the speed of read and write operations on this table format, would improve a typical use case for Hopsworks Feature Store users.
 \end{itemize}
 \glspl{PA} are:
