@@ -1,6 +1,6 @@
 % Summary if this section
 
-The first step of the development process, defined in Section \ref{subsec:dev_process}, consists of identifying what the delta-rs library (version 0.15.x) lacks to satisfy the requirements, more specifically, how to support \gls{HDFS} and \gls{HopsFS} in the delta-rs \cite{DeltaioDeltars2024} library. This step outlines the library structure (in Rust slang "crate") divided into sublibraries (in Rust slang "subcrates"), which is illustrated in Figure \ref{fig:delta-rs_schema}. As the figure shows, the delta-rs crate has a subcrate for each storage connector, so adding support for different storage is a matter of implementing a new subcrate to the delta-rs crate.
+The first step of the development process, defined in Section \ref{subsec:dev_process}, consists of identifying what the delta-rs library (version 0.15.x) lacks to satisfy the requirements, more specifically, how to support \gls{HDFS} and \gls{HopsFS} in the delta-rs \cite{DeltaioDeltars2024} library. This step outlines the library structure (colloquially/informally defined as "crate") divided into sublibraries (colloquially/informally defined as "subcrates"), which is illustrated in Figure \ref{fig:delta-rs_schema}. As the figure shows, the delta-rs crate has a subcrate for each storage connector, so adding support for different storage is a matter of implementing a new subcrate to the delta-rs crate.
 
 \begin{figure}[!ht]
     \begin{center}
