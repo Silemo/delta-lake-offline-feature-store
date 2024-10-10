@@ -7,7 +7,7 @@ This section details the research paradigm, the method, and the principles that 
 The research paradigm for the system evaluation section of this thesis has a more hybrid approach between positivism and post-positivism. While still performing a confirmatory research approach, based on defined objectives, it considers the limitations and biases of this approach, not seeking to generalize the results obtained to other cases. This approach is motivated by the limitations and biases given by the industrial context of this thesis while performing a confirmatory analysis based on a newly implemented system.
 
 \subsection{Evaluation Process}
-\label{subsec:eval_process_and_research_paradigm}
+\label{subsec:eval_process}
 The evaluation process will follow a sequential approach described in Figure \ref{fig:DevProcessRQ2}. Each step of this process is related to one of the goals (G5-G8) associated with the RQ2 in Section \ref{sec:goals}.
 The relationship between each activity and the associated goal(s) is here explained:
 \begin{enumerate}
@@ -109,6 +109,8 @@ Furthermore, the experiments will verify how the performances of the three syste
 
 The data used for experiments, as described in Section \ref{subsec:dataset}, will come from two different tables. These are modified according to a \gls{SF}, for a total of five times.
 
+Additionally, during the writing experiments performed using the legacy Spark pipeline the contribution of different parts of the process will be measured: namely the upload time and materialization time, dichotomy explained in Section \todo[inline]{Ref here time breakdown expl.}. This will serve to verify how different parts of the legacy pipeline scaled with table sizes, and if Spark was the bottleneck of the architecture.
+
 In conclusion, the experiments conducted will be a total of 3 (pipelines) times 4 (\gls{CPU} configurations) times 5 (tables) times 2 (read and write operations), i.e. 120 experiments, performed 50 times each to create statistically significant results.
 
 \subsection{Experimental environment}
@@ -165,6 +167,7 @@ The system evaluation framework is designed to evaluate three key aspects of the
 \end{enumerate} 
 
 \subsection{Assessing Reliability and Validity}
+\label{subsec:reliability_validity}
 % Here explain how the readability and validity of the collected data were addressed. Mainly here the bootstrapping method needs to explained and how it achieves getting a CI without making assumption on the data distribution.
 
 Results are significant according to their reliability and validity. In this project work, to ensure the reliability of the experiment results on the system performance, each experiment will be performed fifty times. This number was agreed as a balance between consistency and the limited resources available (in terms of time and computing resources).
