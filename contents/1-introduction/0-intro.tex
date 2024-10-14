@@ -1,15 +1,15 @@
-Lakehouse systems are increasingly becoming the primary choice for running analytics in large-sized companies (that have more than 1000 employees) \cite{StateDataLakehouse2024}. 
+Data lakehouse systems are increasingly becoming the primary choice for running analytics in large-sized companies (that have more than 1000 employees) \cite{StateDataLakehouse2024}. 
 
-This recent architecture design called Lakehouse \cite{lakehouse2021} is preferred over old paradigms, i.e. data warehouses and data lakes, as it builds upon the advantages of both systems, having the scalability properties of data lakes while preserving the \gls{ACID} properties typical of data warehouses \cite{lakehouse2021}. Additionally, Lakehouse systems include partitioning, which reduces query complexity significantly and provides "time travel" capabilities, enabling users to access different versions of data, versioned over time \cite{crociDataLakehouseHype2022}.
+This recent architecture design called data lakehouse \cite{lakehouse2021} is preferred over old paradigms, i.e. data warehouses and data lakes, as it builds upon the advantages of both systems, having the scalability properties of data lakes while preserving the \gls{ACID} properties typical of data warehouses \cite{lakehouse2021}. Additionally, data lakehouse systems include partitioning, which reduces query complexity significantly and provides "time travel" capabilities, enabling users to access different versions of data, versioned over time \cite{crociDataLakehouseHype2022}.
 
 Three main implementations of this paradigm emerged over time \cite{ApacheHudiVs}: 
 \begin{enumerate}
-    \item \textbf{Apache Hudi}: first introduced by Uber, now primarily backed by Uber, Tencent, Alibaba, and Bytedance.
-    \item \textbf{Apache Iceberg}: first introduced by Netflix and now primarily backed by Netflix, Apple, and Tencent.
-    \item \textbf{Delta Lake}: first introduced by Databricks and now primarily backed by Databricks and Microsoft.
+    \item \textbf{Apache Hudi}: first introduced by Uber, now primarily backed by Uber, Tencent, Alibaba, and Bytedance \cite{rajaperumalUberEngineeringIncremental2017}.
+    \item \textbf{Apache Iceberg}: first introduced by Netflix and now primarily backed by Netflix, Apple, and Tencent \cite{ApacheIcebergApache}.
+    \item \textbf{Delta Lake}: first introduced by Databricks and now primarily backed by Databricks and Microsoft \cite{armbrustDeltaLakeHighperformance2020}.
 \end{enumerate}
 
-While large communities back all three projects, Delta Lake is acknowledged as the de-facto Lakehouse solution \cite{ApacheHudiVs}. This is mainly thanks to Databricks, which first promoted this new architecture over data lakes among their clients around 2020 \cite{armbrustDeltaLakeHighperformance2020}.
+While large communities back all three projects, Delta Lake is acknowledged as the de-facto data lakehouse solution \cite{ApacheHudiVs}. This is mainly thanks to Databricks, which first promoted this new architecture over data lakes among their clients around 2020 \cite{armbrustDeltaLakeHighperformance2020}.
 
 As a data query and processing engine, Delta Lake is typically used with Apache Spark \cite{zahariaApacheSparkUnified2016}. This approach is effective when processing large quantities of data (1 TB or more) over the cloud, but whether this approach is effective on small quantities of data (100 GB or less) remains to be investigated \cite{Khazanchi1801362}.
 

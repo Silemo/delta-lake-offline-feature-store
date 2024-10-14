@@ -1,6 +1,7 @@
 This section aims to describe the data storage layer of this project, namely \gls{HopsFS}. \gls{HopsFS} is Hopsworks's evolution of \gls{HDFS}, a distributed file system. \gls{HopsFS} complexity will be broken down into parts, providing not only a great understanding of the tool but also a comparison with common alternatives, namely cloud object stores.
 
 \subsection{File storage vs. Object storage vs. Block storage}
+\label{subsec:file_vs_obj_vs_block}
 
 Data can be stored and organized in physical storages, such as \glspl{HDD} and/or \glspl{SSD}, in three major ways: (1) Files, (2) Objects, and (3) Blocks. For each one, the technique is briefly described and then a comparative table is shown (Table \ref{tab:storagecomparison}). This subsection is a rework according to the author's understanding of three articles coming from major cloud providers (Amazon, Google, and IBM) \cite{BlockVsFile, HowObjectVs, ObjectVsFile2021}.
 
@@ -102,5 +103,12 @@ In Figure \ref{fig:hdfs} a simplified visual representation of the Namenode and 
  
 \subsection{\glsfmtshort{HopsFS} as an \glsfmtshort{HDFS} evolution}
 
+\gls{HopsFS} is \gls{HDFS} improved release first presented at the 15th USENIX conference in 2017 \cite{niaziHopsFSScalingHierarchical2017}. \gls{HopsFS} stores the metadata in an external NewSQL database with high throughput and low operation latency called RonDB \cite{LogicalclocksRondb2024}. This enables this storage solution to avoid having all metadata in a single Namenode, but allowing for Namenode replication, having the same metadata on RonDB. This solution proved to have from sixteen up to thirty-seven times the performance on \gls{HDFS} thanks to its ability to scale according to metadata being stored, and also on similar setups where the same resources are being utilized. 
+
+\gls{HopsFS} is one of the core technologies on which the Hopsworks Feature Store is built on. And while the system has not seen more widespread use, it is extremely impactful in its current applications, contributing to making Hopsworks "outperform existing cloud feature stores for training and online inference query workloads" \cite{10.1145/3626246.3653389}. 
 
 \subsection{\glsfmtshort{HDFS} alternatives: Cloud object stores}
+
+Thanks to its high scalability and low cost (Section \ref{subsec:file_vs_obj_vs_block}) object storage has been widely adopted to store large quantities of unstructured data. Starting with \gls{AWS} in 2006 with its S3 service, a lot of other vendors started offering cloud object storage services. The main advantages of using cloud resources are related to their elasticity that combined with object storage capability enable users to use as much storage as they need and be billed for what was used. 
+
+\gls{HDFS} was first released in 2006, and so it evolved in parallel with cloud objects storages solutions. While \gls{HDFS} was widely adopted for on-premise solutions, more and more businesses migrated their operations on cloud services. Nowadays, cloud object storage like \gls{AWS}'s S3, Google's \gls{GCS} and Microsoft's Azure are widely used and libraries, e.g. delta-rs, prioritize support for these platforms as they are widely adopted. \gls{HDFS} and its evolutions, e.g. \gls{HopsFS}, still see use, but it fits more specific use cases, as the convenience of a cloud service is highly valued by the market.
