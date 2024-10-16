@@ -1,12 +1,12 @@
 % Intro
-This section describes the architectures of the legacy and new systems that will be run and measured in the experimental part of this thesis. The section is divided into four sections as each schema presented shows the protocol step by step.
+This section describes the architectures of the legacy and new systems that will be run and measured in the experimental part of this thesis. The section is divided into four sections and each schema presented shows the protocol step by step.
 
 \subsection{Legacy system - Writing}
 \label{subsec:legacy_sys_writing}
 
-Figure \ref{fig:featurestore_writing} shows the legacy Hopsworks Feature Store write process from the client on to the Offline Feature Store. The process is mainly split into two sychronous parts: upload and materialization. In the upload step the pandas data frame given as input is converted into rows and sent one row at a time to Kafka. Then, when the upload is finished the client is notified. Asynchronously, a Spark job keeps running in the cluster since the Hopsworks cluster was started, which is the Hudi Delta Streamer. This job periodically retrieves messages from Kafka, and then once it retrieves a full table it writes it in a column oriented format to Apache Hudi, that sits on top of a \gls{HopsFS} system. Once the materialization is completed the Python client is also notified of completion.
+Figure \ref{fig:featurestore_writing} shows the legacy Hopsworks Feature Store write process from the client onto the Offline Feature Store. The process is mainly split into two synchronous parts: upload and materialization. In the upload step, the Pandas data frame given as input is converted into rows and sent one row at a time to Kafka. Then, when the upload is finished the client is notified. Asynchronously, a Spark job has been running in the cluster since the Hopsworks cluster was started, which is the Hudi Delta Streamer. This job periodically retrieves messages from Kafka, and then once it retrieves a full table it writes it in a column-oriented format to Apache Hudi, which sits on top of a \gls{HopsFS} system. Once the materialization is completed the Python client is also notified of completion.
 
-As in the pipeline, the upload and the materialization are two different parts of the process that do not act synchronously. During the experimental part of the thesis, to be able to measure the latency of the whole process without having to account for the Hudi Delta Streamer data retrieval period, the materialize function was called, which allows to perform the materialization on call instead of waiting the period. This enabled the experiments to retrieve accurate data on the total latency of the process.
+As in the pipeline, the upload and the materialization are two different parts of the process that do not act synchronously. During the experimental part of the thesis, to be able to measure the latency of the whole process without having to account for the Hudi Delta Streamer data retrieval period, the materialize function was called, which allows the system to perform the materialization on call instead of waiting for the period. This enabled the experiments to retrieve accurate data on the total latency of the process.
 
 \todo[inline]{Insert link to appendix for larger diagram}
 
@@ -21,7 +21,7 @@ As in the pipeline, the upload and the materialization are two different parts o
 \subsection{Legacy system - Reading}
 \label{subsec:legacy_sys_reading}
 
-Figure \ref{fig:featurestore_reading} shows the legacy Hopsworks Feature Store read process from the client on to the Offline Feature Store. The process, differently from the writing process, is not Spark based and it is using a Spark alternative: a combination of an Arrow Flight server and a DuckDB instance. This avoids the serialization and deserialization into row-based tables for sending the data, keeping the unified standard Arrow Table, which is a column-oriented format.
+Figure \ref{fig:featurestore_reading} shows the legacy Hopsworks Feature Store read process from the client onto the Offline Feature Store. The process, differently from the writing process, is not Spark-based and it is using a Spark alternative: a combination of an Arrow Flight server and a DuckDB instance. This avoids the serialization and deserialization into row-based tables for sending the data, keeping the unified standard Arrow Table, which is a column-oriented format.
 
 \todo[inline]{Insert link to appendix for larger diagram}
 
