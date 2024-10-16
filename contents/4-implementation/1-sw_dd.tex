@@ -1,6 +1,6 @@
 % Summary if this section
 
-The first step of the development process, defined in Section \ref{subsec:dev_process}, consists of identifying what the delta-rs library (version 0.15.x) lacks to satisfy the requirements, more specifically, how to support \gls{HDFS} and \gls{HopsFS} in the delta-rs \cite{DeltaioDeltars2024} library. This step outlines the library structure (colloquially/informally defined as "crate") divided into sublibraries (colloquially/informally defined as "subcrates"), which is illustrated in Figure \ref{fig:delta-rs_schema}. As the figure shows, the delta-rs crate has a subcrate for each storage connector, so adding support for different storage is a matter of implementing a new subcrate to the delta-rs crate.
+The first step of the development process, defined in Section \ref{subsec:dev_process}, consists of identifying what the delta-rs library (version 0.15.x) lacks to satisfy the requirements, more specifically, how to support \gls{HDFS} and \gls{HopsFS} in the delta-rs \cite{DeltaioDeltars2024} library. This step outlines the library structure (colloquially defined as "crate") divided into sublibraries (colloquially defined as "subcrates"), which is illustrated in Figure \ref{fig:delta-rs_schema}. As the figure shows, the delta-rs crate has a subcrate for each storage connector, so adding support for different storage is a matter of implementing a new subcrate to the delta-rs crate.
 
 \begin{figure}[!ht]
     \begin{center}
@@ -10,7 +10,7 @@ The first step of the development process, defined in Section \ref{subsec:dev_pr
     \end{center}
 \end{figure}
 
-The library uses an external interface called object-store defined in the Arrow-rs library \cite{ArrowrsObject_storeREADMEmd}. Every storage connector implements this interface, and the other parts of the library interact with the storage layer. It is thus crucial that the new \gls{HDFS} storage also implements this interface.
+The delta-rs library uses an external interface called object-store defined in the Arrow-rs library \cite{ArrowrsObject_storeREADMEmd}. Every storage connector implements this interface, and the other parts of the library interact with the storage layer. It is thus crucial that the new \gls{HDFS} storage also implements this interface.
 
 The development process was divided into two subsections: a first approach and a final approach. The first approach was carried out by developing a \gls{HDFS} subcrate for the delta-rs crate from scratch, while the second and final approach modified the support for \gls{HDFS} added in delta-rs with version 0.18.2 to also support \gls{HopsFS}.
 
@@ -18,11 +18,11 @@ The development process was divided into two subsections: a first approach and a
 % Describe the first approach trying to implement object_store for HDFS
 At the beginning of the project, a first approach was taken to provide support for \gls{HDFS} to the delta-rs library version 0.15.x. Analyzing past contributions to the library reveals that \gls{HDFS} was supported in version 0.9.0 of the delta-rs library, but support was removed due to three main reasons:
 \begin{enumerate}
-  \item The \gls{HDFS} support caused the testing pipeline to fail, and no trivia solution was found.
-  \item The \gls{HDFS} support had \gls{JVM} dependencies which weighted a lot on the environment required on delta-rs users (i.e. having Java installed), and this was considered a requirement that would some users from using the library altogether.
+  \item The \gls{HDFS} support caused the testing pipeline to fail, and no trivial solution was found.
+  \item The \gls{HDFS} support had \gls{JVM} dependencies. This was considered a strong limitation for Python users as having Java installed is high overhead (in terms of storage and computation) for performing an operation in Python. Having these Jave dependencies would have meant that a large number of Python users would have not used the library altogether.
   \item The community around the library did not have contributors or a large number of users which had \gls{HDFS} as a use case.
 \end{enumerate}
-Starting from this past support for \gls{HDFS} in the delta-rs library, a solution was designed to fix the testing issues and provide a working storage support for \gls{HDFS}. The architecture is described in Figure \ref{fig:approach_1_solution_schema}. 
+Starting from the \gls{HDFS} support in the delta-rs library present in version 0.9.0, a solution was designed to fix the testing issues and provide a working storage support for \gls{HDFS}. The architecture is described in Figure \ref{fig:approach_1_solution_schema}. 
 
 \begin{figure}[!ht]
   \begin{center}
@@ -64,4 +64,4 @@ These incompatibilities were solved one by one during development in the followi
   \item \textbf{Adding support for \glsentryshort{TLS} in the hdfs-native library}: \gls{TLS} support to hdfs-native was added via the use of an external Rust library called tokio-rustls version 0.26 \cite{RustlsTokiorustlsAsync}.
 \end{enumerate}
 
-All changes were applied to copies (in Git slang called "forks") of the open-source repositories related to this project (delta-rs, hdfs-native-object-store, hdfs-native). These changes are available on the author's repository \cite{manfrediSilemoHdfsnative2024, manfrediSilemoHdfsnativeobjectstore2024, manfrediSilemoDeltars2024}.
+All changes were applied to copies (colloquially defined as "fork") of the open-source repositories related to this project (delta-rs, hdfs-native-object-store, hdfs-native). These changes are available on the author's repository \cite{manfrediSilemoHdfsnative2024, manfrediSilemoHdfsnativeobjectstore2024, manfrediSilemoDeltars2024}.
