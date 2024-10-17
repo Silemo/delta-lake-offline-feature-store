@@ -768,12 +768,12 @@ nopostdot]{glossaries}
 %%                                 APPENDIX
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% If you do not have an appendix, do not include the \textbackslash cleardoublepage command below; otherwise, the last page number in the metadata will be one too large.}
-%\cleardoublepage
+\cleardoublepage
 
-%\appendix
-%\renewcommand{\chaptermark}[1]{\markboth{Appendix \thechapter\relax:\thinspace\relax#1}{}}
+\appendix
+\renewcommand{\chaptermark}[1]{\markboth{Appendix \thechapter\relax:\thinspace\relax#1}{}}
 
-%\input{contents/7-appendix/_all}
+\input{contents/7-appendix/_all}
 
 \cleardoublepage
 
@@ -781,7 +781,7 @@ nopostdot]{glossaries}
 \label{pg:lastPageofMainmatter}
 
 \cleardoublepage
-\begin{comment}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                 FOR DIVA MATERIAL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -815,5 +815,5 @@ commentstyle=\color{black}, backgroundcolor=\color{white}]{lib/acronyms-for-pdfl
 }
 {}
 \fi
-\end{comment}
+
 \end{document}
