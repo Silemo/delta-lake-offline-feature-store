@@ -12,29 +12,27 @@ eng
 %% \generalExpl{Keep in mind that most of your potential readers are only going to read your \texttt{title} and \texttt{abstract}. This is why the abstract must give them enough information so that they can decide if this document is relevant to them or not. Otherwise, the likely default choice is to ignore the rest of your document.\\
 %% An abstract should stand on its own, i.e., no citations, cross-references to the body of the document, acronyms must be spelled out, \ldots .\\Write this early and revise as necessary. This will help keep you focused on what you are trying to do.}
 \begin{scontents}[store-env=abstracts,print-env=true]
-The need of building Machine Learning (ML) models based on ever increasing
+The need to build Machine Learning (ML) models based on ever-increasing
 amounts of data brought new challenges to data management systems. Feature
-Stores have emerged as an effective solution to enable feature reuse, while
+Stores have emerged as an effective solution to enable feature reuse while
 organizing data transformations and ensuring consistency between feature
-engineering, model training and model inference. Recent publications
+engineering, model training, and model inference. Recent publications
 demonstrate that the Hopsworks Feature Store exhibits superior performance
 metrics in both training and online inference query workloads compared to
 existing cloud-based alternatives. In this system, the latency to perform a
-write operation in this system a least of one or more minutes even for small
-quantities of data (1 GB or less). This limitation is believed to a Spark-specific
-limitation, which the system uses to write data on the offline feature store.
+write operation is at least one or more minutes, even for small
+quantities of data (1 GB or less). This limitation is believed to be a limitation specific to Spark, which the system uses to write data on the offline feature store.
 This hypothesis was already confirmed in the case of read latency, where
-opting for a Spark-alternative, namely an Arrow Flight and DuckDB server,
+opting for a Spark alternative, namely an Arrow Flight and DuckDB server,
 improved performance considerably. A promising approach appears to be
 adopting a new data management solution, namely Delta Lake, and accessing
 it using a Rust library called delta-rs. This thesis investigates the possibility
 of reducing the read and write latency in the offline feature store by expanding
 the delta-rs library to support the Hopsworks Feature Store file system called
 HopsFS, and comparatively evaluating the performance of the legacy and
-newly implemented system. After a first iterative system implementation
+newly implemented system. After the first iterative system implementation
 phase based on fixed requirements, the system was evaluated by performing
-and measuring read and write operations in a four different CPU configurations
-(increasing the number of CPU cores up to eight). Experiments were
+and measuring read and write operations in four different CPU configurations, increasing the number of CPU cores up to eight. Experiments were
 performed fifty times to estimate a confidence interval allowing a comparative
 evaluation of the systems. Results confirmed the superior performance of the
 delta-rs library over the Spark system in all write operations with a tenfold
@@ -42,7 +40,7 @@ reduction in the latency. Delta-rs also surpassed the Spark-alternative in read
 operations with a tenfold reduction in the latency in all but the experiment
 with the largest table (60M rows), where the improvement is of a smaller factor.
 These findings encourage future research investigating Spark-alternative when
-optimizing performance in small scale (1 GB - 100 GB) data management
+optimizing performance in small-scale (1 GB - 100 GB) data management
 systems.
 \end{scontents}
 \begin{comment}
