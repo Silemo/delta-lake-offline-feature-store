@@ -11,7 +11,7 @@ The research paradigm for the system evaluation section of this thesis has a mor
 The evaluation process will follow a sequential approach described in Figure \ref{fig:DevProcessRQ2}. Each step of this process is related to one of the goals (G5-G8) associated with the RQ2 in Section \ref{sec:goals}.
 The relationship between each activity and the associated goal(s) is here explained:
 \begin{enumerate}
-    \item \textbf{Design experiments}: this activity maps perfectly to G5, designing the experiments that will be conducted to evaluate the performance difference in performance between the current legacy access (Spark-based in writing) to Apache Hudi compared a the delta-rs \cite{DeltaioDeltars2024} library-based access to Delta Lake, in \gls{HopsFS}. 
+    \item \textbf{Design experiments}: this activity maps perfectly to G5, designing the experiments that will be conducted to evaluate the performance difference in performance between the current legacy access (Spark-based in writing) to Apache Hudi compared a the delta-rs library-based access to Delta Lake, in \gls{HopsFS}. 
     \item \textbf{Perform experiments}: this activity maps perfectly to G6, using the code implementation (D1) to conduct the designed experiments on the analyzed systems. Here data is collected as latency expressed in seconds.
     \item \textbf{Transform data according to metrics}: this activity is requisite to fulfill G7, as throughput is computed from latency and not measured. The relationship that relates throughput (rows/second), latency(seconds), and size of table (rows) is the following:
     \[ throughput \; (rows/second) = \frac{number \; of \; rows \; (rows)}{latency \;(seconds)}\]
@@ -42,8 +42,8 @@ During the research work in Hopsworks \gls{AB}, the author had the chance to tal
 \subsection{Dataset}
 \label{subsec:dataset}
 
-The data that will be used to perform the read and write operations comes from \glsentryshort{TPC}-H benchmark suite\cite{TPCHHomepage}. \glsentryshort{TPC}-H is a decision support benchmark by \gls{TPC}. It consists of a series of business-oriented ad-hoc queries designed to be industry-relevant \cite{transactionprocessingperformancecounciltpcTPCH_v301pdf1993}. The data coming from this benchmark suite was used as
-it provides a recognized standard for data storage systems \cite{TPC_benchmarks_2000}, and it has already been used in similar related work \cite{raasveldtDuckDBEmbeddableAnalytical2019, behmPhotonFastQuery2022}. Any part of the data can be generated using the TPC-H data generation tool \cite{TPCCurrentSpecs}.
+The data that will be used to perform the read and write operations comes from \glsentryshort{TPC}-H benchmark suite~\footnote{Benchmark suite website available at \url{https://www.tpc.org/tpch/}}. \glsentryshort{TPC}-H is a decision support benchmark by \gls{TPC}. It consists of a series of business-oriented ad-hoc queries designed to be industry-relevant \cite{transactionprocessingperformancecounciltpcTPCH_v301pdf1993}. The data coming from this benchmark suite was used as
+it provides a recognized standard for data storage systems \cite{TPC_benchmarks_2000}, and it has already been used in similar related work \cite{raasveldtDuckDBEmbeddableAnalytical2019, behmPhotonFastQuery2022}. Any part of the data can be generated using the TPC-H data generation tool~\footnote{Available at \url{https://www.tpc.org/tpc_documents_current_versions/current_specifications5.asp}}.
 
 The \glsentryshort{TPC}-H benchmark contains eight tables, of these two, SUPPLIER and LINEITEM, were selected for the following reasons. The two tables are respectively the smallest (10000 rows) and largest (6000000 rows) tables whose size (number of rows) depends on the \gls{SF}. The \gls{SF} can be varied to obtain tables of different sizes (number of rows), allowing a progressive change in the table size (number of rows). 
 
@@ -105,9 +105,7 @@ The experiments aim to highlight the differences between the newly implemented s
     \item \textbf{Legacy pipeline}: this pipeline uses the Hopsworks Feature Store to write data on Hudi tables. This system makes use of a pipeline based on Kafka, and Spark to write data on the Hudi tables, saved on \gls{HopsFS}. The pipeline uses a Spark alternative, namely DuckDB and Arrow Flight, to read data as explained in Section \ref{subsec:legacy_sys_reading}. 
 \end{enumerate}
 
-Furthermore, the experiments will verify how the performances of the three systems will change based on the \gls{CPU} resources provided (namely 1 core, 2 cores, 4 cores, 8 cores). Each time the testing environment will be modified accordingly, creating a new \gls{VM} where the experiments will run with increasingly more resources. These \gls{CPU} configurations were chosen together with the industrial supervisor, according to the typical Hopsworks use case (Section \ref{subsec:use_case}).
-
-The data used for experiments, as described in Section \ref{subsec:dataset}, will come from two different tables. These are modified according to a \gls{SF}, for a total of five times.
+Furthermore, the experiments will verify how the performances of the three systems will change based on the \gls{CPU} resources provided (namely 1 core, 2 cores, 4 cores, 8 cores). Each time the testing environment will be modified accordingly, creating a new \gls{VM} where the experiments will run with increasingly more resources. These \gls{CPU} configurations were chosen together with the industrial supervisor, according to the typical Hopsworks use case (Section \ref{subsec:use_case}).The data used for experiments, as described in Section \ref{subsec:dataset}, will come from two different tables. These are modified according to a \gls{SF}, for a total of five times. 
 
 Additionally, during the writing experiments performed using the legacy pipeline (Spark-based) the contribution of different parts of the process will be measured: namely the upload time and materialization time, dichotomy explained in Section \ref{subsec:legacy_sys_writing}. This will serve to verify how different parts of the legacy pipeline scaled with table sizes, and if Spark was the bottleneck of the architecture.
 

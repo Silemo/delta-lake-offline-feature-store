@@ -65,7 +65,8 @@
 %% To use bibtex or biblatex - include one of these as an option
 \documentclass[nomenclature, english, bibtex]{kththesis}
 %\documentclass[swedish, biblatex]{kththesis}
-% if pdflatex \usepackage[utf8]{inputenc}
+% if pdflatex 
+\usepackage[utf8]{inputenc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                 TODO NOTES
@@ -100,7 +101,7 @@
     \usepackage[style=ieee,citestyle=numeric-comp]{biblatex}
     \addbibresource{references.bib}
     %\DeclareLanguageMapping{norsk}{norwegian}
-\else
+\else %% This thesis uses BibTeX!!
     %% The line(s) below are for BibTeX
     \bibliographystyle{bibstyle/myIEEEtran}
     %\bibliographystyle{apalike}
@@ -468,7 +469,7 @@ nopostdot]{glossaries}
 
 %% When there are multiple opponents, separate their names with '\&'
 %% Opponent's information
-\opponentsNames{A. B. Normal \& A. X. E. Capion}
+\opponentsNames{Sebastiano Meneghin}
 
 %% Once a thesis is approved by the examiner, add the TRITA number
 %% The TRITA number for a thesis consists of two parts a series (unique to each school)

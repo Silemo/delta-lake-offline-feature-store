@@ -3,7 +3,7 @@ This section described the technologies used to query, cache, and process data i
 
 \subsection{Apache Spark}
 
-Apache Spark (from now on simply Spark) is an open-source distributed computing framework designed to handle large-scale data-intensive applications \cite{zahariaApacheSparkUnified2016}. Spark builds from the roots of MapReduce and its variants. MapReduce is a distributed programming model first designed by Google that enables the management of large datasets \cite{dean2004mapreduce}. The paradigm was later implemented as an open-source project by Yahoo! engineers under the name of Hadoop MapReduce \cite{borthakurHadoopDistributedFile2005}. Spark improved this approach by making use of \glspl{RDD} \cite{Zaharia:EECS-2011-82}. \glspl{RDD} are a distributed memory abstraction that enables a lazy in-memory computation that is tracked through the use of lineage graphs, ultimately increasing fault tolerance \cite{Zaharia:EECS-2011-82}. The difference between Hadoop MapReduce and Spark is represented in Figure \ref{fig:MapReducevsSpark}.
+Apache Spark (from now on simply Spark) is an open-source distributed computing framework designed to handle large-scale data-intensive applications~\cite{zahariaApacheSparkUnified2016}. Spark builds from the roots of MapReduce and its variants. MapReduce is a distributed programming model first designed by Google that enables the management of large datasets~\cite{dean2004mapreduce}. The paradigm was later implemented as an open-source project by Yahoo! engineers under the name of Hadoop MapReduce~\cite{borthakurHadoopDistributedFile2005}. Spark improved this approach by making use of \glspl{RDD}~\cite{Zaharia:EECS-2011-82}. \glspl{RDD} are a distributed memory abstraction that enables a lazy in-memory computation that is tracked through the use of lineage graphs, ultimately increasing fault tolerance~\cite{Zaharia:EECS-2011-82}. The difference between Hadoop MapReduce and Spark is represented in Figure~\ref{fig:MapReducevsSpark}.
 
 \begin{figure}[!ht]
   \begin{center}
@@ -15,7 +15,7 @@ Apache Spark (from now on simply Spark) is an open-source distributed computing 
 
 \subsection{Apache Kafka}
 
-Apache Kafka (from now on, Kafka) is an open-source distributed data streaming platform designed for high-throughput, and scalable data processing \cite{krepsKafkaDistributedMessaging2011}. Kafka is most typically used for real-time streaming applications thanks to low latency. 
+Apache Kafka (from now on, Kafka) is an open-source distributed data streaming platform designed for high-throughput, and scalable data processing~\cite{krepsKafkaDistributedMessaging2011}. Kafka is most typically used for real-time streaming applications thanks to low latency. 
 
 \begin{figure}[!ht]
     \begin{center}
@@ -45,4 +45,4 @@ The light structure that characterizes DuckDB is what enables this system to be 
 
 \subsection{Arrow Flight}
 
-Arrow Flight is a high-performance framework for data transferring over a network, most typically Arrow tables \cite{wesmIntroducingApacheArrow2019}. This protocol enables the transfer of large quantities of data stored in a format, e.g. Arrow tables, without having to serialize or deserialize it for transfer. This speeds up the data transfer by a large margin making Arrow Flight extremely efficient. Arrow Flight is designed to be cross-platform, having support for multiple programming languages (C++, Python, Java). The protocol also supports parallelism, speeding up transfers by using multiple nodes on parallel systems. Arrow Flight protocol is built on top of gRPC \cite{GRPC}, enabling standardization and an easier development of connectors. 
+Arrow Flight is a high-performance framework for data transferring over a network, most typically Arrow tables \cite{wesmIntroducingApacheArrow2019}. This protocol enables the transfer of large quantities of data stored in a format, e.g. Arrow tables, without having to serialize or deserialize it for transfer. This speeds up the data transfer by a large margin making Arrow Flight extremely efficient. Arrow Flight is designed to be cross-platform, having support for multiple programming languages (C++, Python, Java). The protocol also supports parallelism, speeding up transfers by using multiple nodes on parallel systems. Arrow Flight protocol is built on top of gRPC, enabling standardization and an easier development of connectors. 
