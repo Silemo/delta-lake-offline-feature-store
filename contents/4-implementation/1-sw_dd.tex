@@ -5,7 +5,7 @@ The first step of the development process, defined in Section~\ref{subsec:dev_pr
 \begin{figure}[!ht]
     \begin{center}
       \includegraphics[width=\textwidth]{figures/4-implementation/delta-rs_schema.png}
-    \caption{delta-rs library (v. 0.15.x) before and after adding \glstext{HDFS} support}
+    \caption[Delta-rs architecture before and after implementation]{Delta-rs library (v. 0.15.x) before and after adding \glstext{HDFS} support. Diagram inspired by delta-rs architecture presented by R. Tyler Croy at the Data+AI Summit 2021. Recording available at \url{https://www.youtube.com/watch?v=scYz12UK-OY&t=585s}.}
     \label{fig:delta-rs_schema}
     \end{center}
 \end{figure}
@@ -27,7 +27,7 @@ Starting from the \gls{HDFS} support in the delta-rs library present in version 
 \begin{figure}[!ht]
   \begin{center}
     \includegraphics[width=\textwidth]{figures/4-implementation/approach1_solution_schema.png}
-  \caption{Architecture of the first implementation approach}
+  \caption[First solution architecture]{Architecture of the first implementation approach. The repositories that need to be implemented or modified are highlighted with green and yellow respectively.}
   \label{fig:approach_1_solution_schema}
   \end{center}
 \end{figure}
@@ -46,7 +46,7 @@ Version 0.18.2 of the delta-rs introduced support for \gls{HDFS} via the hdfs-na
 \begin{figure}[!ht]
   \begin{center}
     \includegraphics[width=\textwidth]{figures/4-implementation/hdfs-native.png}
-  \caption{Architecture of the final implementation approach}
+  \caption[Final solution architecture]{Architecture of the final implementation approach. The repositories that need to be modified are highlighted in yellow.}
   \label{fig:approach_2_solution_schema}
   \end{center}
 \end{figure}

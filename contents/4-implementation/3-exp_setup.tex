@@ -2,7 +2,7 @@ Experiments, as defined in Section \ref{subsec:experimental_design}, consist of 
 
 The first approach is to use the Python timeit function. As illustrated in Listing \ref{lst:exp_setup_timeit} timeit can be used by defining a SETUP\_CODE that runs before the experiment and a TEST\_CODE that when running is measured and the time (expressed in seconds) is the return value of the timeit function. This approach was selected as the timeit function provides a clear interface to run and measure a small code script. The script here does not run a repeated number of times as the Delta Table must be deleted before re-running the experiment, and this requires time that shouldn't be included in the experiment time (nor in the setup, as the first time the table is not there). When this approach could not be used (due to more complex scripts, the second approach was used).
 
-\begin{python}[caption={Timeit usage to measure the time required to write a Delta Lake table to \gls{HopsFS}.}, label={lst:exp_setup_timeit}]
+\begin{python}[caption={[Measuring latency using Timeit]Timeit usage to measure the time required to write a Delta Lake table to \gls{HopsFS}.}, label={lst:exp_setup_timeit}]
 import timeit
 SETUP_CODE='''import pyarrow as pa
 from deltalake import write_deltalake'''
@@ -22,7 +22,7 @@ write_result = timeit.timeit(setup  = SETUP_CODE,
 
 The second measuring approach was to simply record the time before the script run and after the script run, then calculate the difference. This made it possible to calculate multiple differences without having to recreate the experiment multiple times. Listing \ref{lst:exp_setup_time_diff} shows an example of this approach.
 
-\begin{python}[caption={A simple time difference approach to measure the time required to write a Delta Lake table to \gls{HopsFS}.}, label={lst:exp_setup_time_diff}]
+\begin{python}[caption={[Measuring latency using the time difference]A simple time difference approach to measure the time required to write a Delta Lake table to \gls{HopsFS}.}, label={lst:exp_setup_time_diff}]
 import time
 import pyarrow as pa
 from deltalake import write_deltalake

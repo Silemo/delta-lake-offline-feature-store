@@ -21,7 +21,7 @@ The relationship between each activity and the associated goal(s) is here explai
 \begin{figure}[!ht]
     \begin{center}
       \includegraphics[width=\textwidth]{figures/3-method/research_process_rq2.png}
-    \caption{\glstext{BPMN} diagram of the System evaluation process}
+    \caption[System evaluation process]{\gls{BPMN} diagram of the System evaluation process answering to RQ2. Each activity is associated with a specific Goal (\gls{G}). The process produces two deliverables (\gls{D}), the experiments results (D2) and a results analysis (D3-partial).}
     \label{fig:DevProcessRQ2}
     \end{center}
 \end{figure}
@@ -123,7 +123,7 @@ The machine mounts about 5.4 TBs of \gls{SSD} memory. This allows the machine to
 
 The experimental environment will be set up with a Jupyter Server of different CPU cores, depending on the experiment (1 core, 2 cores, 4 cores, or 8 cores). The Jupyter server is allocated by default with 2048 MB of \gls{RAM}, out of the 192 GB  available on the experimental machine. This amount will be adjusted during the experiments according to the needs of the experiments (see Section \ref{subsec:resources_usage}).
 
-\begin{lstlisting}[language=bash, caption={Output of a \textit{lscpu} bash command on the test environment.}, label={lst:cpu_snurran}, frame=tb]
+\begin{lstlisting}[language=bash, caption={[Experimental environment details]Output of a \textit{lscpu} bash command in the experimental environment.}, label={lst:cpu_snurran}, frame=tb]
 Architecture:            x86_64
   CPU op-mode(s):        32-bit, 64-bit
   Address sizes:         48 bits physical, 

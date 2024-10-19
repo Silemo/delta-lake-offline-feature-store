@@ -71,7 +71,7 @@ On the other hand, block storage achieves its speed by operating at a low level 
 
 \begin{table}[!ht]
     \begin{center}
-      \caption{Data storage features comparison}
+      \caption[Data storage features comparison]{Data storage features comparison. Table inspired by major cloud providers articles \cite{BlockVsFile,HowObjectVs}.}
       \label{tab:storagecomparison}
       \begin{tabular}{cccc} % <-- Alignments: 1st column left, 2nd middle, with vertical lines in between
         \toprule
@@ -97,7 +97,7 @@ In Figure \ref{fig:hdfs} a simplified visual representation of the Namenode and 
     \begin{center}
       \includegraphics[width=\textwidth]{figures/2-background/HDFS.png}
     \end{center}
-    \caption{\glstext{HDFS} architecture during read and write operations}
+    \caption[Hadoop Distributed File System architecture]{\glsentryfull{HDFS} architecture displaying in different colors basic operations: read (blue), write (orange) and Namenode-Datanodes management messages (black). Note: for representation simplicity files are not segmented into blocks. Diagram inspired by the Data-intensive Computing lectures at KTH by Prof. A. H. Payberah. Course website available at \url{https://www.kth.se/student/kurser/kurs/ID2221?l=en}.}
     \label{fig:hdfs}
 \end{figure}
  

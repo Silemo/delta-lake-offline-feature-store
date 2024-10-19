@@ -12,7 +12,7 @@ Due to this correlation between the metrics used, trends will be described using
     \centering
     \begin{minipage}[b]{\textwidth}
         \centering
-        \captionof{table}{Write latency experiment results compared across multiple \glstext{CPU} configurations}
+        \captionof{table}[Write experiments results expressed as latency]{Write experiment results expressed as latency. Experiments performed with more than one \glstext{CPU} core are expressed as latency percentage decrease compared to the one \glstext{CPU} core experiment.}
         \label{tbl:res_write_time_cpu_perc}
         \begin{tabular}{c r S[table-format=4.5] S[table-format=2.2] S[table-format=2.2] S[table-format=2.2]} 
             \toprule
@@ -41,17 +41,15 @@ Due to this correlation between the metrics used, trends will be described using
     \begin{minipage}[b]{\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/5-results/write/write_time_1_core.png}
-        \caption{Histogram in log-scale of the write latency experiment results performed with 1 \glstext{CPU} core}
+        \caption[Histogram of the write experiment - Latency - 1 CPU core]{Histogram in log-scale of the write experiment results expressed as latency. The experiment was performed with one \glstext{CPU} core.}
         \label{fig:res_write_time}
     \end{minipage}
-    %\caption{Histogram (a) and Table (b) reporting the write latency experiment results also across different \glstext{CPU} configurations}
-    %\label{fig_tbl:res_write_time}
 \end{figure}
 
 \begin{figure}
     \centering
     \begin{minipage}[b]{\textwidth}
-        \captionof{table}{Write throughput experiment results compared across multiple \glstext{CPU} configurations}
+        \captionof{table}[Write experiments results expressed as throughput]{Write experiment results expressed as throughput. Experiments performed with more than one \glstext{CPU} core are expressed as throughput percentage increase compared to the one \glstext{CPU} core experiment.}
         \label{tbl:res_write_throughput_cpu_perc}
         \begin{tabular}{c r S[table-format=4.5] S[table-format=2.2] S[table-format=2.2] S[table-format=2.2]}
             \toprule
@@ -79,7 +77,7 @@ Due to this correlation between the metrics used, trends will be described using
     \end{minipage}
     \begin{minipage}[b]{\textwidth}
         \includegraphics[width=\textwidth]{figures/5-results/write/write_throughput_1_core.png}
-        \caption{Histogram in log-scale of the write throughput experiment results performed with 1 \glstext{CPU} core}
+        \caption[Histogram of the write experiment - Throughput - 1 CPU core]{Histogram in log-scale of the write experiment results expressed as throughput. The experiment was performed with one \glstext{CPU} core.}
         \label{fig:res_write_throughput}
     \end{minipage}
 \end{figure}
@@ -106,7 +104,7 @@ Considering the Legacy pipeline, experiments with more \gls{CPU} cores did not d
 \begin{figure}
     \centering
     \begin{minipage}[b]{\textwidth}
-        \captionof{table}{Read latency experiment results compared across multiple \glstext{CPU} configurations}
+        \captionof{table}[Read experiments results expressed as latency]{Read experiment results expressed as latency. Experiments performed with more than one \glstext{CPU} core are expressed as latency percentage decrease compared to the one \glstext{CPU} core experiment.}
         \label{tbl:res_read_time_cpu_perc}
         \begin{tabular}{c r S[table-format=4.5] S[table-format=2.2] S[table-format=2.2] S[table-format=2.2]} 
             \toprule
@@ -134,7 +132,7 @@ Considering the Legacy pipeline, experiments with more \gls{CPU} cores did not d
     \end{minipage}
     \begin{minipage}[b]{\textwidth}
         \includegraphics[width=\textwidth]{figures/5-results/read/read_time_1_core.png}
-        \caption{Histogram in log-scale of the read latency experiment results performed with 1 \glstext{CPU} core}
+        \caption[Histogram of the read experiment - Latency - 1 CPU core]{Histogram in log-scale of the read experiment results expressed as latency. The experiment was performed with one \glstext{CPU} core.}
         \label{fig:res_read_time}
     \end{minipage}
 \end{figure}
@@ -142,7 +140,7 @@ Considering the Legacy pipeline, experiments with more \gls{CPU} cores did not d
 \begin{figure}
     \centering
     \begin{minipage}[b]{\textwidth}
-        \captionof{table}{Read throughput experiment results compared across multiple \glstext{CPU} configurations}
+        \captionof{table}[Read experiments results expressed as throughput]{Read experiment results expressed as throughput. Experiments performed with more than one \glstext{CPU} core are expressed as throughput percentage increase compared to the one \glstext{CPU} core experiment.}
         \label{tbl:res_read_throughput_cpu_perc}
         \begin{tabular}{c r S[table-format=4.5] S[table-format=2.2] S[table-format=2.2] S[table-format=2.2]}
             \toprule
@@ -170,7 +168,7 @@ Considering the Legacy pipeline, experiments with more \gls{CPU} cores did not d
     \end{minipage}
     \begin{minipage}[b]{\textwidth}
         \includegraphics[width=\textwidth]{figures/5-results/read/read_throughput_1_core.png}
-        \caption{Histogram in log-scale of the read throughput experiment results performed with 1 \glstext{CPU} core}
+        \caption[Histogram of the read experiment - Throughput - 1 CPU core]{Histogram in log-scale of the read experiment results expressed as throughput. The experiment was performed with one \glstext{CPU} core.}
         \label{fig:res_read_throughput}
     \end{minipage}
 \end{figure}
@@ -197,7 +195,7 @@ Considering the Legacy pipeline, experiments with more \gls{CPU} cores did not d
 \begin{figure}
     \centering
     \begin{minipage}[b]{\textwidth}
-        \captionof{table}{Contributions to the write latency of the upload and materialization steps in the legacy pipeline and its change at different \glstext{CPU} configurations}
+        \captionof{table}[Writes on legacy pipeline - Time breakdown]{Contributions to the write latency of the upload and materialization steps in the legacy pipeline. Experiments performed with more than one \glstext{CPU} core are expressed as latency percentage decrease compared to the one \glstext{CPU} core experiment.}
         \label{tbl:hudi_virtualiz_breakdown_cpu_perc}
         \begin{tabular}{r S[table-format=4.2] S[table-format=4.2] S[table-format=2.2] S[table-format=2.2] S[table-format=2.2] S[table-format=2.2] S[table-format=2.2] S[table-format=2.2]} 
             \toprule
@@ -214,10 +212,9 @@ Considering the Legacy pipeline, experiments with more \gls{CPU} cores did not d
     \end{minipage}
     \begin{minipage}[b]{\textwidth}
         \includegraphics[width=\textwidth]{figures/5-results/hudi_virtualiz_1_core.png}
-        \caption{Histogram in log-scale displaying the contributions to the write latency of the upload and materialization steps in the legacy pipeline}
+        \caption[Histogram of the write on legacy pipeline - Time breakdown - 1 core]{Histogram in log-scale displaying the contributions to the write latency of the upload and materialization steps in the legacy pipeline. The experiment was performed with one \glstext{CPU} core.}
         \label{fig:hudi_virtualiz_breakdown}
     \end{minipage}
-    %\caption{Histogram (a) and Table (b) reporting the contributions to the write latency of the upload and materialization steps in the legacy pipeline and it changes at different \glstext{CPU} configurations}
 \end{figure}
 \todo[inline]{Fix ref}
 Figure \ref{fig_tbl:hudi_virtualiz_breakdown} shows the write latency breakdown of the Legacy pipeline into upload time and materialization time, the different steps of the Legacy pipeline as explained in Section \ref{subsec:legacy_sys_writing}. The breakdown is proposed for all the five different tables defined in Section \ref{subsec:dataset}. Figure \ref{fig:hudi_virtualiz_breakdown} reports the data from the 1 \gls{CPU} core experiment while Figure \ref{tbl:hudi_virtualiz_breakdown_cpu_perc} reports both the 1 \gls{CPU} core experiment data and also a calculated percentage of improvement (decrease) of the latency as the \gls{CPU} cores increase.

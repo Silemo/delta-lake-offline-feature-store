@@ -12,7 +12,7 @@ As in the pipeline, the upload and the materialization are two different parts o
     \begin{center}
       \includegraphics[width=\textwidth]{figures/2-background/FeatureStore-writing.png}
     \end{center}
-    \caption{Legacy system writing process}
+    \caption[Legacy system - Write process]{Legacy system writing a Pandas data frame from a Python client to the Hopsworks offline Feature Store. Each step is represented with a number. In blue it is outlined the table format conversion, i.e. from columns to rows and then from row to columns. Steps from one to four represent the upload process, while the materialization process in complete at step eight. Diagram realized based on one-to-one interviews with Hopsworks AB employees developing the Hopsworks Feature Store.}
     \label{fig:featurestore_writing}
 \end{figure}
 
@@ -25,7 +25,7 @@ Figure \ref{fig:featurestore_reading}~\footnote{For enhanced visualization, refe
     \begin{center}
       \includegraphics[width=\textwidth]{figures/2-background/FeatureStore-reading.png}
     \end{center}
-    \caption{Legacy system reading process}
+    \caption[Legacy system - Read process]{Legacy system reading a table from the Hopsworks offline feature store and loading it into the Python client local memory. The process is streamlined using Arrow Tables that avoid table serialization and deserialization. Diagram inspired by the Hopsworks Feature Store paper \cite{10.1145/3626246.3653389}.}
     \label{fig:featurestore_reading}
 \end{figure}
 
@@ -37,7 +37,7 @@ Figure \ref{fig:delta_rs_writing} shows how the delta-rs library writes on a Del
     \begin{center}
       \includegraphics[width=\textwidth]{figures/2-background/delta-rs_writing.png}
     \end{center}
-    \caption{delta-rs library writing process}
+    \caption[Delta-rs library - Write process]{Delta-rs library writing an Arrow Table from a Python client to a Delta Lake table store on \gls{HopsFS}.}
     \label{fig:delta_rs_writing}
 \end{figure}
 
@@ -49,6 +49,6 @@ Figure \ref{fig:delta_rs_reading} shows how the delta-rs library reads on a Delt
     \begin{center}
       \includegraphics[width=\textwidth]{figures/2-background/delta-rs_reading.png}
     \end{center}
-    \caption{delta-rs library reading process}
+    \caption[Delta-rs library - Read process]{Delta-rs library reading a Delta Table stored in \gls{HopsFS} and loading it into memory.}
     \label{fig:delta_rs_reading}
 \end{figure}

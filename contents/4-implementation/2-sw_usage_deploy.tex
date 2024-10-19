@@ -2,7 +2,7 @@ Once \gls{HDFS} and \gls{HopsFS} support has been added to the delta-rs library 
 
 The usage of the delta-rs library is explained in detail in the delta-rs documentation~\footnote{Documentation available at \url{https://delta-io.github.io/delta-rs/}}, so in this section, only the method used for the experiments will be shown and explained. Listing \ref{lst:write_delta-rs} shows a simple example of writing to \gls{HDFS} or \gls{HopsFS} (formally in a Python script only the address changes, as \gls{HopsFS} is based on \gls{HDFS}). As is clear from the listing in this case the script is writing a small table of two columns and three rows.
 
-\begin{python}[caption={Writing a data frame on a Delta Table with delta-rs on \gls{HDFS} or \gls{HopsFS}}, label={lst:write_delta-rs}]
+\begin{python}[caption={[Writing with delta-rs]Writing a data frame on a Delta Table with delta-rs on \gls{HDFS} or \gls{HopsFS}.}, label={lst:write_delta-rs}]
 from deltalake import write_deltalake
 import pandas as pd
 
@@ -14,7 +14,7 @@ write_deltalake("hdfs://rpc.sys:8020/tmp/test", df)
 
 In Listing \ref{lst:read_delta-rs} an example of a read operation is shown. After being read, the Delta Table is converted to a pyarrow table, to ensure an explicit in-memory operation (only calling the DeltaTable object is a lazy operation that does not load the data into memory).
 
-\begin{python}[caption={Reading a data frame on a Delta Table with delta-rs on \gls{HDFS} or \gls{HopsFS}}, label={lst:read_delta-rs}]
+\begin{python}[caption={[Reading with delta-rs]Reading a data frame on a Delta Table with delta-rs on \gls{HDFS} or \gls{HopsFS}. Note: without the last line, the Delta Table is not loaded into memory, as delta-rs has a lazy evaluation approach.}, label={lst:read_delta-rs}]
 from deltalake import DeltaTable
 
 dt = DeltaTable("hdfs://rpc.sys:8020/tmp/test")

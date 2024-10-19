@@ -9,7 +9,7 @@ Apache Spark (from now on simply Spark) is an open-source distributed computing 
   \begin{center}
     \includegraphics[width=\textwidth]{figures/2-background/Spark_MapReduce.png}
   \end{center}
-  \caption{Hadoop MapReduce and Apache Spark execution differences}
+  \caption[Hadoop MapReduce vs. Apache Spark]{Hadoop MapReduce and Apache Spark execution differences. The use of Apache Spark enables fast in-memory computation, instead of saving and loading data from disks continuously as Hadoop MapReduce. Diagram inspired by the Data-intensive Computing lectures at KTH by Prof. A. H. Payberah. Course website available at \url{https://www.kth.se/student/kurser/kurs/ID2221?l=en}.}
   \label{fig:MapReducevsSpark}
 \end{figure}
 
@@ -21,7 +21,7 @@ Apache Kafka (from now on, Kafka) is an open-source distributed data streaming p
     \begin{center}
       \includegraphics[width=\textwidth]{figures/2-background/kafka.png}
     \end{center}
-    \caption{Kafka cluster}
+    \caption[Kafka architecture]{Kafka architecture. Messages associated to a topic are characterized by a shape and a color. Note: in Kafka messages of different topics are replicated across different brokers, not represented for in the image for simplicity. It is to note that for each topic there is broker which is elected leader, the other brokers replicate its contents. Diagram inspired by DoubleCloud article available at \url{https://double.cloud/blog/posts/2023/03/the-many-use-cases-of-apache-kafka/}.}
     \label{fig:kafka}
 \end{figure}
 
