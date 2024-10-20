@@ -1,6 +1,6 @@
-The Hopsworks Feature Store \cite{10.1145/3626246.3653389} first used Apache Hudi for their Offline Feature Store, as it was the first open-sourced data lakehouse in 2017. Recently, Hopsworks \gls{AB} added support for using Delta Lake as an offline feature store, following its clients' requests. Spark is used as a query engine in the system, i.e., executes the query (read, write, or delete) on the Offline Feature Store. Running the system showed that even a write operation on a small dataset, consisting of 1 GB of data or less, takes one or more minutes to complete.
+The Hopsworks feature store \cite{10.1145/3626246.3653389} first used Apache Hudi for their offline feature store, as it was the first open-sourced data lakehouse in 2017. Recently, Hopsworks \gls{AB} added support for using Delta Lake as an offline feature store, following its clients' requests. Spark is a query engine in the system, i.e., it executes the query (read, write, or delete) on the offline feature store. Running the system showed that even a write operation on a small dataset, consisting of 1 GB of data or less, takes one or more minutes to complete.
 
-This hurts Hopsworks' typical use case, which sits between tests on small quantities of data (scale between 1-10 GBs) and production scenarios on a larger scale but still relatively small (scale between 10-100 GBs).
+This hurts Hopsworks' typical use case, which sits between tests on small quantities of data (1 GB - 10 GB) and production scenarios on a larger scale but still relatively small (10 GB - 100 GB).
 
 This research's underlying hypothesis is that this slow transaction time is a Spark-specific issue. This has led Hopsworks to adopt Spark alternatives \cite{Khazanchi1801362} for reading in their Apache Hudi system. Delta Lake supports Spark alternatives for accessing and querying the data, and of particular interest is the delta-rs library~\footnote{Project repository available at \url{https://github.com/delta-io/delta-rs}} that enables Python access to Delta Lake tables without using Spark. 
 However, the delta-rs library does not support \gls{HDFS}, and consequently \gls{HopsFS}~\cite{niaziHopsFSScalingHierarchical2017}.
@@ -8,11 +8,12 @@ However, the delta-rs library does not support \gls{HDFS}, and consequently \gls
 % Research Question
 \subsection{Research Question}
 \label{subsec:researchQuestion}
-This research project has the ultimate objective to evaluate and compare the performance of the current Spark system that operates on Apache Hudi to a Rust system that uses delta-rs library~\footnotemark[\value{footnote}] operates on Delta Lake, using \gls{HopsFS}~\cite{niaziHopsFSScalingHierarchical2017}. To achieve this, support for \gls{HDFS} (and thus also \gls{HopsFS}) must be added to the delta-rs library so that it can be compatible with the Hopsworks system. Thus, the project addresses the following two \glspl{RQ}:
+This research project has the ultimate objective to evaluate and compare the performance of the current Spark system that operates on Apache Hudi to a Rust system that uses delta-rs library~\footnotemark[\value{footnote}] operates on Delta Lake, using \gls{HopsFS}~\cite{niaziHopsFSScalingHierarchical2017}. To achieve this, support for \gls{HDFS} (and thus also \gls{HopsFS}) must be added to the delta-rs library so that it can be compatible with the Hopsworks system. Therefore, the project addresses the following two \glspl{RQ}:
 \begin{enumerate}
     \item[RQ1:] How can we add support for \gls{HDFS} and \gls{HopsFS} to the delta-rs library?
-    \item[RQ2:] What is the difference in latency and throughput between the current legacy system (Spark-based in writing) reading and writing to Apache Hudi compared to a delta-rs library-based reading and writing to Delta Lake, in \gls{HopsFS}?
+    \item[RQ2:] What is the difference in read and write latency and throughput between the current legacy system operating on the Hopsworks offline feature store and the delta-rs library operating on HopsFS?
 \end{enumerate}
+Note that RQ2 was formulated to reflect the experiments that will be performed. This is because, even though measured performance should be similar if delta-rs will be included in the Hopsworks client in the future, it is formally not operating on the offline feature store but only using the same file system, \gls{HopsFS}.
 
 %Some text
 % Small summary of the problem and formulation of a single research question

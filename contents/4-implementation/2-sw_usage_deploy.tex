@@ -1,7 +1,8 @@
-Once \gls{HDFS} and \gls{HopsFS} support has been added to the delta-rs library it is sufficient to build a python wheel, i.e. a pre-built binary package format for Python modules and libraries, for delta-rs. To do so it is sufficient to follow the instructions already present in the delta-rs library in the README.md file present in the python folder~\footnote{Instructions available at \url{https://github.com/Silemo/delta-rs/blob/main/python/README.md}}.
+Once \gls{HDFS} and \gls{HopsFS} support has been added to the delta-rs library, it is sufficient to build a python wheel, i.e., a pre-built binary package format for Python modules and libraries, for delta-rs. The Python wheel for the library can be built by following the instructions already present in the delta-rs library in the README.md file present in the python folder~\footnote{Instructions available at \url{https://github.com/Silemo/delta-rs/blob/main/python/README.md}}.
 
-The usage of the delta-rs library is explained in detail in the delta-rs documentation~\footnote{Documentation available at \url{https://delta-io.github.io/delta-rs/}}, so in this section, only the method used for the experiments will be shown and explained. Listing \ref{lst:write_delta-rs} shows a simple example of writing to \gls{HDFS} or \gls{HopsFS} (formally in a Python script only the address changes, as \gls{HopsFS} is based on \gls{HDFS}). As is clear from the listing in this case the script is writing a small table of two columns and three rows.
+The usage of the delta-rs library is explained in detail in the delta-rs documentation~\footnote{Documentation available at \url{https://delta-io.github.io/delta-rs/}}, so in this section, only the method used for the experiments will be shown and explained. Listing \ref{lst:write_delta-rs} shows a simple example of writing to \gls{HDFS} or \gls{HopsFS} (formally in a Python script, only the address changes, as \gls{HopsFS} is based on \gls{HDFS}). As the listing shows, the script writes a small table of two columns and three rows.
 
+\begin{minipage}{\linewidth}
 \begin{python}[caption={[Writing with delta-rs]Writing a data frame on a Delta Table with delta-rs on \gls{HDFS} or \gls{HopsFS}.}, label={lst:write_delta-rs}]
 from deltalake import write_deltalake
 import pandas as pd
@@ -10,13 +11,16 @@ df = pd.DataFrame({"num": [1, 2, 3],
                    "letter": ["a", "b", "c"]})
 write_deltalake("hdfs://rpc.sys:8020/tmp/test", df)
 \end{python}
+\end{minipage}
 \medskip
 
-In Listing \ref{lst:read_delta-rs} an example of a read operation is shown. After being read, the Delta Table is converted to a pyarrow table, to ensure an explicit in-memory operation (only calling the DeltaTable object is a lazy operation that does not load the data into memory).
+An example of a read operation is shown in Listing \ref{lst:read_delta-rs}. After being read, the Delta Table is converted to a pyarrow table to ensure an explicit in-memory operation (only calling the DeltaTable object is a lazy operation that does not load the data into memory).
 
+\begin{minipage}{\linewidth}
 \begin{python}[caption={[Reading with delta-rs]Reading a data frame on a Delta Table with delta-rs on \gls{HDFS} or \gls{HopsFS}. Note: without the last line, the Delta Table is not loaded into memory, as delta-rs has a lazy evaluation approach.}, label={lst:read_delta-rs}]
 from deltalake import DeltaTable
 
 dt = DeltaTable("hdfs://rpc.sys:8020/tmp/test")
 dt.to_pyarrow_table()
 \end{python}
+\end{minipage}

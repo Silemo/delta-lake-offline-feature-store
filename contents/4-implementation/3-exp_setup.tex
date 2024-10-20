@@ -1,7 +1,8 @@
-Experiments, as defined in Section \ref{subsec:experimental_design}, consist of running different system configurations, with different data, fifty times per experiment. Two main approaches were selected to measure the experiment's time, here is explained how to set them up.
+As defined in Section \ref{subsec:experimental_design}, experiments run different system configurations with five tables fifty times per experiment. Two main approaches were selected to measure the run time of the experiments, i.e., the read and write latency. This decision is motivated by the need to measure accurate results with the impossibility of using the most precise measurement approach in all systems.
 
-The first approach is to use the Python timeit function. As illustrated in Listing \ref{lst:exp_setup_timeit} timeit can be used by defining a SETUP\_CODE that runs before the experiment and a TEST\_CODE that when running is measured and the time (expressed in seconds) is the return value of the timeit function. This approach was selected as the timeit function provides a clear interface to run and measure a small code script. The script here does not run a repeated number of times as the Delta Table must be deleted before re-running the experiment, and this requires time that shouldn't be included in the experiment time (nor in the setup, as the first time the table is not there). When this approach could not be used (due to more complex scripts, the second approach was used).
+The first approach uses the Python timeit function, which isolates the process running the code, proving a reasonable estimate of the operation latency. As illustrated in Listing \ref{lst:exp_setup_timeit}, timeit can be used by defining a SETUP\_CODE that runs before the experiment and a TEST\_CODE that when running is measured and the time (expressed in seconds) is the return value of the timeit function. This approach was selected as the timeit function provides a clear interface to run and measure a small code script. The script here does not run a repeated number of times as the Delta Table must be deleted before re-running the experiment, and this requires time that shouldn't be included in the experiment time (nor in the setup, as the first time the table is not there). The limitation of this method is that it was not possible to use it to measure the total write latency on the legacy system while making a breakdown of the two steps performed by the system, i.e., upload and materialization (see Section \ref{subsec:legacy_sys_writing}). Therefore, the timeit function was used to measure delta-rs operations accurately, while the second approach was used to measure legacy systems. This was not considered problematic during the experiments as some trials revealed that the latency measured by the two methods was equal within a 95\% confidence interval. 
 
+\begin{minipage}{\linewidth}
 \begin{python}[caption={[Measuring latency using Timeit]Timeit usage to measure the time required to write a Delta Lake table to \gls{HopsFS}.}, label={lst:exp_setup_timeit}]
 import timeit
 SETUP_CODE='''import pyarrow as pa
@@ -18,10 +19,12 @@ write_result = timeit.timeit(setup  = SETUP_CODE,
                              stmt   = TEST_CODE,
                              number = 1          )
 \end{python}
+\end{minipage}
 \medskip
 
-The second measuring approach was to simply record the time before the script run and after the script run, then calculate the difference. This made it possible to calculate multiple differences without having to recreate the experiment multiple times. Listing \ref{lst:exp_setup_time_diff} shows an example of this approach.
+The second measuring approach was to record the time before and after the script run and then calculate the difference. This made it possible to calculate multiple differences without recreating the experiment numerous times. Listing \ref{lst:exp_setup_time_diff} shows an example of this approach. This approach enabled experiments to measure both the write latency of the legacy system and the upload and materialization latency.
 
+\begin{minipage}{\linewidth}
 \begin{python}[caption={[Measuring latency using the time difference]A simple time difference approach to measure the time required to write a Delta Lake table to \gls{HopsFS}.}, label={lst:exp_setup_time_diff}]
 import time
 import pyarrow as pa
@@ -36,4 +39,5 @@ after_writing = time.time()
 
 write_result = after_writing - before_writing
 \end{python}
+\end{minipage}
 

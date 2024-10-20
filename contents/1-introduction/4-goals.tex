@@ -2,7 +2,7 @@
 %%\sweExpl{Skilj på syfte och mål. Syftet är att åstakomma en förändring i något. Målen är vad som konkret skall göras för att om möjligt uppnå den önskade förändringen (syfte). }
 %%
 %%\generalExpl{State the goal/goals of this degree project.}
-The accomplishment of the project's purpose (namely, reducing the latency (seconds) and thus increasing the data throughput (rows/second) for reading and writing on Delta Lake tables on \gls{HopsFS}) is bound to a list of \glspl{G}, here set. These are also related to the set of \glspl{RQ}, outlining a clear structure of the various project milestones.
+This project aims to reduce the latency and thus increase the data throughput for reading and writing on Delta Lake tables on \gls{HopsFS}. The accomplishment of this purpose is bound to a list of \glspl{G}, here set. These are also related to the set of \glspl{RQ}, outlining a clear structure of the various project milestones.
 
 \begin{enumerate}
     \item \glspl{G} aimed to answer RQ1: 
@@ -14,19 +14,18 @@ The accomplishment of the project's purpose (namely, reducing the latency (secon
         \end{enumerate}
     \item \glspl{G} aimed to answer RQ2:
         \begin{enumerate}
-            \item[G5:] Design the experiments to be conducted to evaluate the difference in performance between the current legacy access (Spark-based in writing) to Apache Hudi compared a the delta-rs library-based access to Delta Lake, in \gls{HopsFS}. 
+            \item[G5:] Design the experiments to evaluate the performance difference between the current legacy access to Apache Hudi and the delta-rs library-based access to Delta Lake, in \gls{HopsFS}. 
             \item[G6:] Perform the designed experiments.
             \item[G7:] Visualize the experiments' results, focusing on allowing an effective comparison of performances.
             \item[G8:] Analyze and interpret the results in a dedicated thesis report section.
         \end{enumerate}
 \end{enumerate}
-
-%%\generalExpl{In addition to presenting the goal(s), you might also state what the deliverables and results of the project are.}
-Associated with these \glspl{G} several \glspl{D} will be created. 
+%%\generalExpl{In addition to presenting the goal(s), you might also state the project's deliverables and results.}
+The completion of these \glspl{G} will create several \glspl{D} listed below:
 \begin{enumerate}
-    \item[D1:] Code implementation adding support to \gls{HDFS} and \gls{HopsFS} in the delta-rs library. This \gls{D} is related to the completion of goals G1--G4. This deliverable also represents the system implementation contribution of the project.
-    \item[D2:] Experiment results on the difference in performance between current legacy access (Spark-based in writing) to Apache Hudi compared a the delta-rs library-based access to Delta Lake, in \gls{HopsFS}.
-    This \gls{D} is related to the completion of goals G5--G7.
-    \item[D3:] This thesis document, provides more detail on the implementation, design decisions, expected performance, and analysis of the results.
-    This \gls{D} is a comprehensive report of all the thesis work, also including the analysis of results defined in G8.
+    \item[D1:] Code implementation adding support to \gls{HDFS} and \gls{HopsFS} in the delta-rs library. This \gls{D} is related to completing goals G1--G4. This deliverable also represents the project's system implementation contribution.
+    \item[D2:] Experiment results on the difference in performance between current legacy access to Apache Hudi and the delta-rs library-based access to Delta Lake, in \gls{HopsFS}.
+    This \gls{D} is related to completing goals G5--G7.
+    \item[D3:] This thesis document. It provides more detail on the implementation, design decisions, expected performance, and analysis of the results.
+    This \gls{D} is a comprehensive report of all the thesis work, including the analysis of results defined in G8.
 \end{enumerate}
