@@ -2,7 +2,7 @@ The Hopsworks feature store \cite{10.1145/3626246.3653389} first used Apache Hud
 
 This hurts Hopsworks' typical use case, which sits between tests on small quantities of data (1 GB - 10 GB) and production scenarios on a larger scale but still relatively small (10 GB - 100 GB).
 
-This research's underlying hypothesis is that this slow transaction time is a Spark-specific issue. This has led Hopsworks to adopt Spark alternatives \cite{Khazanchi1801362} for reading in their Apache Hudi system. Delta Lake supports Spark alternatives for accessing and querying the data, and of particular interest is the delta-rs library~\footnote{Project repository available at \url{https://github.com/delta-io/delta-rs}} that enables Python access to Delta Lake tables without using Spark. 
+This research's underlying hypothesis is that this slow transaction time is a Spark-specific issue. This has led Hopsworks to adopt Spark alternatives~\cite{Khazanchi1801362} for reading in their Apache Hudi system. Delta Lake supports Spark alternatives for accessing and querying the data, and of particular interest is the delta-rs library~\footnote{Project repository available at \url{https://github.com/delta-io/delta-rs}} that enables Python access to Delta Lake tables without using Spark. 
 However, the delta-rs library does not support \gls{HDFS}, and consequently \gls{HopsFS}~\cite{niaziHopsFSScalingHierarchical2017}.
 
 % Research Question
