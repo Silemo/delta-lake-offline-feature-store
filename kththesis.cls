@@ -740,8 +740,8 @@
     Supervisors: \@supervisorAsFirstname\space\@supervisorAsLastname,  \@supervisorBsFirstname\space\@supervisorBsLastname
         \fi
     \else
-        Supervisors: \@supervisorAsFirstname\space\@supervisorAsLastname,  \@supervisorBsFirstname\space\@supervisorBsLastname,
-            \@supervisorCsFirstname\space\@supervisorCsLastname
+        Supervisors at KTH: \@supervisorAsFirstname\space\@supervisorAsLastname,  \@supervisorBsFirstname\space\@supervisorBsLastname\\
+        Supervisor at Hopsworks AB: \@supervisorCsFirstname\space\@supervisorCsLastname
     \par
     \fi
 
