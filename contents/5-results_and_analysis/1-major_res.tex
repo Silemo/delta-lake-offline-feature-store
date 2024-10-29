@@ -182,7 +182,7 @@ The latency measured using the delta-rs on \gls{LocalFS} pipeline is around ten 
 
 \subsubsection*{delta-rs on \glsentryshort{HopsFS} vs. Legacy pipeline}
 
-The latency measured using the delta-rs on \gls{HopsFS} pipeline results more than ten times lower than the latency measured using the Legacy pipeline in all but the experiment with the largest table (60M rows), where the latency of the first pipeline is only 47\% lower than the second. 
+The latency measured using the delta-rs on \gls{HopsFS} pipeline results from 47\% up to forty times lower than the latency measured using the Legacy pipeline. The largest latency reduction compared to the legacy system (forty times) is obtained with the 100K rows table, while the smallest decrease in latency between newer and older system is obtained with the largest table, i.e. 60M rows. For all other tables the delta-rs on \gls{HopsFS} pipeline has around ten times lower latency than the legacy system.
 
 \subsubsection*{Change of performance as the \glsentryshort{CPU} cores increase}
 

@@ -10,7 +10,7 @@ However, the delta-rs library does not support \gls{HDFS}, and consequently \gls
 \label{subsec:researchQuestion}
 This research project has the ultimate objective to evaluate and compare the performance of the current Spark system that operates on Apache Hudi to a Rust system that uses delta-rs library~\footnotemark[\value{footnote}] operates on Delta Lake, using \gls{HopsFS}~\cite{niaziHopsFSScalingHierarchical2017}. To achieve this, support for \gls{HDFS} (and thus also \gls{HopsFS}) must be added to the delta-rs library so that it can be compatible with the Hopsworks system. Therefore, the project addresses the following two \glspl{RQ}:
 \begin{enumerate}
-    \item[RQ1:] How can we add support for \gls{HDFS} and \gls{HopsFS} to the delta-rs library?
+    \item[RQ1:] How can we add support for \gls{HDFS} and \gls{HopsFS} to the delta-rs library to enable reading and writing on Delta Lake tables on the Hopsworks offline feature store?
     \item[RQ2:] What is the difference in read and write latency and throughput between the current legacy system operating on the Hopsworks offline feature store and the delta-rs library operating on HopsFS?
 \end{enumerate}
 Note that RQ2 was formulated to reflect the experiments that will be performed. This is because, even though measured performance should be similar if delta-rs will be included in the Hopsworks client in the future, it is formally not operating on the offline feature store but only using the same file system, \gls{HopsFS}.

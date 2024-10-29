@@ -19,13 +19,13 @@ As in the pipeline, the upload and the materialization are two parts of the proc
 \subsection{Legacy system - Reading}
 \label{subsec:legacy_sys_reading}
 
-Figure \ref{fig:featurestore_reading}~\footnote{For enhanced visualization, refer Figure~\ref{fig:appx_featurestore_reading}} shows the legacy Hopsworks feature store read process from the client onto the offline feature store. Unlike the writing process, the process is not Spark-based and uses a Spark alternative: a combination of an Arrow Flight server and a DuckDB instance. This avoids the serialization and deserialization into row-based tables for sending the data, keeping the unified standard Arrow Table, which is a column-oriented format.
+Figure \ref{fig:featurestore_reading}~\footnote{For enhanced visualization, refer Figure~\ref{fig:appx_featurestore_reading}} shows the legacy Hopsworks feature store read process from the client onto the offline feature store. Unlike the writing process, the process is not Spark-based and uses a Spark alternative: a combination of an Arrow Flight server and a DuckDB instance. This avoids the conversion into row-based tables for sending the data, keeping the unified standard Arrow Table, which is a column-oriented format.
 
 \begin{figure}
     \begin{center}
       \includegraphics[width=\textwidth]{figures/2-background/FeatureStore-reading.png}
     \end{center}
-    \caption[Legacy system - Read process]{Legacy system reading a table from the Hopsworks offline feature store and loading it into the Python client's local memory. The process is streamlined using Arrow Tables that avoid table serialization and deserialization. Diagram inspired by the Hopsworks feature store paper \cite{10.1145/3626246.3653389}.}
+    \caption[Legacy system - Read process]{Legacy system reading a table from the Hopsworks offline feature store and loading it into the Python client's local memory. The process is streamlined using Arrow Tables that avoid table conversion. Diagram inspired by the Hopsworks feature store paper \cite{10.1145/3626246.3653389}.}
     \label{fig:featurestore_reading}
 \end{figure}
 
