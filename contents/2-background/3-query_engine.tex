@@ -3,7 +3,7 @@ This section describes the technologies used to query, cache, and process data i
 
 \subsection{Apache Spark}
 
-Apache Spark (from now on simply Spark) is an open-source distributed computing framework designed to handle large-scale data-intensive applications~\cite{zahariaApacheSparkUnified2016}. Spark builds from the roots of MapReduce and its variants. MapReduce is a distributed programming model first designed by Google that enables the management of large datasets~\cite{dean2004mapreduce}. The paradigm was later implemented as an open-source project by Yahoo! engineers under the name of Hadoop MapReduce~\cite{borthakurHadoopDistributedFile2005}. Spark improved this approach using \glspl{RDD}~\cite{Zaharia:EECS-2011-82}. \glspl{RDD} are a distributed memory abstraction that enables a lazy in-memory computation tracked through lineage graphs, ultimately increasing fault tolerance~\cite{Zaharia:EECS-2011-82}. The difference between Hadoop MapReduce and Spark is represented in Figure~\ref{fig:MapReducevsSpark}.
+Apache Spark (from now on simply Spark) is an open-source distributed computing framework designed to handle large-scale data-intensive applications~\cite{zahariaApacheSparkUnified2016}. Spark builds from the roots of MapReduce and its variants. MapReduce is a distributed programming model first designed by Google that enables the management of large datasets~\cite{dean2004mapreduce}. The paradigm was later implemented as an open-source project by Yahoo! engineers under the name of Hadoop MapReduce~\cite{borthakurHadoopDistributedFile2005}. Spark improved this approach using \glspl{RDD}~\cite{Zaharia:EECS-2011-82}. \glspl{RDD} are a distributed memory abstraction that enables a lazy in-memory computation tracked through lineage graphs, ultimately increasing fault tolerance~\cite{Zaharia:EECS-2011-82}. This difference between Hadoop MapReduce and Spark is represented in Figure~\ref{fig:MapReducevsSpark}.
 
 \begin{figure}[!ht]
   \begin{center}
@@ -39,7 +39,7 @@ Given its distributed nature, Kafka allows several producers, consumers, and bro
 
 \subsection{DuckDB}
 
-DuckDB \cite{raasveldtDuckDBEmbeddableAnalytical2019} is an open-source, embedded, \gls{OLAP} \gls{DBMS}. DuckDB was designed to process small quantities of data (1 - 100 GBs) within the same process or application that runs it instead of a different process/application. These features create an efficient \gls{OLAP} database that can be used for data analysis and data processing on a small scale, without the complexity of a more complex \gls{DBMS}, e.g., Teradata \cite{shahImproveYourOLAP}. 
+DuckDB \cite{raasveldtDuckDBEmbeddableAnalytical2019} is an open-source, embedded, \gls{OLAP} \gls{DBMS}. DuckDB was designed to process small quantities of data (1 - 100 GBs) within the same process or application that runs it instead of a different process/application. These features create an efficient \gls{OLAP} database that can be used for data analysis and data processing on a small-scale data, without the complexity of a more complex \gls{DBMS}, e.g., Teradata \cite{shahImproveYourOLAP}. 
 
 The light structure that characterizes DuckDB enables this system to be highly responsive with low latency. The system's limitations regard data size. As DuckDB uses in-memory processing, it cannot handle big workloads (1TB or more) requiring disk loads.
 

@@ -1,10 +1,10 @@
-This section presents the main results of the one hundred and twenty experiments performed as defined in Section \ref{subsec:experimental_design}. The experiments are grouped into subsections according to the measured operation, i.e., read or write. Each subsection presents histograms and tables to visualize the results using both metrics, latency and throughput. Latency is expressed in seconds, and throughput is represented in rows/second.
+This section presents the main results of the one hundred and twenty experiments performed as defined in Section \ref{subsec:experimental_design}. The experiments are grouped into subsections according to the measured operation, i.e., read or write. Each subsection presents histograms and tables to visualize the results using both metrics, i.e., latency and throughput. Latency is expressed in seconds, and throughput is represented in rows/second.
 
 Results are reported using the log scale for clarity, as results differing from more than one significant figure are not clearly visible using a linear scale in a histogram representation. Additionally, for each measurement, a 95\% confidence interval was calculated using the bootstrapping technique mentioned in Section \ref{subsec:reliability_validity}. Nonetheless, this interval was not reported in the histograms in this section, as it would be hardly readable. This is because all results are out of each other's 95\% confidence interval. This data is reported in the Appendix \ref{appx:res_write} and \ref{appx:res_read} with a histogram and a table for each experiment expressed in both metrics.
 
 Of the two metrics defined in RQ2, only latency was measured during the experiments, while throughput was calculated with the formula present in Section ~\ref{subsec:eval_process}. Latency and throughput are inversely correlated by a constant factor since all experiments were performed with fixed-size tables. This relationship means that if latency is halved, throughput doubles, if latency quarters, throughput quadruples. Since results are reported according to both metrics, this creates an information redundancy. Trends will be described using latency to avoid repetition in this section. Throughput trends will be described if they reflect a significant behavior different from the latency trends.
 
-\subsection{Write Experiments}
+\subsection{Write experiments}
 
 \begin{figure}
     \centering
@@ -80,9 +80,9 @@ Of the two metrics defined in RQ2, only latency was measured during the experime
     \end{minipage}
 \end{figure}
 
-Figures~\ref{fig:res_write_time} and \ref{fig:res_write_throughput}, and Tables~\ref{tbl:res_write_time_cpu_perc} and \ref{tbl:res_write_throughput_cpu_perc} report the results of the write experiments performed. The results are expressed in latency in Figure~\ref{fig:res_write_time} and Table~\ref{tbl:res_write_time_cpu_perc}, and expressed in throughput in Figure~\ref{fig:res_write_throughput} and Table~\ref{tbl:res_write_throughput_cpu_perc}. The experiments were performed on the three systems defined in Section~\ref{subsec:experimental_design}. The five tables of different sizes being written were defined in Section~\ref{subsec:dataset}.
+Figures~\ref{fig:res_write_time} and \ref{fig:res_write_throughput}, and Tables~\ref{tbl:res_write_time_cpu_perc} and \ref{tbl:res_write_throughput_cpu_perc} report the results of the write experiments performed. The results are expressed in latency in Figure~\ref{fig:res_write_time} and Table~\ref{tbl:res_write_time_cpu_perc}, and expressed in throughput in Figure~\ref{fig:res_write_throughput} and Table~\ref{tbl:res_write_throughput_cpu_perc}. The experiments were performed on the three systems defined in Section~\ref{subsec:experimental_design}. The five tables of different sizes being written were defined in Section~\ref{subsec:data}.
 
-Both histograms, i.e., Figures~\ref{fig:res_write_time} and \ref{fig:res_write_throughput} report the results of the experiment performed with one \gls{CPU} core. On the other hand, the Tables~\ref{tbl:res_write_time_cpu_perc} and \ref{tbl:res_write_throughput_cpu_perc} on top of reporting the results of the one \gls{CPU} core experiment also present a calculated percentage of improvement (decrease in the case of latency, increase in the case of throughput) of the metric as the \gls{CPU} cores increase.
+Both histograms, i.e., Figures~\ref{fig:res_write_time} and \ref{fig:res_write_throughput}, report the results of the experiment performed with one \gls{CPU} core. On the other hand, the Tables~\ref{tbl:res_write_time_cpu_perc} and \ref{tbl:res_write_throughput_cpu_perc} on top of reporting the results of the one \gls{CPU} core experiment also present a calculated percentage of improvement (decrease in the case of latency, increase in the case of throughput) of the metric as the \gls{CPU} cores increase.
 
 \subsubsection*{delta-rs on \glsentryshort{HopsFS} vs. delta-rs on \glsentryshort{LocalFS}}
 
@@ -98,7 +98,7 @@ During experiments with more \gls{CPU} cores, in delta-rs based pipelines (writi
 
 Considering the Legacy pipeline, experiments with more \gls{CPU} cores did not decrease the latency by more than 7\% except for the largest table (60M rows). This table benefitted from a latency decrease of around 14\%. The smallest tables (10K and 100K) reported slight increases in the measured latency.
 
-\subsection{Read Experiments}
+\subsection{Read experiments}
 
 \begin{figure}
     \centering
@@ -172,7 +172,7 @@ Considering the Legacy pipeline, experiments with more \gls{CPU} cores did not d
     \end{minipage}
 \end{figure}
 
-Figures~\ref{fig:res_read_time} and \ref{fig:res_read_throughput}, and Tables~\ref{tbl:res_write_time_cpu_perc} and \ref{tbl:res_read_throughput_cpu_perc} report the results of the read experiments performed. The results are expressed in latency in Figure~\ref{fig:res_read_time} and Table~\ref{tbl:res_read_time_cpu_perc}, and expressed in throughput in Figure~\ref{fig:res_read_throughput} and Table~\ref{tbl:res_read_throughput_cpu_perc}. The experiments were performed on the three systems defined in Section~\ref{subsec:experimental_design}. The five tables of different sizes being written were defined in Section~\ref{subsec:dataset}.
+Figures~\ref{fig:res_read_time} and \ref{fig:res_read_throughput}, and Tables~\ref{tbl:res_write_time_cpu_perc} and \ref{tbl:res_read_throughput_cpu_perc} report the results of the read experiments performed. The results are expressed in latency in Figure~\ref{fig:res_read_time} and Table~\ref{tbl:res_read_time_cpu_perc}, and expressed in throughput in Figure~\ref{fig:res_read_throughput} and Table~\ref{tbl:res_read_throughput_cpu_perc}. The experiments were performed on the three systems defined in Section~\ref{subsec:experimental_design}. The five tables of different sizes being written were defined in Section~\ref{subsec:data}.
 
 Both histograms, i.e., Figures~\ref{fig:res_read_time} and \ref{fig:res_read_throughput} report the results of the experiment performed with one \gls{CPU} core. On the other hand, the Tables~\ref{tbl:res_read_time_cpu_perc} and \ref{tbl:res_read_throughput_cpu_perc} on top of reporting the results of the one \gls{CPU} core experiment also present a calculated percentage of improvement (decrease in the case of latency, increase in the case of throughput) of the metric as the \gls{CPU} cores increase.
 
@@ -186,7 +186,7 @@ The latency measured using the delta-rs on \gls{HopsFS} pipeline results from 47
 
 \subsubsection*{Change of performance as the \glsentryshort{CPU} cores increase}
 
-During experiments with more \gls{CPU} cores, in delta-rs based pipelines (reading on \gls{HopsFS} or \gls{LocalFS}), the latency during read operation decreases by a considerable amount: +50\%, when reading larger tables (1M, 6M and 60M rows), while it decreases by a lower margin: 20-30\% on smaller tables, i.e., 10K and 100K rows. It should be noted that latency decreases in reads with larger tables (1M, 6M, and 60M rows) following an inverse linear relationship with the increase of \gls{CPU} cores: two \gls{CPU} cores, latency halves, four \gls{CPU} cores, latency quarters, eight \gls{CPU} cores, latency is decreased to an eighth. On the other hand, throughput follows a linear relationship with the increase of \gls{CPU} cores.
+During experiments with more \gls{CPU} cores, in delta-rs based pipelines (reading on \gls{HopsFS} or \gls{LocalFS}), the latency during read operation decreases by a considerable amount: 50\%, when reading larger tables (1M, 6M and 60M rows), while it decreases by a lower margin: 20-30\% on smaller tables, i.e., 10K and 100K rows. It should be noted that latency decreases in reads with larger tables (1M, 6M, and 60M rows) following an inverse linear relationship with the increase of \gls{CPU} cores: two \gls{CPU} cores, latency halves, four \gls{CPU} cores, latency quarters, eight \gls{CPU} cores, latency is decreased to an eighth. On the other hand, throughput follows a linear relationship with the increase of \gls{CPU} cores.
 
 Considering the Legacy pipeline, experiments with more \gls{CPU} cores did not decrease the latency by more than 2\%. Histograms comparing the three pipelines look radically different in experiments with more \gls{CPU} cores due to how delta-rs scales with the increase of \gls{CPU} cores. They can be accessed in the Appendix \ref{appx:res_write}.
 
@@ -217,7 +217,7 @@ Considering the Legacy pipeline, experiments with more \gls{CPU} cores did not d
     \end{minipage}
 \end{figure}
 
-Table \ref{tbl:hudi_virtualiz_breakdown_cpu_perc} and Figure \ref{fig:hudi_virtualiz_breakdown} show the write latency breakdown of the Legacy pipeline into upload time and materialization time, the different steps of the Legacy pipeline as explained in Section \ref{subsec:legacy_sys_writing}. The breakdown is proposed for all five tables defined in Section \ref{subsec:dataset}. Figure \ref{fig:hudi_virtualiz_breakdown} reports the data from the one \gls{CPU} core experiment. In contrast, Table \ref{tbl:hudi_virtualiz_breakdown_cpu_perc} reports both the one \gls{CPU} core experiment data and also a calculated percentage of improvement, i.e., decrease, of the latency as the \gls{CPU} cores increase.
+Table \ref{tbl:hudi_virtualiz_breakdown_cpu_perc} and Figure \ref{fig:hudi_virtualiz_breakdown} show the write latency breakdown of the Legacy pipeline into upload time and materialization time, the different steps of the Legacy pipeline as explained in Section \ref{subsec:legacy_sys_writing}. The breakdown is proposed for all five tables defined in Section \ref{subsec:data}. Figure \ref{fig:hudi_virtualiz_breakdown} reports the data from the one \gls{CPU} core experiment. In contrast, Table \ref{tbl:hudi_virtualiz_breakdown_cpu_perc} reports both the one \gls{CPU} core experiment data and also a calculated percentage of improvement, i.e., decrease, of the latency as the \gls{CPU} cores increase.
 
 Considering the upload time contribution to the write latency, this represents a small percentage (around 5\%) when writing smaller tables, i.e., 10K and 100K rows. Nonetheless, the upload contribution grows following a similarly linear pattern in larger tables, i.e., between 100K and 60M rows. This radically changes the proportion between the upload and materialized contribution to the write latency, making the upload time 90\% of the total write latency for the 60M rows table. On the other hand, the materialization time contribution, while starting with high latency contribution (95\% of the total), its absolute value does not increase by more than a significant figure even if the table size increased by three significant figures.
 
@@ -226,4 +226,4 @@ Observing the results of experiments using more \gls{CPU} cores, the upload time
 \subsection{In-memory resources usage}
 \label{subsec:resources_usage}
 
-The experimental environment resources defined in Section \ref{subsec:exp_env} were adjusted according to the computational needs. In particular, write operations were demanding on the available \gls{RAM} resources, requiring up to 24 GBs to operate with the larger tables (6M and 60M rows). The system was adjusted to allocate 32768 MB of \gls{RAM} to avoid slowing down operations.
+The experimental environment resources defined in Section \ref{subsec:exp_env} were adjusted according to the computational needs. In particular, write operations were demanding on the available \gls{RAM} resources, requiring up to 24 GBs to operate with the larger tables (6M and 60M rows). The system was adjusted to allocate 32768 MBs of \gls{RAM} to avoid slowing down operations.

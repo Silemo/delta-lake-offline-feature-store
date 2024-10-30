@@ -18,11 +18,11 @@ The following two sections detail the significant problems and issues solved by 
 
 \subsection{First approach}
 % Describe the first approach trying to implement object_store for HDFS
-At the beginning of the project, a first approach was taken to provide support for \gls{HDFS} to the delta-rs library version 0.15.x. Analyzing past contributions to the library reveals that \gls{HDFS} was supported in version 0.9.0 of the delta-rs library, but support was removed due to three main reasons:
+At the beginning of the project, a first approach was taken to provide support for \gls{HDFS} to the delta-rs library version 0.15.x. Analyzing past contributions to the library revealed that \gls{HDFS} was supported in version 0.9.0 of the delta-rs library, but support was removed due to three main reasons:
 \begin{enumerate}
   \item The \gls{HDFS} support caused the testing pipeline to fail, and no trivial solution was found.
   \item The \gls{HDFS} support had \gls{JVM} dependencies. This was considered a strong limitation for Python users, as having Java installed is high overhead (in terms of storage and computation) for performing an operation in Python. Having these Java dependencies would have meant that many Python users would not have used the library altogether.
-  \item The community around the library did not have contributors or many users, which had \gls{HDFS} as a use case.
+  \item The community around the library did not have contributors or many users, which were using \gls{HDFS} as storage layer.
 \end{enumerate}
 Starting from the \gls{HDFS} support in the delta-rs library in version 0.9.0, a solution was designed to fix the testing issues and provide a working storage support for \gls{HDFS}. The architecture is described in Figure \ref{fig:approach_1_solution_schema}. 
 

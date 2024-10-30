@@ -3,10 +3,10 @@ The system evaluation complements the system implementation by measuring the per
 
 This section details the research paradigm, the method, and the principles that will be used to carry out the system evaluation process, measuring the performance (latency, measured in seconds, and throughput, measured in rows/second) of reading and writing on Delta Lake or Apache Hudi while on \gls{HopsFS} of the current legacy pipeline and Rust-based pipelines. 
 
-\subsection{Research Paradigm}
+\subsection{Research paradigm}
 The research paradigm for the system evaluation section of this thesis is more hybrid between positivism and post-positivism. While still performing a confirmatory research approach based on defined objectives, it considers the limitations and biases of this approach, not seeking to generalize the results obtained to other cases. This approach is motivated by the limitations and biases given by the industrial context of this thesis while performing a confirmatory analysis based on a newly implemented system.
 
-\subsection{Evaluation Process}
+\subsection{Evaluation process}
 \label{subsec:eval_process}
 The evaluation process will follow a sequential approach described in Figure \ref{fig:DevProcessRQ2}. Each step of this process is related to one of the goals (G5-G8) associated with the RQ2 in Section \ref{sec:goals}.
 The relationship between each activity and the associated goal(s) is here explained:
@@ -21,7 +21,7 @@ The relationship between each activity and the associated goal(s) is here explai
 \begin{figure}[!ht]
     \begin{center}
       \includegraphics[width=\textwidth]{figures/3-method/research_process_rq2.png}
-    \caption[System evaluation process]{\gls{BPMN} diagram of the System evaluation process answering to RQ2. Each activity is associated with a specific Goal (\gls{G}). The process produces two deliverables (\gls{D}), the experiments results (D2) and a results analysis (D3-partial).}
+    \caption[System evaluation process]{\gls{BPMN} diagram of the System evaluation process answering to RQ2. Each activity is associated with a specific goal (\gls{G}). The process produces two deliverables (\gls{D}), the experiments results (D2) and a results analysis (D3-partial).}
     \label{fig:DevProcessRQ2}
     \end{center}
 \end{figure}
@@ -33,15 +33,15 @@ Several choices must be made for the system evaluation: which data will be used,
 
 During the research work in Hopsworks \gls{AB}, the author talked to various employees and formed an idea of a typical client use case for the Hopsworks feature store. While these parameters are qualitative, they depict a specific use case around which this thesis work was built. Here below are these use case characteristics:
 \begin{itemize}
-  \item \textbf{Usage of rows over storage size}: contrary to the introduction chapter, where the size of workload is mainly referred to by storage size (bytes), in the experimental part of the thesis, only the number of rows will be used to refer to size. This choice is motivated by the need to find a reliable unit that measures a table size. Storage (bytes) is not strictly linked to a table structure (a table could have a lot of columns and a small number of rows and occupy the same memory as a table with a lot of rows but few columns), and it varies across platforms (different \gls{DBMS} might save information with different overheads) and storage structures (row-oriented format vs. column-oriented format, i.e., csv vs. parquet). Thus, storage size (bytes) alone is unreliable and cannot be used to measure data pipeline performance. This thesis kept the number of rows as the main unit to measure data size. Still, this metric was supplemented by specifying the number of columns and the data types in each row in Section \ref{subsec:dataset}.
-  \item \textbf{Selected table size}: within Hopsworks, the author had the chance to see that most of the company's clients' workloads were limited (from 1M to 100M rows), while few clients had massive workloads (more than 1 BN rows). Given this outlook, this project opted to improve performance for the smaller workloads, setting the table sizes between 100K and 60M rows. The data selected is further detailed in Section \ref{subsec:dataset}.
-  \item \textbf{Type of data}: the Hopsworks feature store works only with structured data (e.g., numbers, strings), and not with unstructured data (e.g., images, videos, audio) so, also the selected dataset in Section \ref{subsec:dataset} will reflect this scenario.
+  \item \textbf{Usage of rows over storage size}: contrary to Chapter \ref{ch:introduction}, where the size of workload is mainly referred to by storage size (bytes), in the experimental part of the thesis, only the number of rows will be used to refer to size. This choice is motivated by the need to find a reliable unit that measures a table size. Storage (bytes) is not strictly linked to a table structure (a table could have a lot of columns and a small number of rows and occupy the same memory as a table with a lot of rows but few columns), and it varies across storage structures (row-oriented format vs. column-oriented format, i.e., csv vs. parquet). Thus, storage size (bytes) alone is unreliable and cannot be used to measure data pipeline performance. This thesis kept the number of rows as the main unit to measure data size. Still, this metric was supplemented by specifying the number of columns and the data types in each row in Section \ref{subsec:data}.
+  \item \textbf{Table size}: within Hopsworks, the author had the chance to see that most of the company's clients' workloads were limited (from 1M to 100M rows), while few clients had massive workloads (more than 1 BN rows). Given this outlook, this project opted to improve performance for the smaller workloads, setting the table sizes between 100K and 60M rows. The data selected is further detailed in Section \ref{subsec:data}.
+  \item \textbf{Type of data}: the Hopsworks feature store works only with structured data (e.g., numbers, strings), and not with unstructured data (e.g., images, videos, audio) so, also the selected dataset in Section \ref{subsec:data} will reflect this scenario.
   \item \textbf{Client configuration}: the performance of the implemented system also depends on the computational and storage resources available on the client configuration running the system. The client configuration
   was modeled to reflect a limited number of setups. Four \gls{CPU} configurations were selected: one core, two cores, four cores, and eight cores. As for \gls{RAM} availability, this will be adapted to the system's needs (as it is unknown before running the experiments). Additionally, to avoid storage I/O bottlenecks and reflect a modern system, a system equipped with a \gls{SSD} storage will be used. The experimental environment is further detailed in Section \ref{subsec:exp_env}.
 \end{itemize}
 
-\subsection{Dataset}
-\label{subsec:dataset}
+\subsection{Data}
+\label{subsec:data}
 
 The data that will be used to perform the read and write operations comes from \glsentryshort{TPC}-H benchmark suite~\footnote{Benchmark suite website available at \url{https://www.tpc.org/tpch/}}. \glsentryshort{TPC}-H is a decision support benchmark by \gls{TPC}. It consists of a series of business-oriented ad-hoc queries designed to be industry-relevant \cite{transactionprocessingperformancecounciltpcTPCH_v301pdf1993}. The data coming from this benchmark suite was used as
 it provides a recognized standard for data storage systems \cite{TPC_benchmarks_2000}, and it has already been used in similar related work \cite{raasveldtDuckDBEmbeddableAnalytical2019, behmPhotonFastQuery2022}. Any part of the data can be generated using the TPC-H data generation tool~\footnote{Available at \url{https://www.tpc.org/tpc_documents_current_versions/current_specifications5.asp}}.
@@ -77,7 +77,7 @@ The SUPPLIER table has seven columns, while the LINEITEM table has sixteen. This
     \item L\_RECEIPTDATE : date
     \item L\_SHIPINSTRUCT : fixed text, size 25
     \item L\_SHIPMODE : fixed text, size 10
-    \item L\_COMMENT : variable text size 44
+    \item L\_COMMENT : variable text, size 44
   \end{itemize} 
 \end{itemize}
 As mentioned in Section \ref{subsec:use_case}, measuring the memory size in terms of bytes that a row of a table occupies has no single approach, as it depends on how the row is stored (e.g., a \gls{DBMS}, a row or column-oriented format). This limitation is why no specific ratio between a row and a data size in terms of bytes is given. Nonetheless, this section provides all information on the data, from how to retrieve it and how it is composed. These details enable the reader to calculate the storage occupancy of each table depending on its storage of choice.
@@ -93,7 +93,7 @@ This project used five table variations to benchmark the code solution as D1. \g
     \item \textit{lineitem\_sf10}: size = 60000000 rows
 \end{enumerate}
 
-\subsection{Experimental Design}
+\subsection{Experimental design}
 \label{subsec:experimental_design}
 % Description of which benchmarks will be performed and how. Here it needs to be explained the environment where the benchmarks will be run (Snurran), which tests are run, and why in this particular way.
 %
@@ -103,10 +103,10 @@ The experiments aim to highlight the differences between the newly implemented s
 \begin{enumerate}
     \item \textbf{delta-rs - \glsentryshort{HopsFS}}: the system implemented in Chapter \ref{ch:implementation}. It comprises a Rust pipeline with Python bindings, enabling performing operations (i.e., reading, writing) on Delta Lake tables. This pipeline writes on \gls{HopsFS}.
     \item \textbf{delta-rs - \glsentryshort{LocalFS}}: this pipeline uses the same library as the system implemented but saves data on the \gls{LocalFS}. This pipeline provides a comparison within the delta-rs library, isolating the impact on performance caused by writing on \gls{HopsFS}, a distributed file system.
-    \item \textbf{Legacy pipeline}: this pipeline uses the Hopsworks feature store to write data on Hudi tables. This system uses a pipeline based on Kafka and Spark to write data on the Hudi tables, saved on \gls{HopsFS}. The pipeline uses a Spark alternative, DuckDB, and Arrow Flight to read data as explained in Section \ref{subsec:legacy_sys_reading}. 
+    \item \textbf{Legacy pipeline}: is the Hopsworks feature store which writes data on Hudi tables. This system uses a pipeline based on Kafka and Spark to write data on the Hudi tables, saved on \gls{HopsFS}. The pipeline uses a Spark alternative, DuckDB, and Arrow Flight to read data as explained in Section \ref{subsec:legacy_sys_reading}. 
 \end{enumerate}
 
-Furthermore, the experiments will verify how the performances of the three systems will change based on the \gls{CPU} resources provided: one core, two cores, four cores, or eight cores. Each time, the experimental environment will be modified, creating a new \gls{VM} where the experiments will run with increasingly more resources. These \gls{CPU} configurations were chosen together with the industrial supervisor, according to the typical Hopsworks use case (Section \ref{subsec:use_case}). The data used for experiments, as described in Section \ref{subsec:dataset}, will come from two different tables. These are modified according to a \gls{SF}, for a total of five times. 
+Furthermore, the experiments will verify how the performances of the three systems will change based on the \gls{CPU} resources provided: one core, two cores, four cores, or eight cores. Each time, the experimental environment will be modified, creating a new Jupyter server where the experiments will run with increasingly more resources. These \gls{CPU} configurations were chosen together with the industrial supervisor, according to the typical Hopsworks use case (Section \ref{subsec:use_case}). The data used for experiments, as described in Section \ref{subsec:data}, will come from two different tables. These are modified according to a \gls{SF}, for a total of five times. 
 
 Additionally, during the writing experiments performed using the legacy pipeline, the contribution of different parts of the process will be measured, namely the upload time and materialization time, dichotomy explained in Section \ref{subsec:legacy_sys_writing}. This measurement will verify how different parts of the legacy pipeline scaled with table sizes and if Spark was the bottleneck of the architecture.
 
@@ -154,7 +154,7 @@ Caches (sum of all):
   L3:                    64 MiB (2 instances)
 \end{lstlisting}
 
-\subsection{Evaluation Framework}
+\subsection{Evaluation framework}
 % Describe which metrics are used to evaluate the system. Which metrics were used during the experiments
 %
 % What I would like to say is essentially that:
@@ -164,10 +164,10 @@ The system evaluation framework is designed to evaluate three key aspects of the
 \begin{enumerate}
     \item \textbf{Functional requirements}: defined in Section \ref{subsec:requirements}, functional requirements will be measured by verifying the success or failure of running an experiment. This will not happen by design, as the system implementation phase continues until all functional requirements are met.
     \item \textbf{Non-functional requirements}: defined in Section \ref{subsec:requirements}, non-functional requirements are: consistency, maintainability and scalability. The first two requirements are mainly addressed during implementation, while scalability is measured during the system evaluation experiments. The metric used for measuring this requirement is the throughput measured in rows/second, as defined in RQ2.
-    \item \textbf{How does the system compare to other pipelines?}: this question answers directly RQ2, measuring the throughput (rows/second) of the different pipelines, defined in Section \ref{subsec:experimental_design}. Results are then compared using a visual approach.
+    \item \textbf{How does the legacy system compare to other pipelines?}: this question answers directly RQ2, measuring the throughput measured in rows/second of the different pipelines, defined in Section \ref{subsec:experimental_design}. Results are then compared using a visual approach.
 \end{enumerate} 
 
-\subsection{Assessing Reliability and Validity}
+\subsection{Assessing reliability and validity}
 \label{subsec:reliability_validity}
 % Here explain how the readability and validity of the collected data were addressed. Mainly here the bootstrapping method needs to explained and how it achieves getting a CI without making assumption on the data distribution.
 
